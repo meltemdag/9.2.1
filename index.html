@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarım Devrimi'nin Başladığı Merkezler</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-[#f5f3eb] text-[#243e32] min-h-screen flex flex-col font-sans antialiased selection:bg-[#e8ede2] selection:text-[#244c3b]">
+
+  <!-- Ana İçerik Alanı -->
+  <main class="flex-1 max-w-[95rem] w-full mx-auto px-3 sm:px-5 lg:px-6 pt-2 pb-4 space-y-3">
+
+    <!-- Anlık Geri Bildirim ve İpucu Şeridi -->
+    <div id="feedback-banner" class="hidden rounded-[8px] px-4 py-2 text-xs sm:text-sm font-medium border transition-all duration-300">
+      <span id="feedback-text"></span>
+    </div>
+
+    <!-- Harita Konteyneri -->
+    <section class="bg-[#fffef9] rounded-[14px] border border-[#d9ddd0] shadow-[0_5px_16px_rgba(49,73,52,0.06)] p-2 sm:p-3 overflow-hidden">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#d9ddd0] mb-2">
+        <div>
+          <h1 class="font-display text-sm sm:text-base md:text-lg font-medium text-[#244c3b] tracking-tight">
+            Tarım Devrimi'nin Başladığı Merkezler
+          </h1>
+          <p class="text-[11px] sm:text-xs text-[#637065] mt-0.5 font-body">
+            Önce bölgeleri haritadaki uygun alanlarla eşleştiriniz; ardından bu bölgelere ait özellikleri sürükleyip bırakarak veya dokunarak tamamlayınız.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button id="reset-btn" class="px-4 py-2 bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] text-xs font-semibold rounded-[8px] transition-colors shadow-xs select-none">
+            Yeniden Başlat
+          </button>
+        </div>
+      </div>
+
+      <!-- Harita ve Katmanlar -->
+      <div class="relative w-full overflow-hidden rounded-[10px] bg-[#e8ede2]/30 select-none border border-[#d9ddd0]" id="map-wrapper" style="aspect-ratio: 1515 / 722;">
+        <img src="./image.png" alt="Tarım Devrimi'nin Gerçekleştiği Bölgeler Haritası" class="w-full h-full object-contain block pointer-events-none" id="main-map-img">
+
+        <!-- Odak 1: Orta Amerika (Mesoamerika) -->
+        <div id="target-orta-amerika" 
+             class="map-focus-target" 
+             data-region="orta-amerika"
+             style="left: 0; top: 74.3%; width: 31.5%; height: 25.5%;">
+          <div id="list-orta-amerika" class="target-cards-list flex-1 flex flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+        </div>
+
+        <!-- Odak 2: Mezopotamya (Bereketli Hilal) -->
+        <div id="target-mezopotamya" 
+             class="map-focus-target" 
+             data-region="mezopotamya"
+             style="left: 49.5%; top: 74.3%; width: 31.5%; height: 25.5%;">
+          <div id="list-mezopotamya" class="target-cards-list flex-1 flex flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+        </div>
+
+        <!-- Odak 3: Güneydoğu Asya -->
+        <div id="target-guneydogu-asya" 
+             class="map-focus-target" 
+             data-region="guneydogu-asya"
+             style="left: 60.3%; top: 2.7%; width: 26.5%; height: 25.5%;">
+          <div id="list-guneydogu-asya" class="target-cards-list flex-1 flex flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+        </div>
+
+        <!-- Harita İçi Aktif Bilgi Kartı Alanı -->
+        <div id="active-card-container" 
+             class="absolute z-20 transition-all duration-300 pointer-events-auto">
+          <div id="active-card" 
+               class="card-draggable bg-[#fffef9] rounded-[10px] border-2 border-[#244c3b] px-5 py-2.5 sm:py-3 shadow-[0_5px_16px_rgba(49,73,52,0.12)] hover:shadow-[0_8px_24px_rgba(49,73,52,0.18)] hover:border-[#173d2b] transition-all text-xs sm:text-sm md:text-[15px] font-medium text-[#243e32] text-center cursor-grab active:cursor-grabbing select-none"
+               draggable="true">
+            <!-- Sadece eşleştirilecek cümle JavaScript ile yerleştirilecektir -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Tamamlama ve Karşılaştırma Modalı -->
+  <div id="completion-modal" class="fixed inset-0 bg-[#243e32]/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#fffef9] rounded-[16px] max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-[0_20px_90px_rgba(25,49,35,0.25)] border border-[#d9ddd0] space-y-5 animate-in fade-in zoom-in duration-200 relative">
+      <div class="border-b border-[#d9ddd0] pb-3 flex items-start justify-between gap-4">
+        <div>
+          <h2 class="font-display text-xl font-medium text-[#244c3b]">
+            Tebrikler, Tüm Eşleştirmeleri Başarıyla Tamamladınız!
+          </h2>
+          <p class="text-xs sm:text-sm text-[#637065] mt-1 font-body">
+            Tarım Devrimi'nin ilk kez gerçekleştiği üç ana merkezin temel özelliklerini doğru bir şekilde konumlandırdınız.
+          </p>
+        </div>
+        <button id="modal-close-btn" class="text-[#637065] hover:text-[#243e32] hover:bg-[#e8ede2] w-8 h-8 rounded-[8px] flex items-center justify-center text-base font-bold transition-colors shrink-0 select-none" title="Pencereyi Kapat" aria-label="Pencereyi Kapat">
+          ✕
+        </button>
+      </div>
+
+      <!-- Karşılaştırma Tablosu -->
+      <div class="overflow-x-auto border border-[#d9ddd0] rounded-[8px]">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-[#e8ede2] text-[#244c3b] font-semibold border-b border-[#d9ddd0]">
+              <th class="p-3 border-r border-[#d9ddd0]">Bölge</th>
+              <th class="p-3 border-r border-[#d9ddd0]">Dönem</th>
+              <th class="p-3 border-r border-[#d9ddd0]">Temel Ürünler</th>
+              <th class="p-3 border-r border-[#d9ddd0]">Coğrafi ve İklim Koşulları</th>
+              <th class="p-3">Yerleşim ve Ekonomik Yapı</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#d9ddd0] text-[#243e32]">
+            <tr class="hover:bg-[#f5f3eb] transition-colors">
+              <td class="p-3 font-bold text-[#244c3b] border-r border-[#d9ddd0]">Mezopotamya</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Yaklaşık MÖ 10.000</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Buğday, arpa, mercimek, bezelye</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Fırat ve Dicle nehir vadileri, kurak yazlar, verimli alüvyal düzlükler</td>
+              <td class="p-3">Sulama kanalları, artı ürün depolanması, ilk köy ve kasabalar (Çatalhöyük), mesleki iş bölümü</td>
+            </tr>
+            <tr class="hover:bg-[#f5f3eb] transition-colors">
+              <td class="p-3 font-bold text-[#244c3b] border-r border-[#d9ddd0]">Güneydoğu Asya</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Yaklaşık MÖ 8.000</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Pirinç (çeltik), darı, soya fasulyesi, muz</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Muson yağışları, Sarı Irmak ve Gök Irmak havzaları, sulak araziler</td>
+              <td class="p-3">Sulu çeltik tarımı, akarsu kenarlarında yoğun nüfuslu yerleşimler, sulama dayanışması</td>
+            </tr>
+            <tr class="hover:bg-[#f5f3eb] transition-colors">
+              <td class="p-3 font-bold text-[#244c3b] border-r border-[#d9ddd0]">Orta Amerika</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Yaklaşık MÖ 7.000</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Mısır (teosinte), fasulye, avokado, balkabağı</td>
+              <td class="p-3 border-r border-[#d9ddd0]">Meksika Körfezi çevresi, göl ve akarsu havzaları, ılıman düzlükler</td>
+              <td class="p-3">Mısır üretimine dayalı ilk kalıcı köyler, göl kenarı yerleşimleri, bağımsız tarım kültürü</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Ortak Değerlendirme Çıkarımı -->
+      <div class="bg-[#f5f3eb] border border-[#d9ddd0] rounded-[8px] p-3.5 text-xs text-[#243e32] leading-relaxed font-body">
+        <span class="font-bold text-[#244c3b] block mb-1">Genel Değerlendirme ve Çıkarım:</span>
+        Her üç bölge de Dünya'nın orta kuşağında, tatlı su kaynaklarının ve verimli alüvyal toprakların bulunduğu alanlarda yer almıştır. Farklı zamanlarda ve farklı tarım ürünleri aracılığıyla gerçekleşmiş olsa da, avcı-toplayıcılıktan yerleşik hayata geçiş ve artı ürünün ortaya çıkması toplumların yerleşim düzenini ve ekonomik faaliyetlerini benzer şekilde dönüştürmüştür.
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button id="modal-restart-btn" class="px-5 py-2.5 bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] font-semibold text-xs sm:text-sm rounded-[8px] transition-colors shadow-xs">
+          Etkinliği Yeniden Başlat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
