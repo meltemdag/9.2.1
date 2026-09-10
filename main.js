@@ -192,7 +192,7 @@ function renderActiveCard() {
     const completeHTML = `
       <div class="flex items-center justify-center py-1">
         <button id="btn-goto-stage2-from-map" class="bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] rounded-[12px] px-6 py-3.5 text-xs sm:text-sm font-bold border border-[#d49d3d]/50 shadow-[0_8px_24px_rgba(30,59,46,0.3)] hover:shadow-[0_12px_32px_rgba(30,59,46,0.45)] transition-all flex items-center gap-2 cursor-pointer select-none font-body">
-          2. Aşamaya Geç (Video Anlatımı) ➔
+          2. Aşamaya Geç ➔
         </button>
       </div>
     `;
@@ -512,13 +512,14 @@ function updateFloatingStageNav() {
 }
 
 // ==========================================
-// 2. AŞAMA: VİDEO DEĞERLENDİRME SORULARI
+// ==========================================
+// 2. AŞAMA: DEĞERLENDİRME VE ÇIKARIM SORULARI
 // ==========================================
 
 const videoQuizQuestions = [
   {
     id: 1,
-    question: "Videonun ilk sahnelerinde kaba taş aletler ve hayvan postlarıyla avcılık yapan insanın, toprağı işlemek için çapa ve öğütme taşları tasarlaması yer almaktadır. Alet yapımındaki bu gelişimin insan yaşamındaki en temel sonucu aşağıdakilerden hangisidir?",
+    question: "İzlediklerinizden ve edindiğiniz bilgilerden yola çıkarak bu dönemi düşündüğünüzde; kaba taş aletlerden toprağı işlemeye yarayan çapa, orak ve öğütme taşlarına geçilmesinin insan yaşamındaki en temel sonucu aşağıdakilerden hangisidir?",
     options: [
       { letter: "A", text: "Doğaya bağımlı tüketici yaşamdan, kendi besinini üreten üretici yaşama geçilmesi", correct: true },
       { letter: "B", text: "Göçebe avcılığın dünya genelinde tek geçim kaynağı haline gelmesi", correct: false },
@@ -529,7 +530,7 @@ const videoQuizQuestions = [
   },
   {
     id: 2,
-    question: "Mezopotamya'da buğday, Güneydoğu Asya'da pirinç ve Orta Amerika'da mısır gibi farklı tarım ürünlerinin farklı zaman dilimlerinde evcilleştirilmesi neyi doğrulamaktadır?",
+    question: "Bu dönemi ve bölgelerin gelişimini düşündüğünüzde; Mezopotamya'da buğday, Güneydoğu Asya'da pirinç ve Orta Amerika'da mısır gibi farklı tarım ürünlerinin farklı zaman dilimlerinde evcilleştirilmesi aşağıdakilerden hangisini doğrulamaktadır?",
     options: [
       { letter: "A", text: "Tarım Devrimi'nin dünyada tek bir merkezden yayılmadığını, farklı coğrafyalarda bağımsız ortaya çıktığını", correct: true },
       { letter: "B", text: "Dünyadaki bütün toplumların aynı yüzyılda ve aynı yöntemlerle yerleşik hayata geçtiğini", correct: false },
@@ -540,7 +541,7 @@ const videoQuizQuestions = [
   },
   {
     id: 3,
-    question: "Çatalhöyük gibi ilk yerleşim yerlerinde evlerin birbirine bitişik inşa edilmesi, sokakların bulunmaması ve girişlerin damdan yapılması öncelikle hangi ihtiyacın sonucudur?",
+    question: "İlk yerleşik köylerin mimari yapısını ve yaşam koşullarını düşündüğünüzde; Çatalhöyük gibi merkezlerde evlerin birbirine bitişik inşa edilmesi, sokakların bulunmaması ve girişlerin damdan yapılması öncelikle hangi ihtiyacın sonucudur?",
     options: [
       { letter: "A", text: "Tarlaları, hasat edilen ürünleri koruma ve toplu savunma güvenliğini sağlama ihtiyacı", correct: true },
       { letter: "B", text: "İnsanların sürekli yer değiştirerek göçebe yaşamını sürdürmesini kolaylaştırma isteği", correct: false },
@@ -551,7 +552,7 @@ const videoQuizQuestions = [
   },
   {
     id: 4,
-    question: "Videoda toprağı işleyen çiftçinin ardından kasap, terzi ve zanaatkârların yer aldığı pazar sahnesi gösterilmektedir. Tarımsal üretimde ortaya çıkan 'artı ürün' bu mesleki çeşitliliği nasıl sağlamıştır?",
+    question: "İzlediklerinizden yola çıkarak pazar yerlerinin ve mesleki uzmanlaşmanın ortaya çıktığı bu dönemi düşündüğünüzde; tarımsal üretimde elde edilen 'artı ürün' bu çeşitliliği nasıl sağlamıştır?",
     options: [
       { letter: "A", text: "Besin fazlalığı sayesinde toplumun bir kısmının tarladan ayrılarak çömlekçilik, dokumacılık ve ticaret gibi alanlarda uzmanlaşmasını sağlamıştır", correct: true },
       { letter: "B", text: "Bütün insanların istisnasız yalnızca tarla işlerinde çalışmasını zorunlu kılmıştır", correct: false },
@@ -562,7 +563,7 @@ const videoQuizQuestions = [
   },
   {
     id: 5,
-    question: "Neolitik Dönem'de kilden yapılan çanak-çömleklerin ve ambarların insan yaşamında büyük önem kazanmasının temel sebebi aşağıdakilerden hangisidir?",
+    question: "Üretici yaşama geçiş sürecini ve ortaya çıkan yeni gereksinimleri düşündüğünüzde; kilden yapılan çanak-çömleklerin ve tahıl ambarlarının insan yaşamında büyük önem kazanmasının temel sebebi aşağıdakilerden hangisidir?",
     options: [
       { letter: "A", text: "Hasat edilen ihtiyaç fazlası ürünlerin saklanması, depolanması ve bozulmadan korunması", correct: true },
       { letter: "B", text: "Avlanan hayvanların göç yollarını takip etmek için hafif malzeme arayışı", correct: false },
@@ -573,7 +574,7 @@ const videoQuizQuestions = [
   },
   {
     id: 6,
-    question: "Güneydoğu Asya'da Muson yağmurları ile Sarı Irmak ve Gök Irmak havzalarının bulunması bu bölgede hangi üretim ve yerleşme modelini ortaya çıkarmıştır?",
+    question: "Güneydoğu Asya'nın coğrafi koşulları ve su kaynakları dikkate alındığında; Sarı Irmak ve Gök Irmak havzalarındaki doğal çevre bu bölgede hangi üretim ve yerleşme modelini ortaya çıkarmıştır?",
     options: [
       { letter: "A", text: "Bol suya dayalı çeltik (pirinç) tarımı ve sulama kanalları etrafında yoğun nüfuslu yerleşimler", correct: true },
       { letter: "B", text: "Yalnızca kurak bozkırlarda yetişen tek yıllık yabani buğday tarımı", correct: false },
@@ -584,7 +585,7 @@ const videoQuizQuestions = [
   },
   {
     id: 7,
-    question: "Tarım Devrimi sonucunda ambarlarda toplanan artı ürünlerin miktarlarının ve sahiplerinin belirlenmesi ihtiyacı insanlık tarihinde hangi köklü gelişmenin zeminini hazırlamıştır?",
+    question: "Bu dönemde ambarlarda toplanan artı ürünlerin miktarlarının, dağıtımının ve tapınak vergilerinin kayıt altına alınması gerekliliği düşünüldüğünde; bu durum insanlık tarihinde hangi köklü gelişmenin zeminini hazırlamıştır?",
     options: [
       { letter: "A", text: "Ürünlerin ve vergilerin kaydını tutma gereksinimiyle yazının icat edilmesine", correct: true },
       { letter: "B", text: "Takas uygulamasından vazgeçilerek avcı-toplayıcı düzene dönülmesine", correct: false },
@@ -595,7 +596,7 @@ const videoQuizQuestions = [
   },
   {
     id: 8,
-    question: "Videonun sonunda ilkel köy ve pazar yerlerinden günümüzün modern şehirlerine ve teknolojisine geçiş gösterilmektedir. Bu geçiş ile vurgulanmak istenen ana fikir nedir?",
+    question: "İzlediklerinizden ve edindiğiniz bilgilerden yola çıkarak ilk üretici köylerden günümüzün modern şehirlerine uzanan süreci düşündüğünüzde; bu köklü dönüşümün ortaya koyduğu ana fikir nedir?",
     options: [
       { letter: "A", text: "Günümüz modern şehir ve teknoloji medeniyetinin temellerinin, Tarım Devrimi ile başlayan yerleşme ve üretim sürecine dayanması", correct: true },
       { letter: "B", text: "Modern insanın artık tarım ürünlerine ve besin üretimine hiçbir ihtiyaç duymadığı", correct: false },
@@ -613,18 +614,21 @@ let quizAnswered = false;
 function showQuizView() {
   const videoWrapper = document.getElementById('stage2-video-wrapper');
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
-  const btnToggleQuiz = document.getElementById('btn-toggle-quiz');
-  const btnToggleVideo = document.getElementById('btn-toggle-video');
+  const instructionsBar = document.getElementById('stage2-instructions-bar');
+  const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
 
   if (videoEl && !videoEl.paused) {
     videoEl.pause();
   }
 
+  // Video, açıklama çubuğu ve soru butonunu gizle
   if (videoWrapper) videoWrapper.classList.add('hidden');
+  if (instructionsBar) instructionsBar.classList.add('hidden');
+  if (quizPrompt) quizPrompt.classList.add('hidden');
+
+  // Soru sahnesini aç
   if (quizWrapper) quizWrapper.classList.remove('hidden');
-  if (btnToggleQuiz) btnToggleQuiz.classList.add('hidden');
-  if (btnToggleVideo) btnToggleVideo.classList.remove('hidden');
 
   renderQuizQuestion();
 }
@@ -632,13 +636,21 @@ function showQuizView() {
 function showVideoView() {
   const videoWrapper = document.getElementById('stage2-video-wrapper');
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
-  const btnToggleQuiz = document.getElementById('btn-toggle-quiz');
-  const btnToggleVideo = document.getElementById('btn-toggle-video');
+  const instructionsBar = document.getElementById('stage2-instructions-bar');
+  const quizPrompt = document.getElementById('stage2-quiz-prompt');
+  const videoEl = document.getElementById('stage2-video');
 
+  // Soru sahnesini gizle
   if (quizWrapper) quizWrapper.classList.add('hidden');
+
+  // Video ve açıklama çubuğunu göster
   if (videoWrapper) videoWrapper.classList.remove('hidden');
-  if (btnToggleVideo) btnToggleVideo.classList.add('hidden');
-  if (btnToggleQuiz) btnToggleQuiz.classList.remove('hidden');
+  if (instructionsBar) instructionsBar.classList.remove('hidden');
+
+  // Video daha önce tamamlandıysa buton görünür kalır
+  if (videoEl && videoEl.ended && quizPrompt) {
+    quizPrompt.classList.remove('hidden');
+  }
 }
 
 // Soru Render Etme
@@ -697,34 +709,27 @@ function renderQuizQuestion() {
   const q = videoQuizQuestions[currentQuizIndex];
 
   container.innerHTML = `
-    <!-- Soru Başlığı ve Kökü -->
-    <div class="space-y-2">
-      <div class="flex items-center justify-between pb-1 border-b border-[#beab8f]/50">
-        <span class="font-monumental text-xs font-bold text-[#9e4e34] tracking-wide">
-          Soru
-        </span>
-      </div>
-      <p class="font-body font-bold text-xs sm:text-sm md:text-[14.5px] text-[#1e3b2e] leading-relaxed">
-        ${q.question}
-      </p>
-    </div>
+    <!-- Soru Metni (Doğrudan Ana Kart Zemininde) -->
+    <p class="font-body font-bold text-[13.5px] sm:text-[15px] md:text-base text-[#1e3b2e] leading-relaxed py-1">
+      ${q.question}
+    </p>
 
-    <!-- Seçenekler Listesi -->
-    <div class="grid grid-cols-1 gap-2.5 pt-1" id="quiz-options-list">
+    <!-- Seçenekler Listesi (Kompakt ve Birbirine Yakın Tek Sütun) -->
+    <div class="flex flex-col gap-2 sm:gap-2.5 pt-0.5" id="quiz-options-list">
       ${q.options.map((opt, idx) => `
         <div class="quiz-option-card" data-index="${idx}" role="button" tabindex="0">
           <span class="quiz-option-letter">${opt.letter}</span>
-          <span class="text-xs sm:text-[13px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
+          <span class="text-xs sm:text-[13px] md:text-[13.5px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
         </div>
       `).join('')}
     </div>
 
     <!-- Açıklama ve Çıkarım Geri Bildirim Kutusu -->
-    <div id="quiz-feedback-card" class="hidden p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border transition-all"></div>
+    <div id="quiz-feedback-card" class="hidden p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border transition-all shadow-2xs"></div>
 
     <!-- Sonraki Soru Buton Alanı -->
-    <div class="flex items-center justify-end pt-2 border-t border-[#beab8f]/50">
-      <button id="btn-next-quiz-question" class="hidden px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-semibold text-xs sm:text-sm rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-md select-none cursor-pointer">
+    <div class="flex items-center justify-end pt-1">
+      <button id="btn-next-quiz-question" class="hidden px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-xs sm:text-sm rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-xs select-none cursor-pointer">
         ${currentQuizIndex === videoQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
       </button>
     </div>
@@ -854,9 +859,21 @@ function init() {
 
   // 2. Aşama Video ve Soru Geçiş Dinleyicileri
   const stage2Video = document.getElementById('stage2-video');
+  const stage2QuizPrompt = document.getElementById('stage2-quiz-prompt');
   if (stage2Video) {
     stage2Video.addEventListener('ended', () => {
-      showQuizView();
+      // Video bitince altta ortada "Sorulara Geç ➔" butonunu göster
+      if (stage2QuizPrompt) {
+        stage2QuizPrompt.classList.remove('hidden');
+        stage2QuizPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
+    stage2Video.addEventListener('play', () => {
+      // Video başa sarılıp tekrar oynatılırsa butonu gizle (bitene kadar)
+      if (stage2Video.currentTime < 1 && stage2QuizPrompt) {
+        stage2QuizPrompt.classList.add('hidden');
+      }
     });
   }
 
@@ -870,6 +887,13 @@ function init() {
   const btnToggleVideo = document.getElementById('btn-toggle-video');
   if (btnToggleVideo) {
     btnToggleVideo.addEventListener('click', () => {
+      showVideoView();
+    });
+  }
+
+  const btnBackToVideoFromQuiz = document.getElementById('btn-back-to-video-from-quiz');
+  if (btnBackToVideoFromQuiz) {
+    btnBackToVideoFromQuiz.addEventListener('click', () => {
       showVideoView();
     });
   }

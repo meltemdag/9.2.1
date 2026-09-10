@@ -193,40 +193,46 @@
 
     <!-- 2. AŞAMA: GÖRSEL ANLATIM VİDEOSU VE DEĞERLENDİRME SORULARI -->
     <div id="stage-2-container" class="hidden space-y-3">
-      <section class="neolithic-theme-surface rounded-[18px] p-3 sm:p-5 md:p-6 space-y-3">
+      <section class="neolithic-theme-surface rounded-[18px] p-3 sm:p-5 md:p-6 space-y-3 w-fit max-w-full mx-auto shadow-md">
         <!-- Üst Dekoratif Antik Şerit -->
         <div class="h-1.5 w-full bg-gradient-to-r from-[#9e4e34] via-[#d49d3d] to-[#1e3b2e] rounded-full opacity-85"></div>
 
-        <!-- Açıklama ve Görünüm Kontrolleri -->
-        <div class="pb-2 border-b border-[#beab8f]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <!-- Açıklama ve Bilgilendirme Çubuğu -->
+        <div id="stage2-instructions-bar" class="pb-2 border-b border-[#beab8f]/60 flex items-center justify-between gap-2.5 w-full">
           <p id="stage2-instructions" class="text-[12px] sm:text-[13.5px] font-semibold text-[#2c261e] font-body leading-snug flex-1">
-            Videoyu dikkatle izleyiniz; ardından videoda aktarılan bilgiler doğrultusunda soruları cevaplandırınız.
+            Görsel anlatımı ve döneme ait gelişmeleri dikkatle inceleyiniz; edindiğiniz bilgilerden ve izlediklerinizden yola çıkarak soruları cevaplandırınız.
           </p>
-          <div class="flex items-center gap-2 shrink-0">
-            <button id="btn-toggle-quiz" class="px-4 py-1.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs font-semibold rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-xs select-none cursor-pointer">
-              Sorulara Geç ➔
-            </button>
-            <button id="btn-toggle-video" class="hidden px-4 py-1.5 bg-transparent hover:bg-[#ebdcc6] text-[#2c261e] border border-[#beab8f] hover:border-[#9e4e34] text-xs font-semibold rounded-[8px] transition-all select-none cursor-pointer">
-              ← Videoyu İzle
-            </button>
-          </div>
         </div>
 
-        <!-- Video Görünümü -->
-        <div id="stage2-video-wrapper" class="neolithic-frame-border rounded-[14px] overflow-hidden bg-[#1a1510] shadow-lg flex flex-col items-center justify-center relative">
-          <video id="stage2-video" 
-                 controls 
-                 playsinline 
-                 preload="metadata" 
-                 class="w-full max-h-[62vh] object-contain mx-auto block">
+        <!-- Video Görünümü (Kart Tam Videoya Daraltılmış, Video Eskisi Gibi Büyük) -->
+        <div id="stage2-video-wrapper" class="neolithic-frame-border rounded-[14px] overflow-hidden bg-black shadow-lg relative w-fit mx-auto flex items-center justify-center">
+          <video id="stage2-video"
+                 controls
+                 playsinline
+                 preload="metadata"
+                 class="block w-auto h-auto max-w-full min-h-[360px] sm:min-h-[440px] md:min-h-[520px] lg:min-h-[560px] max-h-[70vh] aspect-video">
             <source src="./viideo.mp4" type="video/mp4">
             Tarayıcınız video oynatmayı desteklememektedir.
           </video>
         </div>
 
-        <!-- Soru Sahnesi Görünümü (Video Ekranının Yerine Geçer) -->
-        <div id="stage2-quiz-wrapper" class="hidden neolithic-frame-border rounded-[14px] bg-gradient-to-b from-[#fdfbf7] to-[#f4ede0] p-4 sm:p-6 shadow-lg">
-          <div id="quiz-question-container" class="space-y-4"></div>
+        <!-- Video Bitince Ekranın Altında Ortaya Çıkan "Sorulara Geç" Buton Alanı -->
+        <div id="stage2-quiz-prompt" class="hidden pt-2.5 pb-1 text-center w-full animate-in fade-in zoom-in duration-300">
+          <button id="btn-toggle-quiz"
+                  class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:px-10 sm:py-4 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[12px] border border-[#d49d3d]/50 shadow-[0_8px_26px_rgba(30,59,46,0.35)] hover:shadow-[0_12px_36px_rgba(30,59,46,0.5)] transition-all transform hover:-translate-y-0.5 cursor-pointer select-none font-body tracking-wide">
+            Sorulara Geç ➔
+          </button>
+        </div>
+
+        <!-- Soru Sahnesi Görünümü (Doğrudan Ana Kart İçinde) -->
+        <div id="stage2-quiz-wrapper" class="hidden w-full max-w-[820px] mx-auto space-y-3.5 pt-0.5">
+          <!-- Soru Sahnesi Üst Gezinme Barı -->
+          <div id="quiz-header-bar" class="flex items-center justify-end pb-1.5 border-b border-[#beab8f]/50">
+            <button id="btn-back-to-video-from-quiz" class="px-3.5 py-1 text-xs font-semibold text-[#1e3b2e] hover:text-[#9e4e34] bg-[#ebdcc6]/60 hover:bg-[#ebdcc6] border border-[#beab8f] rounded-[6px] transition-all cursor-pointer select-none">
+              ← Videoyu İzle
+            </button>
+          </div>
+          <div id="quiz-question-container" class="space-y-3.5"></div>
         </div>
 
       </section>
