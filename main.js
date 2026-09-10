@@ -612,9 +612,7 @@ let quizAnswered = false;
 
 // Soru Sahnesi ve Video Görünüm Geçişleri
 function showQuizView() {
-  const videoWrapper = document.getElementById('stage2-video-wrapper');
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
-  const instructionsBar = document.getElementById('stage2-instructions-bar');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
 
@@ -622,30 +620,28 @@ function showQuizView() {
     videoEl.pause();
   }
 
-  // Video, açıklama çubuğu ve soru butonunu gizle
-  if (videoWrapper) videoWrapper.classList.add('hidden');
-  if (instructionsBar) instructionsBar.classList.add('hidden');
+  // Soru butonunu gizle
   if (quizPrompt) quizPrompt.classList.add('hidden');
 
-  // Soru sahnesini aç
-  if (quizWrapper) quizWrapper.classList.remove('hidden');
+  // Soru modalını bu modalın/videonun üzerinde katman olarak aç
+  if (quizWrapper) {
+    quizWrapper.classList.remove('hidden');
+    quizWrapper.classList.add('flex');
+  }
 
   renderQuizQuestion();
 }
 
 function showVideoView() {
-  const videoWrapper = document.getElementById('stage2-video-wrapper');
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
-  const instructionsBar = document.getElementById('stage2-instructions-bar');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
 
-  // Soru sahnesini gizle
-  if (quizWrapper) quizWrapper.classList.add('hidden');
-
-  // Video ve açıklama çubuğunu göster
-  if (videoWrapper) videoWrapper.classList.remove('hidden');
-  if (instructionsBar) instructionsBar.classList.remove('hidden');
+  // Soru modalını kapat
+  if (quizWrapper) {
+    quizWrapper.classList.add('hidden');
+    quizWrapper.classList.remove('flex');
+  }
 
   // Video daha önce tamamlandıysa buton görünür kalır
   if (videoEl && videoEl.ended && quizPrompt) {
@@ -663,8 +659,8 @@ function renderQuizQuestion() {
   // Tüm sorular tamamlandı mı?
   if (currentQuizIndex >= videoQuizQuestions.length) {
     container.innerHTML = `
-      <div class="text-center py-6 px-4 space-y-4 animate-in fade-in zoom-in duration-300">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-2xl font-bold border-2 border-[#d49d3d] shadow-md">
+      <div class="text-center py-5 px-3 space-y-4 animate-in fade-in zoom-in duration-300">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-2xl font-bold border-2 border-[#d49d3d] shadow-md">
           ✓
         </div>
         <h3 class="font-monumental text-lg sm:text-xl font-bold text-[#1e3b2e]">
@@ -709,27 +705,25 @@ function renderQuizQuestion() {
   const q = videoQuizQuestions[currentQuizIndex];
 
   container.innerHTML = `
-    <!-- Soru Metni (Doğrudan Ana Kart Zemininde) -->
-    <p class="font-body font-bold text-[13.5px] sm:text-[15px] md:text-base text-[#1e3b2e] leading-relaxed py-1">
+    <!-- Soru Metni -->
+    <p class="font-body font-bold text-base sm:text-lg md:text-[19px] text-[#1e3b2e] leading-snug">
       ${q.question}
     </p>
 
-    <!-- Seçenekler Listesi (Kompakt ve Birbirine Yakın Tek Sütun) -->
-    <div class="flex flex-col gap-2 sm:gap-2.5 pt-0.5" id="quiz-options-list">
+    <!-- Seçenekler Listesi -->
+    <div class="flex flex-col gap-2 pt-1" id="quiz-options-list">
       ${q.options.map((opt, idx) => `
         <div class="quiz-option-card" data-index="${idx}" role="button" tabindex="0">
           <span class="quiz-option-letter">${opt.letter}</span>
-          <span class="text-xs sm:text-[13px] md:text-[13.5px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
+          <span class="text-sm sm:text-[15px] md:text-[16px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
         </div>
       `).join('')}
     </div>
 
-    <!-- Açıklama ve Çıkarım Geri Bildirim Kutusu -->
-    <div id="quiz-feedback-card" class="hidden p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border transition-all shadow-2xs"></div>
-
-    <!-- Sonraki Soru Buton Alanı -->
-    <div class="flex items-center justify-end pt-1">
-      <button id="btn-next-quiz-question" class="hidden px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-xs sm:text-sm rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-xs select-none cursor-pointer">
+    <!-- Alt Etkileşim Alanı: Açıklama ve Sonraki Soru Butonu -->
+    <div id="quiz-bottom-bar" class="hidden flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1 animate-in fade-in duration-200">
+      <div id="quiz-feedback-card" class="flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border transition-all shadow-2xs"></div>
+      <button id="btn-next-quiz-question" class="shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap">
         ${currentQuizIndex === videoQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
       </button>
     </div>
@@ -761,6 +755,7 @@ function handleQuizAnswerSelection(selectedIndex) {
   const selectedOpt = q.options[selectedIndex];
   const optionsList = document.getElementById('quiz-options-list');
   const feedbackCard = document.getElementById('quiz-feedback-card');
+  const bottomBar = document.getElementById('quiz-bottom-bar');
   const nextBtn = document.getElementById('btn-next-quiz-question');
 
   if (!optionsList) return;
@@ -781,13 +776,17 @@ function handleQuizAnswerSelection(selectedIndex) {
     }
   });
 
+  if (bottomBar) {
+    bottomBar.classList.remove('hidden');
+    bottomBar.classList.add('flex');
+  }
+
   if (feedbackCard) {
-    feedbackCard.classList.remove('hidden');
     if (selectedOpt.correct) {
-      feedbackCard.className = 'p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border bg-[#eaf1e8] border-[#1e3b2e] text-[#1e3b2e] font-medium';
+      feedbackCard.className = 'flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border bg-[#eaf1e8] border-[#1e3b2e] text-[#1e3b2e] font-medium';
       feedbackCard.innerHTML = `<strong>Doğru Değerlendirme:</strong> ${q.explanation}`;
     } else {
-      feedbackCard.className = 'p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border bg-[#fdf3f0] border-[#9e4e34] text-[#9e4e34] font-medium';
+      feedbackCard.className = 'flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border bg-[#fdf3f0] border-[#9e4e34] text-[#9e4e34] font-medium';
       feedbackCard.innerHTML = `<strong>Açıklama:</strong> ${q.explanation}`;
     }
   }
