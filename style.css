@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,8 +26,30 @@
   font-family: 'Fraunces', Georgia, serif;
 }
 
+.font-monumental {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
+}
+
 .font-body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Neolitik ve Tarihsel Tema Arka Planı (Pişmiş Kil, Antik Taş ve Güneş Işıltısı) */
+.neolithic-theme-surface {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(212, 157, 61, 0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #f6f0e4 0%, #ece1cd 45%, #dfd0b7 100%);
+  border: 2px solid #beab8f;
+  box-shadow: 
+    0 18px 50px rgba(50, 38, 22, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(145, 116, 85, 0.3);
+}
+
+.neolithic-frame-border {
+  border: 2px solid #b8a284;
+  box-shadow: 0 4px 18px rgba(45, 34, 18, 0.18);
 }
 
 /* Sürükleme ve seçim vurguları */
@@ -43,19 +65,19 @@
 }
 
 .card-selected {
-  outline: 3px solid #e9bb62;
+  outline: 3px solid #d49d3d;
   outline-offset: 3px;
-  background-color: #e8ede2 !important;
+  background-color: #ede3d1 !important;
   transform: translateY(-2px);
-  box-shadow: 0 5px 16px rgba(49, 73, 52, 0.15);
+  box-shadow: 0 6px 20px rgba(45, 34, 18, 0.22);
 }
 
-/* Harita üzerindeki odak hedef alanları (Bir Tohum, Bir Dünya - Toprak/Kil ve Kağıt Paleti) */
+/* Harita üzerindeki odak hedef alanları (Neolitik Pişmiş Toprak / Kil Paleti) */
 .map-focus-target {
   position: absolute;
   border-radius: 14px;
-  border: 2.5px dashed #ab654e;
-  background-color: rgba(245, 243, 235, 0.60);
+  border: 2.5px dashed #9e4e34;
+  background-color: rgba(246, 240, 228, 0.70);
   backdrop-filter: blur(4px);
   cursor: pointer;
   transition: all 0.25s ease-in-out;
@@ -66,30 +88,59 @@
   padding: 0.35rem;
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 0 5px 16px rgba(49, 73, 52, 0.08);
+  box-shadow: 0 5px 16px rgba(45, 34, 18, 0.10);
 }
 
 .map-focus-target:hover,
 .map-focus-target.active {
-  border-color: #e9bb62;
+  border-color: #d49d3d;
   border-style: solid;
-  background-color: rgba(245, 243, 235, 0.75);
+  background-color: rgba(240, 230, 212, 0.85);
   transform: scale(1.02);
-  box-shadow: 0 5px 16px rgba(49, 73, 52, 0.18);
+  box-shadow: 0 6px 20px rgba(45, 34, 18, 0.20);
 }
 
 .map-focus-target.completed {
-  border-color: #244c3b;
+  border-color: #1e3b2e;
   border-style: solid;
-  background-color: rgba(232, 237, 226, 0.85);
-  box-shadow: 0 0 15px rgba(36, 76, 59, 0.22);
+  background-color: rgba(228, 237, 226, 0.92);
+  box-shadow: 0 0 16px rgba(30, 59, 46, 0.28);
 }
 
 .map-focus-target.drag-over-region {
-  border-color: #e9bb62;
+  border-color: #d49d3d;
   border-style: solid;
-  background-color: rgba(233, 187, 98, 0.35);
+  background-color: rgba(212, 157, 61, 0.35);
   transform: scale(1.04);
+}
+
+/* 1. Aşama Harita Sahnesi ve Dikey Taşmayı Kesin Önleme (Tek Ekrana Tam Sığdırma) */
+#stage-1-container {
+  width: 100%;
+}
+
+.stage-1-card {
+  max-height: calc(100dvh - 0.75rem);
+  display: flex;
+  flex-direction: column;
+}
+
+#map-wrapper {
+  position: relative;
+  aspect-ratio: 1515 / 722;
+  width: 100%;
+  max-width: min(100%, calc((100dvh - 102px) * 2.09833));
+  max-height: calc(100dvh - 102px);
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 1;
+}
+
+@media (max-width: 768px) {
+  #map-wrapper {
+    max-width: 100%;
+    max-height: none;
+  }
 }
 
 /* Harita İçi Aktif Kart Konumlandırma */
@@ -130,43 +181,45 @@
 
 /* Bölge Özellik Kartları (Alt Alan) Stilleri */
 .region-summary-card {
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: #d9ddd0;
-  transition: all 0.2s ease-in-out;
+  background: linear-gradient(180deg, #fffdfa 0%, #f7f1e6 100%);
+  border: 1.5px solid #beab8f;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(45, 34, 18, 0.08);
+  transition: all 0.22s ease-in-out;
   touch-action: manipulation;
 }
 
 .region-summary-card:hover {
-  border-color: #244c3b;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(49, 73, 52, 0.08);
+  border-color: #9e4e34;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(45, 34, 18, 0.14);
 }
 
 .region-summary-card.active,
 .region-summary-card.drag-over-region {
-  border-color: #e9bb62;
+  border-color: #d49d3d;
   border-style: solid;
-  background-color: rgba(233, 187, 98, 0.15);
-  box-shadow: 0 0 0 2px rgba(233, 187, 98, 0.4);
+  background: linear-gradient(180deg, #fefbf5 0%, #f2e6d0 100%);
+  box-shadow: 0 0 0 3px rgba(212, 157, 61, 0.35);
 }
 
 .region-summary-card.completed {
-  border-color: #244c3b;
-  background-color: rgba(232, 237, 226, 0.5);
+  border-color: #1e3b2e;
+  background: linear-gradient(180deg, #f4f8f3 0%, #e5ede3 100%);
+  box-shadow: 0 0 12px rgba(30, 59, 46, 0.18);
 }
 
 /* Erişilebilir Odak Halkası (Keyboard Focus) */
 button:focus-visible,
 [role="button"]:focus-visible,
 .card-draggable:focus-visible {
-  outline: 3px solid #e9bb62;
+  outline: 3px solid #d49d3d;
   outline-offset: 4px;
 }
 
-/* Özel İnce Kaydırma Çubuğu (Paper ve Line Uyumu) */
+/* Özel İnce Kaydırma Çubuğu (Parşömen ve Taş Uyumu) */
 .target-cards-list::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 
 .target-cards-list::-webkit-scrollbar-track {
@@ -174,12 +227,12 @@ button:focus-visible,
 }
 
 .target-cards-list::-webkit-scrollbar-thumb {
-  background-color: #d9ddd0;
+  background-color: #beab8f;
   border-radius: 4px;
 }
 
 .target-cards-list::-webkit-scrollbar-thumb:hover {
-  background-color: #637065;
+  background-color: #9e4e34;
 }
 
 /* Hareket Azaltma Tercihi (Reduced Motion) */
@@ -375,43 +428,45 @@ button:focus-visible,
 }
 
 .claim-box {
-  background: #fffef9;
-  border: 1px solid #d9ddd0;
-  border-radius: 14px;
-  padding: 24px 28px;
+  background: linear-gradient(180deg, #fdfbf7 0%, #f4ede0 100%);
+  border: 2px solid #beab8f;
+  border-radius: 16px;
+  padding: 22px 26px;
   margin-bottom: 16px;
-  box-shadow: 0 5px 16px rgba(49, 73, 52, 0.06);
+  box-shadow: 0 8px 25px rgba(45, 34, 18, 0.10);
   position: relative;
 }
 
 .claim-quote {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 19px;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.45;
-  color: #243e32;
-  margin-bottom: 10px;
-  border-left: 3px solid #e9bb62;
-  padding-left: 14px;
+  line-height: 1.5;
+  color: #1e3b2e;
+  margin-bottom: 12px;
+  border-left: 4px solid #9e4e34;
+  padding: 12px 18px;
+  background: rgba(246, 240, 228, 0.7);
+  border-radius: 0 10px 10px 0;
 }
 
 .claim-prompt {
   font-size: 14px;
   font-weight: 600;
-  color: #637065;
+  color: #554d42;
 }
 
 .evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin: 20px 0;
+  margin: 18px 0;
 }
 
 .evidence-card {
-  background: #f5f3eb;
-  border: 1.5px solid #d9ddd0;
-  border-radius: 8px;
+  background: #fffdfa;
+  border: 1.5px solid #d0c3ae;
+  border-radius: 10px;
   padding: 14px 16px;
   text-align: left;
   cursor: pointer;
@@ -419,17 +474,19 @@ button:focus-visible,
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  box-shadow: 0 2px 8px rgba(45, 34, 18, 0.04);
 }
 
 .evidence-card:hover:not(.disabled) {
-  border-color: #244c3b;
-  background: #e8ede2;
+  border-color: #d49d3d;
+  background: #fbf7ee;
+  transform: translateY(-1px);
 }
 
 .evidence-card.selected {
-  border-color: #244c3b;
-  background: #e8ede2;
-  box-shadow: inset 0 0 0 1px #244c3b;
+  border-color: #1e3b2e;
+  background: #eef4ec;
+  box-shadow: 0 0 0 2px #1e3b2e, 0 4px 14px rgba(30, 59, 46, 0.14);
 }
 
 .evidence-card.disabled {
@@ -441,7 +498,7 @@ button:focus-visible,
   width: 22px;
   height: 22px;
   border-radius: 6px;
-  border: 1.5px solid #d9ddd0;
+  border: 1.5px solid #bfae95;
   background: #fffef9;
   display: flex;
   align-items: center;
@@ -454,8 +511,8 @@ button:focus-visible,
 }
 
 .evidence-card.selected .evidence-check {
-  background: #244c3b;
-  border-color: #244c3b;
+  background: #1e3b2e;
+  border-color: #1e3b2e;
   color: #fffef9;
 }
 
@@ -463,7 +520,7 @@ button:focus-visible,
   font-size: 14px;
   font-weight: 600;
   line-height: 1.45;
-  color: #243e32;
+  color: #2b251d;
 }
 
 .wax-seal {
@@ -479,6 +536,72 @@ button:focus-visible,
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.03em;
+}
+
+/* 2. Aşama Değerlendirme Soruları Stilleri */
+.quiz-option-card {
+  background: #fffdfa;
+  border: 1.5px solid #d0c3ae;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(45, 34, 18, 0.04);
+}
+
+.quiz-option-card:hover:not(.locked) {
+  border-color: #d49d3d;
+  background: #fdfaf3;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(45, 34, 18, 0.10);
+}
+
+.quiz-option-card.correct {
+  border: 2px solid #1e3b2e !important;
+  background: #eaf1e8 !important;
+  box-shadow: 0 0 12px rgba(30, 59, 46, 0.20);
+}
+
+.quiz-option-card.wrong {
+  border: 2px solid #9e4e34 !important;
+  background: #fdf3f0 !important;
+  box-shadow: 0 0 12px rgba(158, 78, 52, 0.20);
+}
+
+.quiz-option-card.locked {
+  cursor: default;
+}
+
+.quiz-option-letter {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1.5px solid #beab8f;
+  background: #fffef9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #1e3b2e;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s ease;
+}
+
+.quiz-option-card.correct .quiz-option-letter {
+  background: #1e3b2e;
+  border-color: #1e3b2e;
+  color: #fffef9;
+}
+
+.quiz-option-card.wrong .quiz-option-letter {
+  background: #9e4e34;
+  border-color: #9e4e34;
+  color: #fffef9;
 }
 
 @media (max-width: 768px) {

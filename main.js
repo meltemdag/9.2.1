@@ -129,6 +129,12 @@ function showFeedback(message, isSuccess = true) {
   
   feedbackBanner.classList.remove(
     'hidden',
+    'bg-[#eaf1e8]',
+    'text-[#1e3b2e]',
+    'border-[#1e3b2e]',
+    'bg-[#fdf3f0]',
+    'text-[#9e4e34]',
+    'border-[#9e4e34]',
     'bg-[#e8ede2]',
     'text-[#244c3b]',
     'border-[#244c3b]',
@@ -138,9 +144,9 @@ function showFeedback(message, isSuccess = true) {
   );
   
   if (isSuccess) {
-    feedbackBanner.classList.add('bg-[#e8ede2]', 'text-[#244c3b]', 'border-[#244c3b]');
+    feedbackBanner.classList.add('bg-[#eaf1e8]', 'text-[#1e3b2e]', 'border-[#1e3b2e]');
   } else {
-    feedbackBanner.classList.add('bg-[#fbf4f1]', 'text-[#ab654e]', 'border-[#ab654e]');
+    feedbackBanner.classList.add('bg-[#fdf3f0]', 'text-[#9e4e34]', 'border-[#9e4e34]');
   }
   
   feedbackText.textContent = message;
@@ -185,7 +191,7 @@ function renderActiveCard() {
   if (remainingCards.length === 0) {
     const completeHTML = `
       <div class="flex items-center justify-center py-1">
-        <button id="btn-goto-stage2-from-map" class="bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] rounded-[8px] px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer select-none">
+        <button id="btn-goto-stage2-from-map" class="bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] rounded-[12px] px-6 py-3.5 text-xs sm:text-sm font-bold border border-[#d49d3d]/50 shadow-[0_8px_24px_rgba(30,59,46,0.3)] hover:shadow-[0_12px_32px_rgba(30,59,46,0.45)] transition-all flex items-center gap-2 cursor-pointer select-none font-body">
           2. Aşamaya Geç (Video Anlatımı) ➔
         </button>
       </div>
@@ -209,7 +215,7 @@ function renderActiveCard() {
   // Masaüstü Harita İçi Kart
   activeCardContainer.innerHTML = `
     <div id="active-card"
-         class="active-card-item card-draggable bg-[#fffef9] rounded-[10px] border-2 border-[#244c3b] px-4 py-2.5 sm:px-5 sm:py-3 shadow-[0_5px_16px_rgba(49,73,52,0.12)] hover:shadow-[0_8px_24px_rgba(49,73,52,0.18)] hover:border-[#173d2b] transition-all text-xs sm:text-sm md:text-[15px] font-medium text-[#243e32] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
+         class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13px] md:text-sm font-semibold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
          draggable="true"
          data-card-id="${currentCard.id}">
       ${currentCard.text}
@@ -219,22 +225,19 @@ function renderActiveCard() {
   // Mobil Slot Kartı
   if (mobileSlot) {
     mobileSlot.innerHTML = `
-      <div class="bg-[#fffef9] border-1.5 border-[#d9ddd0] rounded-[10px] p-2.5 shadow-xs">
+      <div class="bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] border-2 border-[#beab8f] rounded-[12px] p-3 shadow-sm">
         <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5">
-          <span class="inline-flex items-center gap-1.5 text-[#ab654e]">
-            <span class="w-2 h-2 rounded-full bg-[#ab654e] animate-pulse"></span>
-            Eşleştirilecek Bilgi Kartı:
-          </span>
-          <span class="text-[10px] text-[#637065] font-medium bg-[#f5f3eb] px-2 py-0.5 rounded-full border border-[#d9ddd0]">
-            Kalan: ${remainingCards.length}
+          <span class="inline-flex items-center gap-1.5 text-[#9e4e34]">
+            <span class="w-2 h-2 rounded-full bg-[#9e4e34]"></span>
+            Eşleştirilecek Bilgi Kartı
           </span>
         </div>
         <div id="active-card-mobile"
-             class="active-card-item card-draggable bg-[#fffef9] rounded-[8px] border-2 border-[#244c3b] px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#243e32] text-center cursor-pointer select-none break-words leading-snug hover:border-[#173d2b] transition-all"
+             class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#fcf8f0] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-[#1e3b2e] text-center cursor-pointer select-none break-words leading-snug hover:border-[#833d25] transition-all shadow-xs"
              data-card-id="${currentCard.id}">
           ${currentCard.text}
         </div>
-        <p class="text-[10px] text-[#637065] text-center mt-1.5 font-normal">
+        <p class="text-[11px] text-[#554d42] text-center mt-2 font-medium">
           Karta dokununuz, ardından haritadaki veya aşağıdaki ilgili merkeze dokununuz.
         </p>
       </div>
@@ -279,9 +282,9 @@ function placeCardIntoTarget(cardData, targetRegion) {
   if (targetList) {
     const itemEl = document.createElement('div');
     if (cardData.category === 'bolge') {
-      itemEl.className = 'bg-[#e8ede2] rounded-[8px] p-1.5 sm:p-2 text-[10px] sm:text-[11px] md:text-xs font-bold text-[#244c3b] border border-[#244c3b] shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
+      itemEl.className = 'bg-gradient-to-r from-[#1e3b2e] to-[#254b3b] text-[#fffdfa] rounded-[8px] p-1.5 sm:p-2 text-[10px] sm:text-[11px] md:text-xs font-bold border border-[#d49d3d]/50 shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
     } else {
-      itemEl.className = 'bg-[#fffef9] rounded-[8px] p-1 sm:p-1.5 text-[9px] sm:text-[10px] md:text-[11px] font-medium text-[#243e32] border border-[#d9ddd0] shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
+      itemEl.className = 'bg-[#fffdfa] rounded-[8px] p-1.2 sm:p-1.5 text-[9px] sm:text-[10px] md:text-[11px] font-semibold text-[#2c261e] border border-[#d0c3ae] shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
     }
     itemEl.textContent = cardData.text;
     targetList.appendChild(itemEl);
@@ -294,9 +297,9 @@ function placeCardIntoTarget(cardData, targetRegion) {
 
     const rItemEl = document.createElement('div');
     if (cardData.category === 'bolge') {
-      rItemEl.className = 'bg-[#e8ede2] rounded-[6px] p-2 border border-[#244c3b] text-[11.5px] sm:text-xs font-bold text-[#244c3b] leading-snug animate-in fade-in zoom-in duration-200';
+      rItemEl.className = 'bg-[#1e3b2e] text-[#fffdfa] rounded-[8px] p-2 border border-[#d49d3d]/50 text-[11.5px] sm:text-xs font-bold leading-snug animate-in fade-in zoom-in duration-200';
     } else {
-      rItemEl.className = 'bg-[#f5f3eb] rounded-[6px] p-2 border border-[#d9ddd0] text-[11.5px] sm:text-xs font-medium text-[#243e32] leading-snug animate-in fade-in zoom-in duration-200';
+      rItemEl.className = 'bg-[#fffdfa] text-[#2c261e] rounded-[8px] p-2 border border-[#d0c3ae] text-[11.5px] sm:text-xs font-medium leading-snug animate-in fade-in zoom-in duration-200';
     }
     rItemEl.textContent = cardData.text;
     regionItems.appendChild(rItemEl);
@@ -310,14 +313,14 @@ function placeCardIntoTarget(cardData, targetRegion) {
   clearSelection();
   updateProgress();
 
-  // Hedef alanına ve bölge kartına başarı animasyonu (Forest rengi ring)
+  // Hedef alanına ve bölge kartına başarı animasyonu (Neolitik koyu yeşil ring)
   if (targetEl) {
-    targetEl.classList.add('ring-4', 'ring-[#244c3b]/50');
-    setTimeout(() => targetEl.classList.remove('ring-4', 'ring-[#244c3b]/50'), 700);
+    targetEl.classList.add('ring-4', 'ring-[#1e3b2e]/60');
+    setTimeout(() => targetEl.classList.remove('ring-4', 'ring-[#1e3b2e]/60'), 700);
   }
   if (regionCard) {
-    regionCard.classList.add('ring-2', 'ring-[#244c3b]');
-    setTimeout(() => regionCard.classList.remove('ring-2', 'ring-[#244c3b]'), 700);
+    regionCard.classList.add('ring-2', 'ring-[#1e3b2e]');
+    setTimeout(() => regionCard.classList.remove('ring-2', 'ring-[#1e3b2e]'), 700);
   }
 
   // Geri bildirim mesajı
@@ -336,16 +339,16 @@ function placeCardIntoTarget(cardData, targetRegion) {
   renderActiveCard();
 }
 
-// Hatalı Yerleştirme Efekti (Clay rengi ring ve arka plan tonu)
+// Hatalı Yerleştirme Efekti (Pişmiş kil / kiremit rengi ring ve arka plan tonu)
 function triggerErrorEffect(targetRegion, customMessage) {
   const mapTarget = document.getElementById(`target-${targetRegion}`);
   const regionCard = document.getElementById(`region-card-${targetRegion}`);
 
   [mapTarget, regionCard].forEach(element => {
     if (!element) return;
-    element.classList.add('ring-4', 'ring-[#ab654e]', 'bg-[#ab654e]/20');
+    element.classList.add('ring-4', 'ring-[#9e4e34]', 'bg-[#9e4e34]/20');
     setTimeout(() => {
-      element.classList.remove('ring-4', 'ring-[#ab654e]', 'bg-[#ab654e]/20');
+      element.classList.remove('ring-4', 'ring-[#9e4e34]', 'bg-[#9e4e34]/20');
     }, 800);
   });
 
@@ -371,7 +374,7 @@ function handlePlacementAttempt(cardId, targetRegion) {
   placeCardIntoTarget(cardData, targetRegion);
 }
 
-// Tamamlanma Durumu Kontrolü
+// Tamamlanma Durumu Kontrolü (Sayaçsız, sade pedagojik durum)
 function updateProgress() {
   const regions = ['mezopotamya', 'guneydogu-asya', 'orta-amerika'];
   regions.forEach(r => {
@@ -380,20 +383,17 @@ function updateProgress() {
       if (placedCards.has(c.id)) regionCompletedCount++;
     });
 
-    // Harita üzerindeki mobil rozet sayacı
+    const isFinished = regionCompletedCount === 4;
+
+    // Harita üzerindeki durum göstergesi
     const mapTarget = document.getElementById(`target-${r}`);
     if (mapTarget) {
-      const mobileCountEl = mapTarget.querySelector('.map-badge-count');
-      if (mobileCountEl) {
-        if (regionCompletedCount === 4) {
-          mobileCountEl.textContent = '✓ 4/4';
-          mobileCountEl.className = 'map-badge-count text-[8.5px] sm:text-[10px] font-bold text-[#244c3b] bg-[#e8ede2] px-1.5 py-0.2 rounded-full mt-0.5';
-        } else {
-          mobileCountEl.textContent = `${regionCompletedCount}/4`;
-        }
+      const statusIndicator = mapTarget.querySelector('.map-status-indicator');
+      if (statusIndicator) {
+        statusIndicator.classList.toggle('hidden', !isFinished);
       }
 
-      if (regionCompletedCount === 4) {
+      if (isFinished) {
         mapTarget.classList.add('completed');
       } else {
         mapTarget.classList.remove('completed');
@@ -403,7 +403,7 @@ function updateProgress() {
     // Alt kısımdaki bölge kartı tamamlanma durumu
     const regionCard = document.getElementById(`region-card-${r}`);
     if (regionCard) {
-      if (regionCompletedCount === 4) {
+      if (isFinished) {
         regionCard.classList.add('completed');
       } else {
         regionCard.classList.remove('completed');
@@ -495,54 +495,8 @@ function setupDropTargets() {
   });
 }
 
-// ==========================================
-// 3. AŞAMA: TARİHSEL YARGI VE KANIT MASASI
-// ==========================================
-
-const claims = [
-  {
-    title: 'Zaman ve Mekân Yargısı',
-    quote: 'Tarım Devrimi dünyada tek bir merkezden yayılmamış; farklı zamanlarda, farklı iklim ve nehir havzalarında bağımsız olarak ortaya çıkmıştır.',
-    evidence: [
-      { text: 'MÖ 10.000 Mezopotamya (buğday), MÖ 8.000 Çin (pirinç) ve MÖ 7.000 Meksika (mısır) aralıkları.', valid: true },
-      { text: 'Fırat-Dicle, Yangtze ve Meksika nehir/göl havzalarının farklı iklim ve yerel yabani bitkilere sahip olması.', valid: true },
-      { text: 'Dünyadaki bütün medeniyetlerin aynı yüzyılda ve aynı tohumu ekerek tarıma başlaması.', valid: false },
-      { text: 'Tarımın yalnızca dağ buzullarında ve kutup tundralarında ortaya çıkması.', valid: false }
-    ],
-    why: 'Kronolojik tarihler ve genetik bitki araştırmaları, tarımın farklı coğrafyalarda o bölgenin kendi yerel yabani türleriyle bağımsız başladığını doğrular.'
-  },
-  {
-    title: 'Yerleşme Biçimi Yargısı',
-    quote: 'Kalıcı köy yerleşimleri ve bitişik mimari yapı, tarım arazilerinin sürekli bakım, sulama ve korunma ihtiyacının doğrudan bir sonucudur.',
-    evidence: [
-      { text: 'Çatalhöyük\'te tarlaların yanı başında kurulan, damdan merdivenle girilen bitişik kerpiç evler.', valid: true },
-      { text: 'Kurak yaz mevsimlerinde tarlaları sulamak için ortak emekle açılan su kanalları ve ambarlar.', valid: true },
-      { text: 'İnsanların tarlaları ektikten sonra tamamen bırakıp kıtalar arası göçebe yaşaması.', valid: false },
-      { text: 'İlk kalıcı köylerin yalnızca göçebe çadırlarından oluşması.', valid: false }
-    ],
-    why: 'Tarlayı beklemek, su kanallarını yönetmek ve hasadı saklamak göçebe yaşam tarzını sona erdirmiş; savunmalı ve kalıcı köyleri zorunlu kılmıştır.'
-  },
-  {
-    title: 'Ekonomik Faaliyet Yargısı',
-    quote: 'İhtiyaç fazlası \'artı ürünün\' depolanması; toplumda uzmanlaşmayı, zanaatkarlığı ve takas ekonomisini doğurmuştur.',
-    evidence: [
-      { text: 'Denizli Ekşi Höyük kazılarında bulunan 8.750 yıllık kemik orak, tahıl kapları ve dokumacılık izleri.', valid: true },
-      { text: 'Ambarlardaki artı ürün sayesinde toplumun bir kısmının tarladan ayrılıp çömlekçilik ve takasa yönelmesi.', valid: true },
-      { text: 'Tarımla birlikte dünyadaki tüm alet yapımının ve alışverişin tamamen sona ermesi.', valid: false },
-      { text: 'Bütün insanların yalnızca tek bir iş yapması ve ambarların hiçbir zaman kullanılmaması.', valid: false }
-    ],
-    why: 'Artı ürün toplumun bir bölümünü besin üretme zorunluluğundan kurtarmış; çömlekçilik, dokuma ve ürünlerin değiş tokuş edildiği pazar ekonomisini doğurmuştur.'
-  }
-];
-
 // Genel Durum Değişkenleri
 let currentStage = 0;
-
-// 3. Aşama Durumu
-let currentClaim = 0;
-let selectedEvidence = [[], [], []];
-let sealedClaims = [false, false, false];
-let claimFeedback = null;
 
 // Yüzen Aşama Değiştirme Butonlarını Güncelleme
 function updateFloatingStageNav() {
@@ -553,7 +507,288 @@ function updateFloatingStageNav() {
     prevBtn.disabled = currentStage <= 0;
   }
   if (nextBtn) {
-    nextBtn.disabled = currentStage >= 3;
+    nextBtn.disabled = currentStage >= 2;
+  }
+}
+
+// ==========================================
+// 2. AŞAMA: VİDEO DEĞERLENDİRME SORULARI
+// ==========================================
+
+const videoQuizQuestions = [
+  {
+    id: 1,
+    question: "Videonun ilk sahnelerinde kaba taş aletler ve hayvan postlarıyla avcılık yapan insanın, toprağı işlemek için çapa ve öğütme taşları tasarlaması yer almaktadır. Alet yapımındaki bu gelişimin insan yaşamındaki en temel sonucu aşağıdakilerden hangisidir?",
+    options: [
+      { letter: "A", text: "Doğaya bağımlı tüketici yaşamdan, kendi besinini üreten üretici yaşama geçilmesi", correct: true },
+      { letter: "B", text: "Göçebe avcılığın dünya genelinde tek geçim kaynağı haline gelmesi", correct: false },
+      { letter: "C", text: "Hayvanların evcilleştirilmesinden ve barınak yapımından tamamen vazgeçilmesi", correct: false },
+      { letter: "D", text: "Maden aletlerin taş aletlerden önce günlük hayatta yaygınlaşması", correct: false }
+    ],
+    explanation: "İlkel taş aletlerden toprağı işleyen çapa, orak ve ezme taşlarına geçiş; insanlığı doğada hazır bulduğunu tüketen göçebelikten, kendi besinini üreten yerleşik düzene taşımıştır."
+  },
+  {
+    id: 2,
+    question: "Mezopotamya'da buğday, Güneydoğu Asya'da pirinç ve Orta Amerika'da mısır gibi farklı tarım ürünlerinin farklı zaman dilimlerinde evcilleştirilmesi neyi doğrulamaktadır?",
+    options: [
+      { letter: "A", text: "Tarım Devrimi'nin dünyada tek bir merkezden yayılmadığını, farklı coğrafyalarda bağımsız ortaya çıktığını", correct: true },
+      { letter: "B", text: "Dünyadaki bütün toplumların aynı yüzyılda ve aynı yöntemlerle yerleşik hayata geçtiğini", correct: false },
+      { letter: "C", text: "İklim ve nehir havzalarının tarımsal üretimde hiçbir belirleyici etkisinin bulunmadığını", correct: false },
+      { letter: "D", text: "Tarımın yalnızca kutup ve dağ buzullarının yakınlarında gelişebildiğini", correct: false }
+    ],
+    explanation: "Farklı coğrafyalarda yerel yabani bitkilerin (buğday, pirinç, mısır) farklı zaman dilimlerinde evcilleştirilmesi, Tarım Devrimi'nin bağımsız merkezlerde ortaya çıktığını kanıtlar."
+  },
+  {
+    id: 3,
+    question: "Çatalhöyük gibi ilk yerleşim yerlerinde evlerin birbirine bitişik inşa edilmesi, sokakların bulunmaması ve girişlerin damdan yapılması öncelikle hangi ihtiyacın sonucudur?",
+    options: [
+      { letter: "A", text: "Tarlaları, hasat edilen ürünleri koruma ve toplu savunma güvenliğini sağlama ihtiyacı", correct: true },
+      { letter: "B", text: "İnsanların sürekli yer değiştirerek göçebe yaşamını sürdürmesini kolaylaştırma isteği", correct: false },
+      { letter: "C", text: "Hayvanların evlerin içinden serbestçe geçiş yapmasını sağlama düşüncesi", correct: false },
+      { letter: "D", text: "Kerpiç ve taş malzeme yerine çadır kullanımını yaygınlaştırma amacı", correct: false }
+    ],
+    explanation: "Tarımla birlikte emek verilen tarlaları ve depolanan hasadı yabani hayvanlardan ve dış tehlikelerden koruma gereği, damdan girişli bitişik ve güvenli köy mimarisini doğurmuştur."
+  },
+  {
+    id: 4,
+    question: "Videoda toprağı işleyen çiftçinin ardından kasap, terzi ve zanaatkârların yer aldığı pazar sahnesi gösterilmektedir. Tarımsal üretimde ortaya çıkan 'artı ürün' bu mesleki çeşitliliği nasıl sağlamıştır?",
+    options: [
+      { letter: "A", text: "Besin fazlalığı sayesinde toplumun bir kısmının tarladan ayrılarak çömlekçilik, dokumacılık ve ticaret gibi alanlarda uzmanlaşmasını sağlamıştır", correct: true },
+      { letter: "B", text: "Bütün insanların istisnasız yalnızca tarla işlerinde çalışmasını zorunlu kılmıştır", correct: false },
+      { letter: "C", text: "Takas ekonomisini ve pazar yerlerindeki alışverişi tamamen sona erdirmiştir", correct: false },
+      { letter: "D", text: "İnsanların köyleri terk ederek yeniden mağaralara dönmesine yol açmıştır", correct: false }
+    ],
+    explanation: "Artı ürün (ihtiyaç fazlası besin), tüm insanların tarlada çalışma zorunluluğunu ortadan kaldırarak zanaat, ticaret, yönetim ve sanat alanlarında mesleki iş bölümünü başlatmıştır."
+  },
+  {
+    id: 5,
+    question: "Neolitik Dönem'de kilden yapılan çanak-çömleklerin ve ambarların insan yaşamında büyük önem kazanmasının temel sebebi aşağıdakilerden hangisidir?",
+    options: [
+      { letter: "A", text: "Hasat edilen ihtiyaç fazlası ürünlerin saklanması, depolanması ve bozulmadan korunması", correct: true },
+      { letter: "B", text: "Avlanan hayvanların göç yollarını takip etmek için hafif malzeme arayışı", correct: false },
+      { letter: "C", text: "Mağara duvarlarındaki av resimlerini kapatma ve gizleme düşüncesi", correct: false },
+      { letter: "D", text: "Tarım faaliyetlerinin sonlandırılarak tamamen madenciliğe geçilmek istenmesi", correct: false }
+    ],
+    explanation: "Üretilen tahılların mevsimler boyunca saklanması ve kurak dönemlerde kullanılması ambar yapımını ve pişmiş kilden saklama kaplarını (çanak-çömlek) zorunlu kılmıştır."
+  },
+  {
+    id: 6,
+    question: "Güneydoğu Asya'da Muson yağmurları ile Sarı Irmak ve Gök Irmak havzalarının bulunması bu bölgede hangi üretim ve yerleşme modelini ortaya çıkarmıştır?",
+    options: [
+      { letter: "A", text: "Bol suya dayalı çeltik (pirinç) tarımı ve sulama kanalları etrafında yoğun nüfuslu yerleşimler", correct: true },
+      { letter: "B", text: "Yalnızca kurak bozkırlarda yetişen tek yıllık yabani buğday tarımı", correct: false },
+      { letter: "C", text: "Nehir kenarlarının tamamen boşaltılarak sadece dağ eteklerinde konaklanması", correct: false },
+      { letter: "D", text: "Kalıcı köyler yerine sadece kıl çadırlardan oluşan göçebe oba düzeni", correct: false }
+    ],
+    explanation: "Muson yağmurları ve geniş ırmak deltaları sulu tarıma imkân sağlamış; pirinç tarımı ortak sulama organizasyonunu ve yoğun nüfuslu yerleşimleri beraberinde getirmiştir."
+  },
+  {
+    id: 7,
+    question: "Tarım Devrimi sonucunda ambarlarda toplanan artı ürünlerin miktarlarının ve sahiplerinin belirlenmesi ihtiyacı insanlık tarihinde hangi köklü gelişmenin zeminini hazırlamıştır?",
+    options: [
+      { letter: "A", text: "Ürünlerin ve vergilerin kaydını tutma gereksinimiyle yazının icat edilmesine", correct: true },
+      { letter: "B", text: "Takas uygulamasından vazgeçilerek avcı-toplayıcı düzene dönülmesine", correct: false },
+      { letter: "C", text: "Yerleşik köylerin terk edilerek nehir boylarının boşaltılmasına", correct: false },
+      { letter: "D", text: "Toplumsal iş bölümünün ve mesleki uzmanlaşmanın sona ermesine", correct: false }
+    ],
+    explanation: "Tapınaklarda ve depolarda toplanan artı ürünlerin kime ait olduğunu, vergi oranlarını ve dağıtımını kayıt altına alma zorunluluğu Sümerlerde yazının icadını tetiklemiştir."
+  },
+  {
+    id: 8,
+    question: "Videonun sonunda ilkel köy ve pazar yerlerinden günümüzün modern şehirlerine ve teknolojisine geçiş gösterilmektedir. Bu geçiş ile vurgulanmak istenen ana fikir nedir?",
+    options: [
+      { letter: "A", text: "Günümüz modern şehir ve teknoloji medeniyetinin temellerinin, Tarım Devrimi ile başlayan yerleşme ve üretim sürecine dayanması", correct: true },
+      { letter: "B", text: "Modern insanın artık tarım ürünlerine ve besin üretimine hiçbir ihtiyaç duymadığı", correct: false },
+      { letter: "C", text: "Avcı-toplayıcı göçebe yaşam tarzının modern şehirlerde hiçbir değişikliğe uğramadan sürdüğü", correct: false },
+      { letter: "D", text: "Tarım Devrimi'nin insanlık tarihini gerilettiği ve toplumsal gelişmeyi durdurduğu", correct: false }
+    ],
+    explanation: "Modern çağın şehirleri, bilimi, hukuku ve teknolojisi; köklerini Neolitik Dönem'de toprağın işlenmesi, yerleşik hayat ve toplumsal iş bölümünün başlamasından alır."
+  }
+];
+
+let currentQuizIndex = 0;
+let quizAnswered = false;
+
+// Soru Sahnesi ve Video Görünüm Geçişleri
+function showQuizView() {
+  const videoWrapper = document.getElementById('stage2-video-wrapper');
+  const quizWrapper = document.getElementById('stage2-quiz-wrapper');
+  const btnToggleQuiz = document.getElementById('btn-toggle-quiz');
+  const btnToggleVideo = document.getElementById('btn-toggle-video');
+  const videoEl = document.getElementById('stage2-video');
+
+  if (videoEl && !videoEl.paused) {
+    videoEl.pause();
+  }
+
+  if (videoWrapper) videoWrapper.classList.add('hidden');
+  if (quizWrapper) quizWrapper.classList.remove('hidden');
+  if (btnToggleQuiz) btnToggleQuiz.classList.add('hidden');
+  if (btnToggleVideo) btnToggleVideo.classList.remove('hidden');
+
+  renderQuizQuestion();
+}
+
+function showVideoView() {
+  const videoWrapper = document.getElementById('stage2-video-wrapper');
+  const quizWrapper = document.getElementById('stage2-quiz-wrapper');
+  const btnToggleQuiz = document.getElementById('btn-toggle-quiz');
+  const btnToggleVideo = document.getElementById('btn-toggle-video');
+
+  if (quizWrapper) quizWrapper.classList.add('hidden');
+  if (videoWrapper) videoWrapper.classList.remove('hidden');
+  if (btnToggleVideo) btnToggleVideo.classList.add('hidden');
+  if (btnToggleQuiz) btnToggleQuiz.classList.remove('hidden');
+}
+
+// Soru Render Etme
+function renderQuizQuestion() {
+  const container = document.getElementById('quiz-question-container');
+  if (!container) return;
+
+  quizAnswered = false;
+
+  // Tüm sorular tamamlandı mı?
+  if (currentQuizIndex >= videoQuizQuestions.length) {
+    container.innerHTML = `
+      <div class="text-center py-6 px-4 space-y-4 animate-in fade-in zoom-in duration-300">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-2xl font-bold border-2 border-[#d49d3d] shadow-md">
+          ✓
+        </div>
+        <h3 class="font-monumental text-lg sm:text-xl font-bold text-[#1e3b2e]">
+          Değerlendirmeyi Tamamladınız!
+        </h3>
+        <p class="text-xs sm:text-sm text-[#38332b] max-w-xl mx-auto leading-relaxed">
+          Tebrikler! Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla değerlendirdiniz.
+        </p>
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <button id="btn-restart-quiz" class="px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-md cursor-pointer select-none">
+            Soruları Baştan Çöz
+          </button>
+          <button id="btn-replay-video" class="px-5 py-2.5 bg-transparent hover:bg-[#ebdcc6] text-[#2c261e] border border-[#beab8f] text-xs sm:text-sm font-semibold rounded-[8px] transition-all cursor-pointer select-none">
+            Videoyu Yeniden İzle
+          </button>
+        </div>
+      </div>
+    `;
+
+    const restartBtn = document.getElementById('btn-restart-quiz');
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        currentQuizIndex = 0;
+        renderQuizQuestion();
+      });
+    }
+
+    const replayBtn = document.getElementById('btn-replay-video');
+    if (replayBtn) {
+      replayBtn.addEventListener('click', () => {
+        showVideoView();
+        const videoEl = document.getElementById('stage2-video');
+        if (videoEl) {
+          videoEl.currentTime = 0;
+          videoEl.play();
+        }
+      });
+    }
+    return;
+  }
+
+  const q = videoQuizQuestions[currentQuizIndex];
+
+  container.innerHTML = `
+    <!-- Soru Başlığı ve Kökü -->
+    <div class="space-y-2">
+      <div class="flex items-center justify-between pb-1 border-b border-[#beab8f]/50">
+        <span class="font-monumental text-xs font-bold text-[#9e4e34] tracking-wide">
+          Soru
+        </span>
+      </div>
+      <p class="font-body font-bold text-xs sm:text-sm md:text-[14.5px] text-[#1e3b2e] leading-relaxed">
+        ${q.question}
+      </p>
+    </div>
+
+    <!-- Seçenekler Listesi -->
+    <div class="grid grid-cols-1 gap-2.5 pt-1" id="quiz-options-list">
+      ${q.options.map((opt, idx) => `
+        <div class="quiz-option-card" data-index="${idx}" role="button" tabindex="0">
+          <span class="quiz-option-letter">${opt.letter}</span>
+          <span class="text-xs sm:text-[13px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Açıklama ve Çıkarım Geri Bildirim Kutusu -->
+    <div id="quiz-feedback-card" class="hidden p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border transition-all"></div>
+
+    <!-- Sonraki Soru Buton Alanı -->
+    <div class="flex items-center justify-end pt-2 border-t border-[#beab8f]/50">
+      <button id="btn-next-quiz-question" class="hidden px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-semibold text-xs sm:text-sm rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-md select-none cursor-pointer">
+        ${currentQuizIndex === videoQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
+      </button>
+    </div>
+  `;
+
+  // Şık Tıklama Olayları
+  container.querySelectorAll('.quiz-option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if (quizAnswered) return;
+      const optIdx = Number(card.getAttribute('data-index'));
+      handleQuizAnswerSelection(optIdx);
+    });
+  });
+
+  // Sonraki Soru Butonu Olayı
+  const nextBtn = document.getElementById('btn-next-quiz-question');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      currentQuizIndex++;
+      renderQuizQuestion();
+    });
+  }
+}
+
+// Şık Seçimi Değerlendirme
+function handleQuizAnswerSelection(selectedIndex) {
+  quizAnswered = true;
+  const q = videoQuizQuestions[currentQuizIndex];
+  const selectedOpt = q.options[selectedIndex];
+  const optionsList = document.getElementById('quiz-options-list');
+  const feedbackCard = document.getElementById('quiz-feedback-card');
+  const nextBtn = document.getElementById('btn-next-quiz-question');
+
+  if (!optionsList) return;
+
+  const optionCards = optionsList.querySelectorAll('.quiz-option-card');
+  optionCards.forEach((card, idx) => {
+    card.classList.add('locked');
+    const isThisCorrect = q.options[idx].correct;
+
+    if (idx === selectedIndex) {
+      if (selectedOpt.correct) {
+        card.classList.add('correct');
+      } else {
+        card.classList.add('wrong');
+      }
+    } else if (isThisCorrect) {
+      card.classList.add('correct');
+    }
+  });
+
+  if (feedbackCard) {
+    feedbackCard.classList.remove('hidden');
+    if (selectedOpt.correct) {
+      feedbackCard.className = 'p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border bg-[#eaf1e8] border-[#1e3b2e] text-[#1e3b2e] font-medium';
+      feedbackCard.innerHTML = `<strong>Doğru Değerlendirme:</strong> ${q.explanation}`;
+    } else {
+      feedbackCard.className = 'p-3 rounded-[10px] text-xs sm:text-[13px] leading-relaxed border bg-[#fdf3f0] border-[#9e4e34] text-[#9e4e34] font-medium';
+      feedbackCard.innerHTML = `<strong>Açıklama:</strong> ${q.explanation}`;
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.classList.remove('hidden');
   }
 }
 
@@ -563,13 +798,11 @@ function switchStage(stageNum) {
   const stageIntroContainer = document.getElementById('stage-intro-container');
   const stage1Container = document.getElementById('stage-1-container');
   const stage2Container = document.getElementById('stage-2-container');
-  const stage3Container = document.getElementById('stage-3-container');
   const videoEl = document.getElementById('stage2-video');
 
   if (stageIntroContainer) stageIntroContainer.classList.toggle('hidden', stageNum !== 0);
   if (stage1Container) stage1Container.classList.toggle('hidden', stageNum !== 1);
   if (stage2Container) stage2Container.classList.toggle('hidden', stageNum !== 2);
-  if (stage3Container) stage3Container.classList.toggle('hidden', stageNum !== 3);
 
   // Video başka aşamaya geçildiğinde otomatik duraklatılsın
   if (stageNum !== 2 && videoEl && !videoEl.paused) {
@@ -578,139 +811,17 @@ function switchStage(stageNum) {
 
   updateFloatingStageNav();
 
+  if (feedbackBanner) feedbackBanner.classList.add('hidden');
+
   if (stageNum === 0) {
     // Giriş ekranı
   } else if (stageNum === 1) {
     renderActiveCard();
   } else if (stageNum === 2) {
-    showFeedback('2. Aşamaya geçtiniz. Tarım Devrimi ve Yerleşme videosunu inceleyebilirsiniz.', true);
-  } else if (stageNum === 3) {
-    renderStage3();
-    showFeedback('Tarihsel Yargı Masasına geçtiniz. Her iddia için 2 güvenilir kanıtı seçip mühürleyiniz.', true);
+    // Video görünümünü varsayılan yap
+    showVideoView();
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// 3. AŞAMA: RENDER FONKSİYONU
-function renderStage3() {
-  const quoteEl = document.getElementById('stage3-claim-quote');
-  const promptEl = document.getElementById('stage3-claim-prompt');
-  const gridEl = document.getElementById('stage3-evidence-grid');
-  const sealContainer = document.getElementById('stage3-seal-action-container');
-  const nextClaimBtn = document.getElementById('btn-next-claim');
-  const feedbackBox = document.getElementById('stage3-feedback-box');
-  const feedbackTitle = document.getElementById('stage3-feedback-title');
-  const feedbackTextEl = document.getElementById('stage3-feedback-text');
-
-  if (!quoteEl || !gridEl) return;
-
-  const cur = claims[currentClaim];
-  const curSelected = selectedEvidence[currentClaim];
-  const isSealed = sealedClaims[currentClaim];
-  const allSealed = sealedClaims.every(Boolean);
-
-  // Alıntı ve Yönlendirme Metni
-  quoteEl.textContent = `“${cur.quote}”`;
-  promptEl.innerHTML = `Bu iddiayı doğrulayan <strong>2 kanıtı</strong> seçiniz ve yargınızı mühürleyiniz.`;
-
-  // Kanıt Kartları Izgarası
-  gridEl.innerHTML = cur.evidence.map((ev, i) => `
-    <div class="evidence-card ${curSelected.includes(i) ? 'selected' : ''} ${isSealed ? 'disabled' : ''}" data-evidence="${i}" role="button" tabindex="0">
-      <div class="evidence-check">${curSelected.includes(i) ? '✓' : ''}</div>
-      <div class="evidence-text">${ev.text}</div>
-    </div>
-  `).join('');
-
-  gridEl.querySelectorAll('.evidence-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if (isSealed) return;
-      const evIdx = Number(card.getAttribute('data-evidence'));
-      const list = selectedEvidence[currentClaim];
-      if (list.includes(evIdx)) {
-        selectedEvidence[currentClaim] = list.filter(x => x !== evIdx);
-      } else if (list.length < 2) {
-        list.push(evIdx);
-      } else {
-        showFeedback('En fazla 2 kanıt seçebilirsiniz. Yeni bir kanıt seçmek için öncekilerden birini kaldırınız.', false);
-        return;
-      }
-      claimFeedback = null;
-      renderStage3();
-    });
-  });
-
-  // Mühür Alanı
-  if (isSealed) {
-    sealContainer.innerHTML = '';
-  } else {
-    sealContainer.innerHTML = `
-      <button id="btn-seal-claim" class="px-5 py-2.5 bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] font-semibold text-xs sm:text-sm rounded-[8px] transition-colors shadow-xs select-none disabled:opacity-50 disabled:cursor-not-allowed" ${curSelected.length !== 2 ? 'disabled' : ''}>
-        Seçimi Kontrol Et
-      </button>
-    `;
-    const sealBtn = document.getElementById('btn-seal-claim');
-    if (sealBtn) {
-      sealBtn.addEventListener('click', sealCurrentClaim);
-    }
-  }
-
-  // Sonraki İddia Butonu
-  if (nextClaimBtn) {
-    if (isSealed && !allSealed) {
-      nextClaimBtn.classList.remove('hidden');
-    } else {
-      nextClaimBtn.classList.add('hidden');
-    }
-  }
-
-  // Geri Bildirim Mesajı Kutusu
-  if (claimFeedback) {
-    feedbackBox.classList.remove('hidden', 'bg-[#e8ede2]', 'border-[#244c3b]', 'text-[#244c3b]', 'bg-[#fbf4f1]', 'border-[#ab654e]', 'text-[#ab654e]');
-    if (claimFeedback.type === 'success') {
-      feedbackBox.classList.add('bg-[#e8ede2]', 'border-[#244c3b]', 'text-[#244c3b]');
-    } else {
-      feedbackBox.classList.add('bg-[#fbf4f1]', 'border-[#ab654e]', 'text-[#ab654e]');
-    }
-    feedbackTitle.textContent = claimFeedback.title;
-    feedbackTextEl.textContent = claimFeedback.text;
-  } else {
-    feedbackBox.classList.add('hidden');
-  }
-}
-
-// 3. Aşama: Yargıyı Mühürleme Mantığı
-function sealCurrentClaim() {
-  const cur = claims[currentClaim];
-  const sel = selectedEvidence[currentClaim];
-  const validIndices = cur.evidence.map((e, idx) => e.valid ? idx : -1).filter(idx => idx !== -1);
-  const isOk = sel.length === 2 && sel.every(idx => validIndices.includes(idx));
-
-  if (isOk) {
-    sealedClaims[currentClaim] = true;
-    claimFeedback = { type: 'success', title: 'Yargı Kanıtlandı!', text: cur.why };
-    showFeedback('Yargı başarıyla mühürlendi.', true);
-    if (sealedClaims.every(Boolean)) {
-      showFeedback('Tebrikler! 3 tarihsel yargıyı da güvenilir kanıtlarla başarıyla mühürlediniz.', true);
-    }
-  } else {
-    claimFeedback = {
-      type: 'error',
-      title: 'Kanıtları Yeniden Değerlendiriniz:',
-      text: 'Seçtiğiniz ifadeler bu iddiayı doğrudan desteklememektedir. Gerçeklerle örtüşen kanıtları seçtiğinizden emin olunuz.'
-    };
-    showFeedback('Seçilen kanıtlar iddiayı doğrulamadı.', false);
-  }
-  renderStage3();
-}
-
-// 3. Aşama Sıfırlama
-function resetStage3() {
-  selectedEvidence = [[], [], []];
-  sealedClaims = [false, false, false];
-  claimFeedback = null;
-  currentClaim = 0;
-  renderStage3();
-  showFeedback('Tarihsel yargı masası başlangıç durumuna getirildi.', true);
 }
 
 // Başlatma Olayları
@@ -741,52 +852,25 @@ function init() {
     });
   }
 
-  // 2. Aşama (Video Anlatımı) Butonları
-  const btnBackToStage1 = document.getElementById('btn-back-to-stage1');
-  if (btnBackToStage1) {
-    btnBackToStage1.addEventListener('click', () => {
-      switchStage(1);
+  // 2. Aşama Video ve Soru Geçiş Dinleyicileri
+  const stage2Video = document.getElementById('stage2-video');
+  if (stage2Video) {
+    stage2Video.addEventListener('ended', () => {
+      showQuizView();
     });
   }
 
-  const btnGotoStage3FromVideoTop = document.getElementById('btn-goto-stage3-from-video-top');
-  if (btnGotoStage3FromVideoTop) {
-    btnGotoStage3FromVideoTop.addEventListener('click', () => {
-      switchStage(3);
+  const btnToggleQuiz = document.getElementById('btn-toggle-quiz');
+  if (btnToggleQuiz) {
+    btnToggleQuiz.addEventListener('click', () => {
+      showQuizView();
     });
   }
 
-  const btnGotoStage3FromVideo = document.getElementById('btn-goto-stage3-from-video');
-  if (btnGotoStage3FromVideo) {
-    btnGotoStage3FromVideo.addEventListener('click', () => {
-      switchStage(3);
-    });
-  }
-
-  // 3. Aşama Butonları
-  const btnBackToStage2 = document.getElementById('btn-back-to-stage2');
-  if (btnBackToStage2) {
-    btnBackToStage2.addEventListener('click', () => {
-      switchStage(2);
-    });
-  }
-
-  const stage3ResetBtn = document.getElementById('stage3-reset-btn');
-  if (stage3ResetBtn) {
-    stage3ResetBtn.addEventListener('click', () => {
-      resetStage3();
-    });
-  }
-
-  const btnNextClaim = document.getElementById('btn-next-claim');
-  if (btnNextClaim) {
-    btnNextClaim.addEventListener('click', () => {
-      const nextUnsealed = sealedClaims.findIndex(x => !x);
-      if (nextUnsealed !== -1) {
-        currentClaim = nextUnsealed;
-      }
-      claimFeedback = null;
-      renderStage3();
+  const btnToggleVideo = document.getElementById('btn-toggle-video');
+  if (btnToggleVideo) {
+    btnToggleVideo.addEventListener('click', () => {
+      showVideoView();
     });
   }
 
@@ -801,7 +885,7 @@ function init() {
   const floatingNextBtn = document.getElementById('floating-next-stage-btn');
   if (floatingNextBtn) {
     floatingNextBtn.addEventListener('click', () => {
-      if (currentStage < 3) switchStage(currentStage + 1);
+      if (currentStage < 2) switchStage(currentStage + 1);
     });
   }
 
