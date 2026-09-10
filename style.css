@@ -165,24 +165,20 @@ button:focus-visible,
 }
 
 /* Özel İnce Kaydırma Çubuğu (Paper ve Line Uyumu) */
-.target-cards-list::-webkit-scrollbar,
-#completion-modal .overflow-y-auto::-webkit-scrollbar {
+.target-cards-list::-webkit-scrollbar {
   width: 4px;
 }
 
-.target-cards-list::-webkit-scrollbar-track,
-#completion-modal .overflow-y-auto::-webkit-scrollbar-track {
+.target-cards-list::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.target-cards-list::-webkit-scrollbar-thumb,
-#completion-modal .overflow-y-auto::-webkit-scrollbar-thumb {
+.target-cards-list::-webkit-scrollbar-thumb {
   background-color: #d9ddd0;
   border-radius: 4px;
 }
 
-.target-cards-list::-webkit-scrollbar-thumb:hover,
-#completion-modal .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+.target-cards-list::-webkit-scrollbar-thumb:hover {
   background-color: #637065;
 }
 

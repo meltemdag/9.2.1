@@ -1,4 +1,4 @@
-// Tarım Devrimi'nin Başladığı Merkezler Etkileşimli Etkinliği
+// Tarım Devrimi: Zaman, Mekân ve İnsan Etkileşimli Etkinliği
 
 const cardsData = [
   // MEZOPOTAMYA
@@ -110,8 +110,6 @@ const activeCardContainer = document.getElementById('active-card-container');
 const feedbackBanner = document.getElementById('feedback-banner');
 const feedbackText = document.getElementById('feedback-text');
 const resetBtn = document.getElementById('reset-btn');
-const modalRestartBtn = document.getElementById('modal-restart-btn');
-const completionModal = document.getElementById('completion-modal');
 
 // Rastgele Karıştırma (Fisher-Yates)
 function shuffleArray(array) {
@@ -186,11 +184,8 @@ function renderActiveCard() {
   // Tüm kartlar tamamlandı mı?
   if (remainingCards.length === 0) {
     const completeHTML = `
-      <div class="flex flex-wrap items-center justify-center gap-2 py-1">
-        <button id="reopen-modal-card" class="bg-[#fffef9] rounded-[8px] border border-[#d9ddd0] px-3.5 py-2 text-xs sm:text-sm font-semibold text-[#244c3b] hover:bg-[#e8ede2] transition-colors shadow-xs cursor-pointer select-none">
-          Sonuç Tablosunu İncele
-        </button>
-        <button id="btn-goto-stage2-from-map" class="bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] rounded-[8px] px-4 py-2 text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 cursor-pointer select-none">
+      <div class="flex items-center justify-center py-1">
+        <button id="btn-goto-stage2-from-map" class="bg-[#244c3b] hover:bg-[#173d2b] text-[#fffef9] rounded-[8px] px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer select-none">
           2. Aşamaya Geç (Video Anlatımı) ➔
         </button>
       </div>
@@ -199,21 +194,13 @@ function renderActiveCard() {
     activeCardContainer.innerHTML = completeHTML;
     if (mobileSlot) mobileSlot.innerHTML = completeHTML;
 
-    document.querySelectorAll('#reopen-modal-card').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (completionModal) completionModal.classList.remove('hidden');
-      });
-    });
-
     document.querySelectorAll('#btn-goto-stage2-from-map').forEach(btn => {
       btn.addEventListener('click', () => {
         switchStage(2);
       });
     });
 
-    setTimeout(() => {
-      if (completionModal && currentStage === 1) completionModal.classList.remove('hidden');
-    }, 600);
+    showFeedback('Tüm eşleştirmeleri başarıyla tamamladınız. 2. Aşamaya geçebilirsiniz.', true);
     return;
   }
 
@@ -549,7 +536,7 @@ const claims = [
 ];
 
 // Genel Durum Değişkenleri
-let currentStage = 1;
+let currentStage = 0;
 
 // 3. Aşama Durumu
 let currentClaim = 0;
@@ -563,7 +550,7 @@ function updateFloatingStageNav() {
   const nextBtn = document.getElementById('floating-next-stage-btn');
 
   if (prevBtn) {
-    prevBtn.disabled = currentStage <= 1;
+    prevBtn.disabled = currentStage <= 0;
   }
   if (nextBtn) {
     nextBtn.disabled = currentStage >= 3;
@@ -573,13 +560,13 @@ function updateFloatingStageNav() {
 // Aşama Değiştirme
 function switchStage(stageNum) {
   currentStage = stageNum;
+  const stageIntroContainer = document.getElementById('stage-intro-container');
   const stage1Container = document.getElementById('stage-1-container');
   const stage2Container = document.getElementById('stage-2-container');
   const stage3Container = document.getElementById('stage-3-container');
   const videoEl = document.getElementById('stage2-video');
 
-  if (completionModal) completionModal.classList.add('hidden');
-
+  if (stageIntroContainer) stageIntroContainer.classList.toggle('hidden', stageNum !== 0);
   if (stage1Container) stage1Container.classList.toggle('hidden', stageNum !== 1);
   if (stage2Container) stage2Container.classList.toggle('hidden', stageNum !== 2);
   if (stage3Container) stage3Container.classList.toggle('hidden', stageNum !== 3);
@@ -591,7 +578,9 @@ function switchStage(stageNum) {
 
   updateFloatingStageNav();
 
-  if (stageNum === 1) {
+  if (stageNum === 0) {
+    // Giriş ekranı
+  } else if (stageNum === 1) {
     renderActiveCard();
   } else if (stageNum === 2) {
     showFeedback('2. Aşamaya geçtiniz. Tarım Devrimi ve Yerleşme videosunu inceleyebilirsiniz.', true);
@@ -729,42 +718,26 @@ function init() {
   resetActivity();
   setupDropTargets();
 
+  // Giriş Ekranı Butonları
+  const btnStartActivity = document.getElementById('btn-start-activity');
+  if (btnStartActivity) {
+    btnStartActivity.addEventListener('click', () => {
+      switchStage(1);
+    });
+  }
+
+  const btnBackToIntro = document.getElementById('btn-back-to-intro');
+  if (btnBackToIntro) {
+    btnBackToIntro.addEventListener('click', () => {
+      switchStage(0);
+    });
+  }
+
   // 1. Aşama Butonları
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       resetActivity();
       showFeedback('Etkinlik sıfırlandı. Kartlar yeniden karıştırıldı.', true);
-    });
-  }
-
-  // Modal Butonları
-  if (modalRestartBtn) {
-    modalRestartBtn.addEventListener('click', () => {
-      if (completionModal) completionModal.classList.add('hidden');
-      resetActivity();
-      showFeedback('Etkinlik yeniden başlatıldı.', true);
-    });
-  }
-
-  const modalGotoStage2Btn = document.getElementById('modal-goto-stage2-btn');
-  if (modalGotoStage2Btn) {
-    modalGotoStage2Btn.addEventListener('click', () => {
-      switchStage(2);
-    });
-  }
-
-  const modalCloseBtn = document.getElementById('modal-close-btn');
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', () => {
-      if (completionModal) completionModal.classList.add('hidden');
-    });
-  }
-
-  if (completionModal) {
-    completionModal.addEventListener('click', (e) => {
-      if (e.target === completionModal) {
-        completionModal.classList.add('hidden');
-      }
     });
   }
 
@@ -821,7 +794,7 @@ function init() {
   const floatingPrevBtn = document.getElementById('floating-prev-stage-btn');
   if (floatingPrevBtn) {
     floatingPrevBtn.addEventListener('click', () => {
-      if (currentStage > 1) switchStage(currentStage - 1);
+      if (currentStage > 0) switchStage(currentStage - 1);
     });
   }
 
@@ -832,7 +805,7 @@ function init() {
     });
   }
 
-  updateFloatingStageNav();
+  switchStage(0);
 }
 
 // Uygulamayı Başlat
