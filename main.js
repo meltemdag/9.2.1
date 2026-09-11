@@ -6,29 +6,50 @@ const cardsData = [
     id: 'mezopotamya-bolge',
     region: 'mezopotamya',
     category: 'bolge',
-    title: 'Mezopotamya (Bereketli Hilal)',
-    text: 'Mezopotamya (Bereketli Hilal) — Yaklaşık MÖ 10.000'
+    title: 'Mezopotamya',
+    text: 'Mezopotamya — MÖ 10.000'
+  },
+  {
+    id: 'mezopotamya-arazi',
+    region: 'mezopotamya',
+    category: 'arazi',
+    title: 'Mezopotamya Tarım Arazisi',
+    text: 'Fırat ve Dicle suladığı geniş verimli düzlükler'
+  },
+  {
+    id: 'mezopotamya-iklim',
+    region: 'mezopotamya',
+    category: 'iklim',
+    title: 'Mezopotamya İklimi',
+    text: 'Yazları kurak geçen iklim koşulları'
   },
   {
     id: 'mezopotamya-urun',
     region: 'mezopotamya',
     category: 'urun',
     title: 'Mezopotamya Tarım Ürünleri',
-    text: 'Yabani buğday (evcilleştirilmiş), arpa, mercimek ve bezelye'
-  },
-  {
-    id: 'mezopotamya-iklim',
-    region: 'mezopotamya',
-    category: 'iklim',
-    title: 'Mezopotamya İklim ve Coğrafya',
-    text: 'Fırat ve Dicle nehir vadileri, kurak geçen yaz mevsimi, dağ eteklerinden uzanan verimli alüvyal düzlükler'
+    text: 'Yabani buğday, arpa, mercimek ve bezelye'
   },
   {
     id: 'mezopotamya-yerlesim',
     region: 'mezopotamya',
     category: 'yerlesim',
-    title: 'Mezopotamya Yerleşim ve Ekonomi',
-    text: 'Sulama kanalları organizasyonu, artı ürün depolanması, ilk köy ve kasaba yerleşimleri (ör. Çatalhöyük), mesleki iş bölümü ve takas ticareti'
+    title: 'Mezopotamya Yerleşimi',
+    text: 'Köy benzeri ilk toplu yerleşimler ve bitişik evler'
+  },
+  {
+    id: 'mezopotamya-isbolumu',
+    region: 'mezopotamya',
+    category: 'isbolumu',
+    title: 'Mezopotamya İş Bölümü ve Ekonomi',
+    text: 'Sulama kanalları, artı ürün ve takas ekonomisi'
+  },
+  {
+    id: 'mezopotamya-hayvan',
+    region: 'mezopotamya',
+    category: 'hayvan',
+    title: 'Mezopotamya Evcilleştirilen Hayvanlar',
+    text: 'Koyun, keçi ve sığırın evcilleştirilmesi'
   },
 
   // GÜNEYDOĞU ASYA
@@ -37,7 +58,21 @@ const cardsData = [
     region: 'guneydogu-asya',
     category: 'bolge',
     title: 'Güneydoğu Asya',
-    text: 'Güneydoğu Asya — Yaklaşık MÖ 8.000'
+    text: 'Güneydoğu Asya — MÖ 8.000'
+  },
+  {
+    id: 'guneydogu-asya-arazi',
+    region: 'guneydogu-asya',
+    category: 'arazi',
+    title: 'Güneydoğu Asya Tarım Arazisi',
+    text: 'Sarı ve Gök Irmak suladığı bol, geniş düz araziler'
+  },
+  {
+    id: 'guneydogu-asya-iklim',
+    region: 'guneydogu-asya',
+    category: 'iklim',
+    title: 'Güneydoğu Asya İklimi',
+    text: 'Muson ikliminin getirdiği bol yağışlar'
   },
   {
     id: 'guneydogu-asya-urun',
@@ -47,18 +82,25 @@ const cardsData = [
     text: 'Pirinç (çeltik), darı, soya fasulyesi ve muz'
   },
   {
-    id: 'guneydogu-asya-iklim',
-    region: 'guneydogu-asya',
-    category: 'iklim',
-    title: 'Güneydoğu Asya İklim ve Coğrafya',
-    text: 'Muson ikliminin getirdiği bol yağış, Sarı Irmak ve Gök Irmak nehir havzaları, sulak ve düz araziler'
-  },
-  {
     id: 'guneydogu-asya-yerlesim',
     region: 'guneydogu-asya',
     category: 'yerlesim',
-    title: 'Güneydoğu Asya Yerleşim ve Ekonomi',
-    text: 'Sulu tarıma dayalı çeltik üretimi, nehir boylarında yoğun nüfuslu kalıcı yerleşimler, ortak sulama ve iş gücü dayanışması'
+    title: 'Güneydoğu Asya Yerleşimi',
+    text: 'Nehir havzalarında kalıcı, yoğun nüfuslu köyler'
+  },
+  {
+    id: 'guneydogu-asya-isbolumu',
+    region: 'guneydogu-asya',
+    category: 'isbolumu',
+    title: 'Güneydoğu Asya İş Bölümü ve Ekonomi',
+    text: 'Sulu çeltik tarımı ve ortak sulama iş gücü'
+  },
+  {
+    id: 'guneydogu-asya-hayvan',
+    region: 'guneydogu-asya',
+    category: 'hayvan',
+    title: 'Güneydoğu Asya Evcilleştirilen Hayvanlar',
+    text: 'Su mandası (bufalo), domuz ve kümes hayvanları'
   },
 
   // ORTA AMERİKA
@@ -67,28 +109,49 @@ const cardsData = [
     region: 'orta-amerika',
     category: 'bolge',
     title: 'Orta Amerika (Mesoamerika)',
-    text: 'Orta Amerika (Mesoamerika) — Yaklaşık MÖ 7.000'
+    text: 'Orta Amerika — MÖ 7.000'
+  },
+  {
+    id: 'orta-amerika-arazi',
+    region: 'orta-amerika',
+    category: 'arazi',
+    title: 'Orta Amerika Tarım Arazisi',
+    text: 'Göl ve nehir havzasında sınırlı tarım düzlükleri'
+  },
+  {
+    id: 'orta-amerika-iklim',
+    region: 'orta-amerika',
+    category: 'iklim',
+    title: 'Orta Amerika İklimi',
+    text: 'Tarıma elverişli ılıman iklim ve yağışlar'
   },
   {
     id: 'orta-amerika-urun',
     region: 'orta-amerika',
     category: 'urun',
     title: 'Orta Amerika Tarım Ürünleri',
-    text: 'Mısır (teosinte yabani bitkisinden evcilleştirilmiş), fasulye, avokado ve balkabağı'
-  },
-  {
-    id: 'orta-amerika-iklim',
-    region: 'orta-amerika',
-    category: 'iklim',
-    title: 'Orta Amerika İklim ve Coğrafya',
-    text: 'Meksika Körfezi çevresi, irili ufaklı göl ve akarsu havzaları, tarıma elverişli ılıman düzlükler'
+    text: 'Mısır (teosinte bitkisi), fasulye, avokado ve kabak'
   },
   {
     id: 'orta-amerika-yerlesim',
     region: 'orta-amerika',
     category: 'yerlesim',
-    title: 'Orta Amerika Yerleşim ve Ekonomi',
-    text: 'Mısır tarımına dayalı ilk kalıcı köyler, göl kenarı yerleşimleri, bağımsız tarım kültürü'
+    title: 'Orta Amerika Yerleşimi',
+    text: 'Göl ve akarsu kenarında kalıcı köy yerleşimleri'
+  },
+  {
+    id: 'orta-amerika-isbolumu',
+    region: 'orta-amerika',
+    category: 'isbolumu',
+    title: 'Orta Amerika İş Bölümü ve Ekonomi',
+    text: 'Mısır tarımına dayalı aile içi iş bölümü'
+  },
+  {
+    id: 'orta-amerika-hayvan',
+    region: 'orta-amerika',
+    category: 'hayvan',
+    title: 'Orta Amerika Evcilleştirilen Hayvanlar',
+    text: 'Köpek ve hindi evcilleştirilmesi (büyükbaş yoktur)'
   }
 ];
 
@@ -104,11 +167,28 @@ let remainingCards = [];
 let placedCards = new Map(); // cardId -> { region, category }
 let selectedCardId = null;
 let draggedCardId = null;
+let isMatchingLocked = false;
+let matchingLockTimeout = null;
+
+// Genel Geri Bildirim Banner Elemanı ve Fonksiyonu (Tanımsız Hata Düzeltmesi)
+const feedbackBanner = document.getElementById('feedback-banner');
+
+function showFeedback(message, isSuccess = true) {
+  // feedbackBanner varsa göster, yoksa sessizce atla
+  if (feedbackBanner) {
+    feedbackBanner.textContent = message;
+    feedbackBanner.className = isSuccess
+      ? 'fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl text-sm font-bold shadow-lg bg-[#166534]/90 text-white border border-[#22c55e]/60 animate-in fade-in duration-200'
+      : 'fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl text-sm font-bold shadow-lg bg-[#b91c1c]/90 text-white border border-[#ef4444]/60 animate-in fade-in duration-200';
+    feedbackBanner.classList.remove('hidden');
+    setTimeout(() => {
+      feedbackBanner.classList.add('hidden');
+    }, 2500);
+  }
+}
 
 // DOM Elemanları
 const activeCardContainer = document.getElementById('active-card-container');
-const feedbackBanner = document.getElementById('feedback-banner');
-const feedbackText = document.getElementById('feedback-text');
 const resetBtn = document.getElementById('reset-btn');
 
 // Rastgele Karıştırma (Fisher-Yates)
@@ -121,39 +201,34 @@ function shuffleArray(array) {
   return arr;
 }
 
-// Geri Bildirim Gösterme Fonksiyonu
-let feedbackTimeout = null;
-function showFeedback(message, isSuccess = true) {
-  if (feedbackTimeout) clearTimeout(feedbackTimeout);
-  if (!feedbackBanner || !feedbackText) return;
+// Geri Bildirim Gösterme Fonksiyonu (Doğrudan Soru / Kart Alanında Gösterilir)
+function showCardFeedback(message, isSuccess = true) {
+  const bgClass = isSuccess 
+    ? 'bg-[#166534]/90 text-white border-[#22c55e]/60 shadow-[0_8px_24px_rgba(22,101,52,0.40)]' 
+    : 'bg-[#b91c1c]/90 text-white border-[#ef4444]/60 shadow-[0_8px_24px_rgba(185,28,28,0.40)]';
   
-  feedbackBanner.classList.remove(
-    'hidden',
-    'bg-[#eaf1e8]',
-    'text-[#1e3b2e]',
-    'border-[#1e3b2e]',
-    'bg-[#fdf3f0]',
-    'text-[#9e4e34]',
-    'border-[#9e4e34]',
-    'bg-[#e8ede2]',
-    'text-[#244c3b]',
-    'border-[#244c3b]',
-    'bg-[#fbf4f1]',
-    'text-[#ab654e]',
-    'border-[#ab654e]'
-  );
-  
-  if (isSuccess) {
-    feedbackBanner.classList.add('bg-[#eaf1e8]', 'text-[#1e3b2e]', 'border-[#1e3b2e]');
-  } else {
-    feedbackBanner.classList.add('bg-[#fdf3f0]', 'text-[#9e4e34]', 'border-[#9e4e34]');
+  const iconSymbol = isSuccess ? '✓' : '✗';
+
+  // 1. Masaüstü Harita İçi Aktif Kart Alanı
+  if (activeCardContainer) {
+    activeCardContainer.innerHTML = `
+      <div class="active-card-feedback ${bgClass} backdrop-blur-md rounded-[10px] border-2 px-4 py-2 sm:px-5 sm:py-2.5 transition-all text-xs sm:text-[13.5px] md:text-[15px] font-bold text-center select-none break-words leading-snug flex items-center justify-center gap-2 animate-in fade-in zoom-in-95 duration-200">
+        <span class="text-sm sm:text-base md:text-lg font-black shrink-0 leading-none">${iconSymbol}</span>
+        <span>${message}</span>
+      </div>
+    `;
   }
-  
-  feedbackText.textContent = message;
-  
-  feedbackTimeout = setTimeout(() => {
-    feedbackBanner.classList.add('hidden');
-  }, 4000);
+
+  // 2. Mobil Slot Alanı
+  const mobileSlot = document.getElementById('active-card-mobile-slot');
+  if (mobileSlot) {
+    mobileSlot.innerHTML = `
+      <div class="active-card-feedback ${bgClass} backdrop-blur-md rounded-[10px] border-2 px-4 py-3 text-xs sm:text-sm md:text-base font-bold text-center select-none break-words leading-snug shadow-md flex items-center justify-center gap-2 animate-in fade-in duration-200">
+        <span class="text-base sm:text-lg font-black shrink-0 leading-none">${iconSymbol}</span>
+        <span>${message}</span>
+      </div>
+    `;
+  }
 }
 
 // Kart Seçimini Temizleme
@@ -166,7 +241,7 @@ function clearSelection() {
 
 // Kart Seçimi (Dokunmatik ve Akıllı Tahta Desteği)
 function toggleCardSelection() {
-  if (!remainingCards.length) return;
+  if (isMatchingLocked || !remainingCards.length) return;
   const currentCard = remainingCards[0];
 
   if (selectedCardId === currentCard.id) {
@@ -176,7 +251,6 @@ function toggleCardSelection() {
     document.querySelectorAll('.active-card-item').forEach(el => {
       el.classList.add('card-selected');
     });
-    showFeedback('Bilgi kartı seçildi. Şimdi harita üzerindeki veya aşağıdaki ilgili alana dokununuz.', true);
   }
 }
 
@@ -212,11 +286,10 @@ function renderActiveCard() {
 
   const currentCard = remainingCards[0];
 
-  // Masaüstü Harita İçi Kart
+  // Masaüstü Harita İçi Kart (draggable kaldırıldı, özel mouse drag kullanılacak)
   activeCardContainer.innerHTML = `
     <div id="active-card"
-         class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13px] md:text-sm font-semibold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
-         draggable="true"
+         class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-4 py-2 sm:px-5 sm:py-2.5 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13.5px] md:text-[15px] font-bold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
          data-card-id="${currentCard.id}">
       ${currentCard.text}
     </div>
@@ -225,50 +298,102 @@ function renderActiveCard() {
   // Mobil Slot Kartı
   if (mobileSlot) {
     mobileSlot.innerHTML = `
-      <div class="bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] border-2 border-[#beab8f] rounded-[12px] p-3 shadow-sm">
-        <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5">
-          <span class="inline-flex items-center gap-1.5 text-[#9e4e34]">
-            <span class="w-2 h-2 rounded-full bg-[#9e4e34]"></span>
-            Eşleştirilecek Bilgi Kartı
-          </span>
-        </div>
-        <div id="active-card-mobile"
-             class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#fcf8f0] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-[#1e3b2e] text-center cursor-pointer select-none break-words leading-snug hover:border-[#833d25] transition-all shadow-xs"
-             data-card-id="${currentCard.id}">
-          ${currentCard.text}
-        </div>
-        <p class="text-[11px] text-[#554d42] text-center mt-2 font-medium">
-          Karta dokununuz, ardından haritadaki veya aşağıdaki ilgili merkeze dokununuz.
-        </p>
+      <div id="active-card-mobile"
+           class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#fcf8f0] rounded-[10px] border-2 border-[#9e4e34] px-4 py-3 text-xs sm:text-sm md:text-base font-bold text-[#1e3b2e] text-center cursor-pointer select-none break-words leading-snug hover:border-[#833d25] transition-all shadow-sm"
+           data-card-id="${currentCard.id}">
+        ${currentCard.text}
       </div>
     `;
 
     const mobileCardEl = document.getElementById('active-card-mobile');
     if (mobileCardEl) {
-      mobileCardEl.addEventListener('click', () => {
-        toggleCardSelection();
-      });
+      setupMouseDrag(mobileCardEl, currentCard.id);
+      setupTouchDrag(mobileCardEl, currentCard.id);
     }
   }
 
   const activeCardEl = document.getElementById('active-card');
   if (activeCardEl) {
-    activeCardEl.addEventListener('dragstart', (e) => {
-      draggedCardId = currentCard.id;
-      activeCardEl.classList.add('opacity-50');
-      e.dataTransfer.setData('text/plain', currentCard.id);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    activeCardEl.addEventListener('dragend', () => {
-      draggedCardId = null;
-      activeCardEl.classList.remove('opacity-50');
-    });
-
-    activeCardEl.addEventListener('click', () => {
-      toggleCardSelection();
-    });
+    setupMouseDrag(activeCardEl, currentCard.id);
+    setupTouchDrag(activeCardEl, currentCard.id);
   }
+}
+
+// Dokunmatik Ekranlar (Tablet, Akıllı Tahta) İçin Sürükle - Bırak Desteği
+function setupTouchDrag(el, cardId) {
+  let touchClone = null;
+  let startX = 0;
+  let startY = 0;
+
+  el.addEventListener('touchstart', (e) => {
+    if (isMatchingLocked) return;
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    draggedCardId = cardId;
+  }, { passive: true });
+
+  el.addEventListener('touchmove', (e) => {
+    if (isMatchingLocked || !draggedCardId) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+
+    if (Math.hypot(dx, dy) > 8) {
+      if (!touchClone) {
+        touchClone = el.cloneNode(true);
+        touchClone.id = 'touch-drag-clone';
+        touchClone.style.position = 'fixed';
+        touchClone.style.pointerEvents = 'none';
+        touchClone.style.zIndex = '9999';
+        touchClone.style.opacity = '0.90';
+        touchClone.style.width = `${el.offsetWidth}px`;
+        touchClone.style.transform = 'translate(-50%, -50%) scale(0.96)';
+        touchClone.style.boxShadow = '0 12px 28px rgba(45,34,18,0.35)';
+        document.body.appendChild(touchClone);
+        el.classList.add('opacity-40');
+      }
+
+      touchClone.style.left = `${touch.clientX}px`;
+      touchClone.style.top = `${touch.clientY}px`;
+
+      const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      const target = elemBelow?.closest('.map-focus-target, .region-summary-card');
+      document.querySelectorAll('.map-focus-target, .region-summary-card').forEach(t => {
+        if (t === target) {
+          t.classList.add('drag-over-region');
+        } else {
+          t.classList.remove('drag-over-region');
+        }
+      });
+    }
+  }, { passive: true });
+
+  el.addEventListener('touchend', (e) => {
+    if (touchClone) {
+      touchClone.remove();
+      touchClone = null;
+    }
+    el.classList.remove('opacity-40');
+
+    document.querySelectorAll('.map-focus-target, .region-summary-card').forEach(t => {
+      t.classList.remove('drag-over-region');
+    });
+
+    if (isMatchingLocked || !draggedCardId) return;
+
+    const touch = e.changedTouches[0];
+    const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+    const target = elemBelow?.closest('.map-focus-target, .region-summary-card');
+    
+    if (target) {
+      const region = target.getAttribute('data-region');
+      if (region) {
+        handlePlacementAttempt(draggedCardId, region);
+      }
+    }
+    draggedCardId = null;
+  });
 }
 
 // Kartı Doğrudan Haritadaki İlgili Hedef Alana ve Bölge Kartına Yerleştirme
@@ -278,31 +403,45 @@ function placeCardIntoTarget(cardData, targetRegion) {
   const regionCard = document.getElementById(`region-card-${targetRegion}`);
   const regionItems = document.getElementById(`region-items-${targetRegion}`);
 
-  // 1. Masaüstü harita hedefi içine kart ekle
+  // 1. Masaüstü harita hedefi içine yerleştir (Başlık + 2 Sütunlu Kompakt Düzen)
   if (targetList) {
-    const itemEl = document.createElement('div');
     if (cardData.category === 'bolge') {
-      itemEl.className = 'bg-gradient-to-r from-[#1e3b2e] to-[#254b3b] text-[#fffdfa] rounded-[8px] p-1.5 sm:p-2 text-[10px] sm:text-[11px] md:text-xs font-bold border border-[#d49d3d]/50 shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
+      let headerEl = targetList.querySelector('.target-card-header');
+      if (!headerEl) {
+        headerEl = document.createElement('div');
+        headerEl.className = 'target-card-header font-bold text-[#1e3b2e] text-xs sm:text-[12.5px] leading-tight pb-0.5 mb-1 border-b border-[#beab8f]/60 flex items-center gap-1 animate-in fade-in duration-200';
+        targetList.prepend(headerEl);
+      }
+      headerEl.innerHTML = `<span class="text-[#9e4e34] font-black shrink-0 text-sm leading-none">•</span><span class="flex-1">${cardData.text}</span>`;
     } else {
-      itemEl.className = 'bg-[#fffdfa] rounded-[8px] p-1.2 sm:p-1.5 text-[9px] sm:text-[10px] md:text-[11px] font-semibold text-[#2c261e] border border-[#d0c3ae] shadow-xs leading-tight animate-in fade-in zoom-in duration-200';
+      let gridEl = targetList.querySelector('.target-card-grid');
+      if (!gridEl) {
+        gridEl = document.createElement('div');
+        gridEl.className = 'target-card-grid grid grid-cols-2 gap-x-2 gap-y-0.5 w-full';
+        targetList.appendChild(gridEl);
+      }
+      const itemEl = document.createElement('div');
+      itemEl.className = 'text-[#2c261e] text-[9px] sm:text-[9.5px] md:text-[10px] lg:text-[10.5px] font-semibold leading-[1.2] flex items-start gap-1 py-[1px] animate-in fade-in duration-200';
+      itemEl.innerHTML = `<span class="text-[#9e4e34] font-bold shrink-0 text-xs leading-none mt-0.5">•</span><span class="flex-1">${cardData.text}</span>`;
+      gridEl.appendChild(itemEl);
     }
-    itemEl.textContent = cardData.text;
-    targetList.appendChild(itemEl);
   }
 
-  // 2. Alt kısımdaki bölge kartına ekle (Yalın ve okunaklı metin)
+  // 2. Alt kısımdaki bölge alanına ekle
   if (regionItems) {
     const placeholder = regionItems.querySelector('.region-placeholder');
     if (placeholder) placeholder.remove();
 
     const rItemEl = document.createElement('div');
     if (cardData.category === 'bolge') {
-      rItemEl.className = 'bg-[#1e3b2e] text-[#fffdfa] rounded-[8px] p-2 border border-[#d49d3d]/50 text-[11.5px] sm:text-xs font-bold leading-snug animate-in fade-in zoom-in duration-200';
+      rItemEl.className = 'font-bold text-[#1e3b2e] text-xs sm:text-[12.5px] leading-tight pb-1 mb-1 border-b border-[#beab8f]/60 flex items-start gap-1.5 animate-in fade-in duration-200';
+      rItemEl.innerHTML = `<span class="text-[#9e4e34] font-black shrink-0 text-sm leading-none mt-0.5">•</span><span class="flex-1">${cardData.text}</span>`;
+      regionItems.prepend(rItemEl);
     } else {
-      rItemEl.className = 'bg-[#fffdfa] text-[#2c261e] rounded-[8px] p-2 border border-[#d0c3ae] text-[11.5px] sm:text-xs font-medium leading-snug animate-in fade-in zoom-in duration-200';
+      rItemEl.className = 'text-[#2c261e] text-[10.5px] sm:text-[11px] md:text-[11.5px] font-medium leading-tight flex items-start gap-1.5 py-0.5 animate-in fade-in duration-200';
+      rItemEl.innerHTML = `<span class="text-[#9e4e34] font-bold shrink-0 text-xs leading-none mt-0.5">•</span><span class="flex-1">${cardData.text}</span>`;
+      regionItems.appendChild(rItemEl);
     }
-    rItemEl.textContent = cardData.text;
-    regionItems.appendChild(rItemEl);
   }
 
   // Kalan kartlar dizisinden kaldır
@@ -322,25 +461,10 @@ function placeCardIntoTarget(cardData, targetRegion) {
     regionCard.classList.add('ring-2', 'ring-[#1e3b2e]');
     setTimeout(() => regionCard.classList.remove('ring-2', 'ring-[#1e3b2e]'), 700);
   }
-
-  // Geri bildirim mesajı
-  if (cardData.category === 'bolge') {
-    const regionsCount = Array.from(placedCards.values()).filter(c => c.category === 'bolge').length;
-    if (regionsCount === 3) {
-      showFeedback('Tebrikler! Üç ana tarım merkezini de tespit ettiniz. Şimdi bu merkezlere ait özellikleri eşleştiriniz.', true);
-    } else {
-      showFeedback(`Tebrikler! ${regionDisplayNames[targetRegion]} merkezini doğru tespit ettiniz.`, true);
-    }
-  } else {
-    showFeedback('Doğru eşleştirme yapıldı.', true);
-  }
-
-  // Sıradaki kartı getir
-  renderActiveCard();
 }
 
 // Hatalı Yerleştirme Efekti (Pişmiş kil / kiremit rengi ring ve arka plan tonu)
-function triggerErrorEffect(targetRegion, customMessage) {
+function triggerErrorEffect(targetRegion) {
   const mapTarget = document.getElementById(`target-${targetRegion}`);
   const regionCard = document.getElementById(`region-card-${targetRegion}`);
 
@@ -351,27 +475,43 @@ function triggerErrorEffect(targetRegion, customMessage) {
       element.classList.remove('ring-4', 'ring-[#9e4e34]', 'bg-[#9e4e34]/20');
     }, 800);
   });
-
-  showFeedback(customMessage || 'Bu bilgi seçilen alan ile uyuşmamaktadır. Lütfen bilgileri tekrar inceleyiniz.', false);
 }
 
-// Doğrulama ve Eşleştirme Mantığı
+// Doğrulama ve Eşleştirme Mantığı (1 Saniyelik Kilit ve Kart Alanında Geri Bildirim)
 function handlePlacementAttempt(cardId, targetRegion) {
+  if (isMatchingLocked) return;
+
   const cardData = cardsData.find(c => c.id === cardId);
   if (!cardData) return;
 
-  // Bölge kontrolü
+  const stage1Container = document.getElementById('stage-1-container');
+  isMatchingLocked = true;
+  if (stage1Container) stage1Container.classList.add('matching-locked');
+  clearSelection();
+
+  // Bölge kontrolü (Hatalı Eşleştirme)
   if (cardData.region !== targetRegion) {
-    if (cardData.category === 'bolge') {
-      triggerErrorEffect(targetRegion, 'Bu bölge seçtiğiniz alanda yer almamaktadır. Coğrafi konumu tekrar inceleyiniz.');
-    } else {
-      triggerErrorEffect(targetRegion, 'Bu bilgi bu coğrafi merkeze ait değildir. Diğer alanları değerlendiriniz.');
-    }
+    triggerErrorEffect(targetRegion);
+    showCardFeedback('Yanlış eşleştirme', false);
+
+    matchingLockTimeout = setTimeout(() => {
+      isMatchingLocked = false;
+      if (stage1Container) stage1Container.classList.remove('matching-locked');
+      renderActiveCard();
+    }, 1000);
     return;
   }
 
-  // Doğru ise doğrudan haritadaki hedefin ve alt kartın içine yerleştir
+  // Doğru Eşleştirme
   placeCardIntoTarget(cardData, targetRegion);
+
+  showCardFeedback('Doğru eşleştirme', true);
+
+  matchingLockTimeout = setTimeout(() => {
+    isMatchingLocked = false;
+    if (stage1Container) stage1Container.classList.remove('matching-locked');
+    renderActiveCard();
+  }, 1000);
 }
 
 // Tamamlanma Durumu Kontrolü (Sayaçsız, sade pedagojik durum)
@@ -379,11 +519,12 @@ function updateProgress() {
   const regions = ['mezopotamya', 'guneydogu-asya', 'orta-amerika'];
   regions.forEach(r => {
     let regionCompletedCount = 0;
+    const regionTotal = cardsData.filter(c => c.region === r).length;
     cardsData.filter(c => c.region === r).forEach(c => {
       if (placedCards.has(c.id)) regionCompletedCount++;
     });
 
-    const isFinished = regionCompletedCount === 4;
+    const isFinished = regionCompletedCount === regionTotal;
 
     // Harita üzerindeki durum göstergesi
     const mapTarget = document.getElementById(`target-${r}`);
@@ -415,8 +556,12 @@ function updateProgress() {
 // Etkinliği Sıfırlama
 function resetActivity() {
   placedCards.clear();
+  isMatchingLocked = false;
+  if (matchingLockTimeout) clearTimeout(matchingLockTimeout);
+  const stage1Container = document.getElementById('stage-1-container');
+  if (stage1Container) stage1Container.classList.remove('matching-locked');
 
-  // İlk 3 kart bölgelerin tespiti için bölge kartları, ardından kalan 9 özellik kartı karışık olarak gelir
+  // İlk 3 kart bölgelerin tespiti için bölge kartları, ardından kalan özellik kartları karışık olarak gelir
   const regionCards = shuffleArray(cardsData.filter(c => c.category === 'bolge'));
   const otherCards = shuffleArray(cardsData.filter(c => c.category !== 'bolge'));
   remainingCards = [...regionCards, ...otherCards];
@@ -455,29 +600,110 @@ function resetActivity() {
   renderActiveCard();
 }
 
-// Hedef Alanları Dinleyicilerini Kurma (Harita Odakları + Alt Bölge Kartları)
+// Özel Mouse Sürükle-Bırak Sistemi (HTML5 Drag API kullanılmaz, kilitlenme riski sıfır)
+function setupMouseDrag(el, cardId) {
+  let mouseClone = null;
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  let didDrag = false;
+
+  function onMouseDown(e) {
+    if (isMatchingLocked || e.button !== 0) return;
+    // Tarayıcının native drag davranışını engelle (kilitlenme kaynağı)
+    e.preventDefault();
+    startX = e.clientX;
+    startY = e.clientY;
+    isDragging = false;
+    didDrag = false;
+    draggedCardId = cardId;
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
+
+  function onMouseMove(e) {
+    if (isMatchingLocked) { cleanUp(); return; }
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (!isDragging && Math.hypot(dx, dy) > 6) {
+      isDragging = true;
+      didDrag = true;
+      mouseClone = el.cloneNode(true);
+      mouseClone.id = 'mouse-drag-clone';
+      mouseClone.style.position = 'fixed';
+      mouseClone.style.pointerEvents = 'none';
+      mouseClone.style.zIndex = '9999';
+      mouseClone.style.opacity = '0.92';
+      mouseClone.style.width = `${el.offsetWidth}px`;
+      mouseClone.style.transform = 'translate(-50%, -50%) scale(0.97)';
+      mouseClone.style.boxShadow = '0 12px 28px rgba(45,34,18,0.35)';
+      mouseClone.style.transition = 'none';
+      document.body.appendChild(mouseClone);
+      el.classList.add('opacity-40');
+    }
+
+    if (isDragging && mouseClone) {
+      mouseClone.style.left = `${e.clientX}px`;
+      mouseClone.style.top = `${e.clientY}px`;
+
+      // Hedef alanları vurgula
+      const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+      const target = elemBelow?.closest('.map-focus-target, .region-summary-card');
+      document.querySelectorAll('.map-focus-target, .region-summary-card').forEach(t => {
+        if (t === target) {
+          t.classList.add('drag-over-region');
+        } else {
+          t.classList.remove('drag-over-region');
+        }
+      });
+    }
+  }
+
+  function onMouseUp(e) {
+    if (isDragging) {
+      // Hedef alanı bul ve yerleştir
+      const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+      const target = elemBelow?.closest('.map-focus-target, .region-summary-card');
+
+      if (target && draggedCardId) {
+        const region = target.getAttribute('data-region');
+        if (region) {
+          handlePlacementAttempt(draggedCardId, region);
+        }
+      }
+    } else {
+      // Sürükleme yapılmadıysa (kısa tıklama), kart seçimini tetikle
+      toggleCardSelection();
+    }
+    cleanUp();
+  }
+
+  function cleanUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+    if (mouseClone) {
+      mouseClone.remove();
+      mouseClone = null;
+    }
+    el.classList.remove('opacity-40');
+    isDragging = false;
+    draggedCardId = null;
+    document.querySelectorAll('.drag-over-region').forEach(t => {
+      t.classList.remove('drag-over-region');
+    });
+  }
+
+  el.addEventListener('mousedown', onMouseDown);
+}
+
+// Hedef Alanları Dinleyicilerini Kurma (Tıklama / Dokunma Desteği)
 function setupDropTargets() {
   const allTargets = document.querySelectorAll('.map-focus-target, .region-summary-card');
   allTargets.forEach(target => {
     const region = target.getAttribute('data-region');
     if (!region) return;
-
-    target.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
-      target.classList.add('drag-over-region');
-    });
-
-    target.addEventListener('dragleave', () => {
-      target.classList.remove('drag-over-region');
-    });
-
-    target.addEventListener('drop', (e) => {
-      e.preventDefault();
-      target.classList.remove('drag-over-region');
-      const cardId = e.dataTransfer.getData('text/plain') || draggedCardId;
-      if (cardId) handlePlacementAttempt(cardId, region);
-    });
 
     // Tıklama / Dokunma (Seçili kart varsa doğrudan yerleştir)
     target.addEventListener('click', () => {
@@ -667,7 +893,7 @@ function renderQuizQuestion() {
           Değerlendirmeyi Tamamladınız!
         </h3>
         <p class="text-xs sm:text-sm text-[#38332b] max-w-xl mx-auto leading-relaxed">
-          Tebrikler! Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla değerlendirdiniz.
+          Doğru değerlendirmeler ile Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla tamamladınız.
         </p>
         <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
           <button id="btn-restart-quiz" class="px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-md cursor-pointer select-none">

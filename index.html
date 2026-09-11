@@ -11,10 +11,7 @@
   <!-- Ana İçerik Alanı -->
   <main class="flex-1 max-w-[106rem] w-full mx-auto px-2 sm:px-4 lg:px-5 pt-1 sm:pt-1.5 pb-2 sm:pb-3 space-y-2">
 
-    <!-- Anlık Geri Bildirim ve İpucu Şeridi -->
-    <div id="feedback-banner" class="hidden rounded-[10px] px-4 py-2 text-xs sm:text-sm font-semibold border-2 transition-all duration-300 shadow-sm">
-      <span id="feedback-text"></span>
-    </div>
+
 
     <!-- Yüzen Aşama Değiştirme Butonları (Sağ ve Sol Ok) -->
     <button id="floating-prev-stage-btn"
@@ -76,7 +73,7 @@
         <!-- Açıklama -->
         <div class="pb-1.5 border-b border-[#beab8f]/60 text-center sm:text-left">
           <p class="text-[11.5px] sm:text-[13px] font-semibold text-[#2c261e] font-body leading-snug">
-            Harita üzerinde beliren bilgi kartlarını inceleyiniz. İlk olarak üç ana tarım merkezini haritadaki doğru konumlara yerleştiriniz; ardından bu bölgelere ait ürün, iklim ve yerleşim özelliklerini sürükleyip bırakarak veya karta dokunup hedef alanı seçerek eşleştiriniz.
+            Harita üzerinde beliren bilgi kartlarını inceleyiniz. İlk olarak üç ana tarım merkezini haritadaki doğru konumlara yerleştiriniz; ardından bu bölgelere ait tarım arazisi, iklim, ürün, yerleşim, iş bölümü ve hayvancılık özelliklerini sürükleyip bırakarak veya karta dokunup hedef alanı seçerek eşleştiriniz.
           </p>
         </div>
 
@@ -98,7 +95,7 @@
               <span class="map-status-indicator hidden text-[9px] font-bold text-[#1e3b2e] bg-[#e4ede2] px-2 py-0.5 rounded-full mt-0.5 border border-[#1e3b2e]/30">Tamamlandı</span>
             </div>
             <!-- Masaüstünde detaylı kart listesi -->
-            <div id="list-orta-amerika" class="target-cards-list hidden md:flex flex-1 flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+            <div id="list-orta-amerika" class="target-cards-list hidden md:flex flex-1 flex-col gap-0 overflow-y-auto pointer-events-none pr-0.5"></div>
           </div>
 
           <!-- Odak 2: Mezopotamya (Bereketli Hilal) -->
@@ -112,7 +109,7 @@
               <span class="map-status-indicator hidden text-[9px] font-bold text-[#1e3b2e] bg-[#e4ede2] px-2 py-0.5 rounded-full mt-0.5 border border-[#1e3b2e]/30">Tamamlandı</span>
             </div>
             <!-- Masaüstünde detaylı kart listesi -->
-            <div id="list-mezopotamya" class="target-cards-list hidden md:flex flex-1 flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+            <div id="list-mezopotamya" class="target-cards-list hidden md:flex flex-1 flex-col gap-0 overflow-y-auto pointer-events-none pr-0.5"></div>
           </div>
 
           <!-- Odak 3: Güneydoğu Asya -->
@@ -126,15 +123,14 @@
               <span class="map-status-indicator hidden text-[9px] font-bold text-[#1e3b2e] bg-[#e4ede2] px-2 py-0.5 rounded-full mt-0.5 border border-[#1e3b2e]/30">Tamamlandı</span>
             </div>
             <!-- Masaüstünde detaylı kart listesi -->
-            <div id="list-guneydogu-asya" class="target-cards-list hidden md:flex flex-1 flex-col gap-1 overflow-y-auto pointer-events-none"></div>
+            <div id="list-guneydogu-asya" class="target-cards-list hidden md:flex flex-1 flex-col gap-0 overflow-y-auto pointer-events-none pr-0.5"></div>
           </div>
 
           <!-- Harita İçi Aktif Bilgi Kartı Alanı -->
           <div id="active-card-container"
                class="absolute z-20 transition-all duration-300 pointer-events-auto">
             <div id="active-card"
-                 class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13px] md:text-sm font-semibold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
-                 draggable="true">
+                 class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13px] md:text-sm font-semibold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug">
               <!-- Sadece eşleştirilecek metin JavaScript ile yerleştirilecektir -->
             </div>
           </div>

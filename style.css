@@ -57,7 +57,7 @@
   cursor: grab;
   user-select: none;
   transition: all 0.2s ease-in-out;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 .card-draggable:active {
@@ -85,7 +85,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  padding: 0.35rem;
+  padding: 0.25rem 0.5rem;
   box-sizing: border-box;
   overflow: hidden;
   box-shadow: 0 5px 16px rgba(45, 34, 18, 0.10);
@@ -215,6 +215,17 @@ button:focus-visible,
 .card-draggable:focus-visible {
   outline: 3px solid #d49d3d;
   outline-offset: 4px;
+}
+
+/* 1 Saniyelik Geri Bildirim Süresince Mükerrer Tıklama ve Sürükleme Kilidi */
+.matching-locked .map-focus-target,
+.matching-locked .region-summary-card,
+.matching-locked .active-card-item,
+.matching-locked .card-draggable,
+.matching-locked #active-card-container,
+.matching-locked #active-card-mobile-slot {
+  pointer-events: none !important;
+  user-select: none !important;
 }
 
 /* Özel İnce Kaydırma Çubuğu (Parşömen ve Taş Uyumu) */
