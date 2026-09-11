@@ -409,7 +409,7 @@ function placeCardIntoTarget(cardData, targetRegion) {
       let headerEl = targetList.querySelector('.target-card-header');
       if (!headerEl) {
         headerEl = document.createElement('div');
-        headerEl.className = 'target-card-header font-bold text-[#1e3b2e] text-xs sm:text-[12.5px] leading-tight pb-0.5 mb-1 border-b border-[#beab8f]/60 flex items-center gap-1 animate-in fade-in duration-200';
+        headerEl.className = 'target-card-header font-bold text-[#1e3b2e] text-[12px] sm:text-[13px] md:text-[14px] leading-snug pb-0.5 mb-1 border-b border-[#beab8f]/60 flex items-center gap-1.5 animate-in fade-in duration-200';
         targetList.prepend(headerEl);
       }
       headerEl.innerHTML = `<span class="text-[#9e4e34] font-black shrink-0 text-sm leading-none">•</span><span class="flex-1">${cardData.text}</span>`;
@@ -417,11 +417,11 @@ function placeCardIntoTarget(cardData, targetRegion) {
       let gridEl = targetList.querySelector('.target-card-grid');
       if (!gridEl) {
         gridEl = document.createElement('div');
-        gridEl.className = 'target-card-grid grid grid-cols-2 gap-x-2 gap-y-0.5 w-full';
+        gridEl.className = 'target-card-grid grid grid-cols-2 gap-x-2.5 gap-y-0.5 w-full';
         targetList.appendChild(gridEl);
       }
       const itemEl = document.createElement('div');
-      itemEl.className = 'text-[#2c261e] text-[9px] sm:text-[9.5px] md:text-[10px] lg:text-[10.5px] font-semibold leading-[1.2] flex items-start gap-1 py-[1px] animate-in fade-in duration-200';
+      itemEl.className = 'text-[#2c261e] text-[10px] sm:text-[10.5px] md:text-[11.5px] lg:text-[12px] font-semibold leading-snug flex items-start gap-1 py-[1px] animate-in fade-in duration-200';
       itemEl.innerHTML = `<span class="text-[#9e4e34] font-bold shrink-0 text-xs leading-none mt-0.5">•</span><span class="flex-1">${cardData.text}</span>`;
       gridEl.appendChild(itemEl);
     }
@@ -460,6 +460,22 @@ function placeCardIntoTarget(cardData, targetRegion) {
   if (regionCard) {
     regionCard.classList.add('ring-2', 'ring-[#1e3b2e]');
     setTimeout(() => regionCard.classList.remove('ring-2', 'ring-[#1e3b2e]'), 700);
+  }
+
+  // Bölge kartı yerleştirildiğinde: mobil rozette ve alt kartta adı açığa çıkar
+  if (cardData.category === 'bolge') {
+    // Haritadaki mobil rozet adını güncelle
+    if (targetEl) {
+      const badge = targetEl.querySelector('.map-badge-title');
+      if (badge) badge.textContent = cardData.title;
+    }
+    // Alt bölge kartının başlık ve tarihini göster
+    if (regionCard) {
+      const headerName = regionCard.querySelector('.region-header-name');
+      const headerDate = regionCard.querySelector('.region-header-date');
+      if (headerName) headerName.textContent = cardData.title;
+      if (headerDate) headerDate.classList.remove('hidden');
+    }
   }
 }
 
@@ -578,6 +594,9 @@ function resetActivity() {
     if (mapTarget) {
       mapTarget.classList.remove('completed');
       mapTarget.removeAttribute('title');
+      // Mobil rozet adını sıfırla
+      const badge = mapTarget.querySelector('.map-badge-title');
+      if (badge) badge.textContent = '?';
     }
 
     // 2. Alt kısımdaki bölge kartını sıfırla
@@ -593,6 +612,11 @@ function resetActivity() {
     const regionCard = document.getElementById(`region-card-${r}`);
     if (regionCard) {
       regionCard.classList.remove('completed');
+      // Alt kart başlığını ve tarihini sıfırla
+      const headerName = regionCard.querySelector('.region-header-name');
+      const headerDate = regionCard.querySelector('.region-header-date');
+      if (headerName) headerName.textContent = '?';
+      if (headerDate) headerDate.classList.add('hidden');
     }
   });
 

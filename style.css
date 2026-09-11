@@ -85,7 +85,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.65rem;
   box-sizing: border-box;
   overflow: hidden;
   box-shadow: 0 5px 16px rgba(45, 34, 18, 0.10);
