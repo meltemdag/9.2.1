@@ -116,7 +116,7 @@ const cardsData = [
     region: 'orta-amerika',
     category: 'arazi',
     title: 'Orta Amerika Tarım Arazisi',
-    text: 'Göl ve nehir havzasında sınırlı tarım düzlükleri'
+    text: 'İrili ufaklı göl ve nehirlerin bulunduğu verimli düzlükler'
   },
   {
     id: 'orta-amerika-iklim',
@@ -577,10 +577,13 @@ function resetActivity() {
   const stage1Container = document.getElementById('stage-1-container');
   if (stage1Container) stage1Container.classList.remove('matching-locked');
 
-  // İlk 3 kart bölgelerin tespiti için bölge kartları, ardından kalan özellik kartları karışık olarak gelir
+  // İlk olarak bölge isimleri (kendi içinde rastgele sırada) gelir, ardından kalan tüm bilgi kartları karışık olarak sunulur
   const regionCards = shuffleArray(cardsData.filter(c => c.category === 'bolge'));
-  const otherCards = shuffleArray(cardsData.filter(c => c.category !== 'bolge'));
-  remainingCards = [...regionCards, ...otherCards];
+  const infoCards = shuffleArray(cardsData.filter(c => c.category !== 'bolge'));
+  remainingCards = [...regionCards, ...infoCards];
+
+  // Değerlendirme sorularını ve seçeneklerini her yenilendiğinde yeniden karıştır
+  prepareQuizQuestions();
 
   clearSelection();
 
@@ -769,96 +772,141 @@ function updateFloatingStageNav() {
 const videoQuizQuestions = [
   {
     id: 1,
-    question: "İzlediklerinizden ve edindiğiniz bilgilerden yola çıkarak bu dönemi düşündüğünüzde; kaba taş aletlerden toprağı işlemeye yarayan çapa, orak ve öğütme taşlarına geçilmesinin insan yaşamındaki en temel sonucu aşağıdakilerden hangisidir?",
+    question: "İlk insanların akıllarını ve ellerini kullanarak yaptıkları ilk aletler hangi temel malzemeden üretilmiştir?",
     options: [
-      { letter: "A", text: "Doğaya bağımlı tüketici yaşamdan, kendi besinini üreten üretici yaşama geçilmesi", correct: true },
-      { letter: "B", text: "Göçebe avcılığın dünya genelinde tek geçim kaynağı haline gelmesi", correct: false },
-      { letter: "C", text: "Hayvanların evcilleştirilmesinden ve barınak yapımından tamamen vazgeçilmesi", correct: false },
-      { letter: "D", text: "Maden aletlerin taş aletlerden önce günlük hayatta yaygınlaşması", correct: false }
+      { letter: "A", text: "Bakır", correct: false },
+      { letter: "B", text: "Bronz (tunç)", correct: false },
+      { letter: "C", text: "Taş", correct: true },
+      { letter: "D", text: "Demir", correct: false }
     ],
-    explanation: "İlkel taş aletlerden toprağı işleyen çapa, orak ve ezme taşlarına geçiş; insanlığı doğada hazır bulduğunu tüketen göçebelikten, kendi besinini üreten yerleşik düzene taşımıştır."
+    explanation: "İnsanlık tarihinin ilk aletleri doğada kolayca bulunabilen ve yontulabilen taşlardan üretilmiştir. Madenlerin keşfedilip işlenmesi ise çok daha sonraki devirlerde gerçekleşmiştir."
   },
   {
     id: 2,
-    question: "Bu dönemi ve bölgelerin gelişimini düşündüğünüzde; Mezopotamya'da buğday, Güneydoğu Asya'da pirinç ve Orta Amerika'da mısır gibi farklı tarım ürünlerinin farklı zaman dilimlerinde evcilleştirilmesi aşağıdakilerden hangisini doğrulamaktadır?",
+    question: "Tarım üretiminin artmasıyla ortaya çıkan ve toplumun tüketim ihtiyacının üzerinde kalan ürüne ne ad verilir?",
     options: [
-      { letter: "A", text: "Tarım Devrimi'nin dünyada tek bir merkezden yayılmadığını, farklı coğrafyalarda bağımsız ortaya çıktığını", correct: true },
-      { letter: "B", text: "Dünyadaki bütün toplumların aynı yüzyılda ve aynı yöntemlerle yerleşik hayata geçtiğini", correct: false },
-      { letter: "C", text: "İklim ve nehir havzalarının tarımsal üretimde hiçbir belirleyici etkisinin bulunmadığını", correct: false },
-      { letter: "D", text: "Tarımın yalnızca kutup ve dağ buzullarının yakınlarında gelişebildiğini", correct: false }
+      { letter: "A", text: "Vergi", correct: false },
+      { letter: "B", text: "Ticaret malı", correct: false },
+      { letter: "C", text: "Rant", correct: false },
+      { letter: "D", text: "Artı ürün", correct: true }
     ],
-    explanation: "Farklı coğrafyalarda yerel yabani bitkilerin (buğday, pirinç, mısır) farklı zaman dilimlerinde evcilleştirilmesi, Tarım Devrimi'nin bağımsız merkezlerde ortaya çıktığını kanıtlar."
+    explanation: "Tarımsal üretimde üreticilerin kendi ihtiyaçlarının ötesinde elde ettikleri gıda fazlasına 'artı ürün' denir. Artı ürün, ticaretin ve mesleki uzmanlaşmanın temelini oluşturmuştur."
   },
   {
     id: 3,
-    question: "İlk yerleşik köylerin mimari yapısını ve yaşam koşullarını düşündüğünüzde; Çatalhöyük gibi merkezlerde evlerin birbirine bitişik inşa edilmesi, sokakların bulunmaması ve girişlerin damdan yapılması öncelikle hangi ihtiyacın sonucudur?",
+    question: "Artı ürünün ortaya çıkmasıyla birlikte insan yaşamında ve toplum düzeninde aşağıdakilerden hangisi gerçekleşmemiştir?",
     options: [
-      { letter: "A", text: "Tarlaları, hasat edilen ürünleri koruma ve toplu savunma güvenliğini sağlama ihtiyacı", correct: true },
-      { letter: "B", text: "İnsanların sürekli yer değiştirerek göçebe yaşamını sürdürmesini kolaylaştırma isteği", correct: false },
-      { letter: "C", text: "Hayvanların evlerin içinden serbestçe geçiş yapmasını sağlama düşüncesi", correct: false },
-      { letter: "D", text: "Kerpiç ve taş malzeme yerine çadır kullanımını yaygınlaştırma amacı", correct: false }
+      { letter: "A", text: "Takas ekonomisinin ve yerel pazar yerlerinin gelişmesi", correct: false },
+      { letter: "B", text: "Göçebe yaşam tarzının dünya genelinde yaygınlaşması", correct: true },
+      { letter: "C", text: "Sosyal sınıfların ve mesleki tabakalaşmanın oluşması", correct: false },
+      { letter: "D", text: "Toprak üzerinde özel mülkiyet anlayışının doğması", correct: false }
     ],
-    explanation: "Tarımla birlikte emek verilen tarlaları ve depolanan hasadı yabani hayvanlardan ve dış tehlikelerden koruma gereği, damdan girişli bitişik ve güvenli köy mimarisini doğurmuştur."
+    explanation: "Artı ürün göçebe yaşamı yaygınlaştırmamış; tam aksine ambarların, tarlaların ve yerleşimin korunması gereği nedeniyle kalıcı yerleşik köy ve şehir hayatını güçlendirmiştir."
   },
   {
     id: 4,
-    question: "İzlediklerinizden yola çıkarak pazar yerlerinin ve mesleki uzmanlaşmanın ortaya çıktığı bu dönemi düşündüğünüzde; tarımsal üretimde elde edilen 'artı ürün' bu çeşitliliği nasıl sağlamıştır?",
+    question: "Avcı-toplayıcı göçebe yaşamdan tarımsal üretime geçiş değerlendirildiğinde; bu dönüşümün insan ile doğa arasındaki ilişki üzerindeki en temel etkisi aşağıdakilerden hangisidir?",
     options: [
-      { letter: "A", text: "Besin fazlalığı sayesinde toplumun bir kısmının tarladan ayrılarak çömlekçilik, dokumacılık ve ticaret gibi alanlarda uzmanlaşmasını sağlamıştır", correct: true },
-      { letter: "B", text: "Bütün insanların istisnasız yalnızca tarla işlerinde çalışmasını zorunlu kılmıştır", correct: false },
-      { letter: "C", text: "Takas ekonomisini ve pazar yerlerindeki alışverişi tamamen sona erdirmiştir", correct: false },
-      { letter: "D", text: "İnsanların köyleri terk ederek yeniden mağaralara dönmesine yol açmıştır", correct: false }
+      { letter: "A", text: "Doğal kaynakların zamanla azalması sebebiyle insanın çevre üzerindeki bütün etkisini ve müdahalesini tamamen sonlandırması", correct: false },
+      { letter: "B", text: "İnsanın doğada hazır bulduğunu tüketen konumdan çıkarak doğayı kendi ihtiyaçları doğrultusunda dönüştüren üretici konuma gelmesi", correct: true },
+      { letter: "C", text: "İklim ve coğrafya şartlarının insan yaşamı, barınma biçimleri ve üretim faaliyetleri üzerindeki belirleyici rolünün tamamen bitmesi", correct: false },
+      { letter: "D", text: "İnsan topluluklarının çevredeki yabani bitki ve hayvan türlerini koruma amacıyla kendi istekleriyle korunaklı köyler inşa etmesi", correct: false }
     ],
-    explanation: "Artı ürün (ihtiyaç fazlası besin), tüm insanların tarlada çalışma zorunluluğunu ortadan kaldırarak zanaat, ticaret, yönetim ve sanat alanlarında mesleki iş bölümünü başlatmıştır."
+    explanation: "Tarım Devrimi ile birlikte insan, çevresinde hazır bulduğunu tüketen pasif bir canlı olmaktan çıkmış; toprağı işleyerek, tohumu ekerek ve suları yönlendirerek doğayı kendi lehine dönüştüren aktif üretici bir konuma ulaşmıştır."
   },
   {
     id: 5,
-    question: "Üretici yaşama geçiş sürecini ve ortaya çıkan yeni gereksinimleri düşündüğünüzde; kilden yapılan çanak-çömleklerin ve tahıl ambarlarının insan yaşamında büyük önem kazanmasının temel sebebi aşağıdakilerden hangisidir?",
+    question: "Tarımsal üretimin başlamasıyla önce küçük köyler, ardından surlarla çevrili ve ambarlara sahip kalabalık şehirler kurulmuştur. Yerleşimlerin zamanla büyümesinde ve savunma yapılarının inşa edilmesinde etkili olan temel neden aşağıdakilerden hangisidir?",
     options: [
-      { letter: "A", text: "Hasat edilen ihtiyaç fazlası ürünlerin saklanması, depolanması ve bozulmadan korunması", correct: true },
-      { letter: "B", text: "Avlanan hayvanların göç yollarını takip etmek için hafif malzeme arayışı", correct: false },
-      { letter: "C", text: "Mağara duvarlarındaki av resimlerini kapatma ve gizleme düşüncesi", correct: false },
-      { letter: "D", text: "Tarım faaliyetlerinin sonlandırılarak tamamen madenciliğe geçilmek istenmesi", correct: false }
+      { letter: "A", text: "Avcı-toplayıcı göçebelerin yerleşik hayata geçmesini kesin olarak engelleyerek şehir nüfusunu sabit tutma arzusu", correct: false },
+      { letter: "B", text: "Farklı bölgelerdeki üretici kabilelerin birbirleriyle ticari temas kurmasını önlemek için fiziksel sınırlar çekme isteği", correct: false },
+      { letter: "C", text: "Hasat edilen artı ürünün, tohum ambarlarının ve yerleşik düzenin dışarıdan gelebilecek yağmalara karşı korunma zorunluluğu", correct: true },
+      { letter: "D", text: "Tarım alanlarının yetersizliği nedeniyle şehir halkının tarlalarını surların içindeki dar parsellere taşıma mecburiyeti", correct: false }
     ],
-    explanation: "Üretilen tahılların mevsimler boyunca saklanması ve kurak dönemlerde kullanılması ambar yapımını ve pişmiş kilden saklama kaplarını (çanak-çömlek) zorunlu kılmıştır."
+    explanation: "Tarımla birlikte biriktirilen gıda stoku ve tohumluklar yaşamsal bir zenginlik oluşturmuştur. Bu birikimi dışarıdan gelecek saldırılara karşı koruma gereği; surların, ortak ambarların ve organize şehirlerin kurulmasını sağlamıştır."
   },
   {
     id: 6,
-    question: "Güneydoğu Asya'nın coğrafi koşulları ve su kaynakları dikkate alındığında; Sarı Irmak ve Gök Irmak havzalarındaki doğal çevre bu bölgede hangi üretim ve yerleşme modelini ortaya çıkarmıştır?",
+    question: "Tarım Devrimi ile birlikte dünya nüfusunda avcı-toplayıcı döneme göre belirgin bir artış yaşanmıştır. Bu nüfus artışını doğrudan hazırlayan koşullar aşağıdakilerden hangisinde birlikte verilmiştir?",
     options: [
-      { letter: "A", text: "Bol suya dayalı çeltik (pirinç) tarımı ve sulama kanalları etrafında yoğun nüfuslu yerleşimler", correct: true },
-      { letter: "B", text: "Yalnızca kurak bozkırlarda yetişen tek yıllık yabani buğday tarımı", correct: false },
-      { letter: "C", text: "Nehir kenarlarının tamamen boşaltılarak sadece dağ eteklerinde konaklanması", correct: false },
-      { letter: "D", text: "Kalıcı köyler yerine sadece kıl çadırlardan oluşan göçebe oba düzeni", correct: false }
+      { letter: "A", text: "Besin bulma kaygısının azalması, gıdanın depolanabilmesi ve tarlaların işlenmesi için sürekli iş gücüne duyulan ihtiyacın artması", correct: true },
+      { letter: "B", text: "Salgın hastalıkların tıp sayesinde tamamen son bulması ve insanların vahşi doğayla olan tüm temasının kesilmesi", correct: false },
+      { letter: "C", text: "Avcılık faaliyetlerinin yasaklanmasıyla birlikte tüm nüfusun eşit kurallarla sadece kamu tarlalarında çalıştırılması", correct: false },
+      { letter: "D", text: "Topluluklar arasındaki savaşların tamamen durması ve yerleşik köylerin hiçbir dış tehditle karşılaşmaması", correct: false }
     ],
-    explanation: "Muson yağmurları ve geniş ırmak deltaları sulu tarıma imkân sağlamış; pirinç tarımı ortak sulama organizasyonunu ve yoğun nüfuslu yerleşimleri beraberinde getirmiştir."
+    explanation: "Besin arzının düzenli hale gelmesi kıtlık riskini azaltırken, tarlaların sürülmesi, ekilmesi ve hasadı için insan emeğine duyulan yoğun gereksinim aileleri daha fazla çocuk sahibi olmaya yöneltmiş ve nüfusu hızla katlamıştır."
   },
   {
     id: 7,
-    question: "Bu dönemde ambarlarda toplanan artı ürünlerin miktarlarının, dağıtımının ve tapınak vergilerinin kayıt altına alınması gerekliliği düşünüldüğünde; bu durum insanlık tarihinde hangi köklü gelişmenin zeminini hazırlamıştır?",
+    question: "Artı ürünün varlığı, toplumun tüm üyelerinin tarlada çalışma zorunluluğunu ortadan kaldırmıştır. Bu durumun toplumsal yapı ve ekonomik yaşamdaki en doğrudan sonucu aşağıdakilerden hangisidir?",
     options: [
-      { letter: "A", text: "Ürünlerin ve vergilerin kaydını tutma gereksinimiyle yazının icat edilmesine", correct: true },
-      { letter: "B", text: "Takas uygulamasından vazgeçilerek avcı-toplayıcı düzene dönülmesine", correct: false },
-      { letter: "C", text: "Yerleşik köylerin terk edilerek nehir boylarının boşaltılmasına", correct: false },
-      { letter: "D", text: "Toplumsal iş bölümünün ve mesleki uzmanlaşmanın sona ermesine", correct: false }
+      { letter: "A", text: "Tarımsal üretimin tamamen durdurulmasıyla halkın tüm ihtiyaçlarını yalnızca takas pazarlarından karşılamaya başlaması", correct: false },
+      { letter: "B", text: "Zanaatkârların üretimden tamamen çekilerek kendi istekleriyle yeniden göçebe avcılık ve toplayıcılığa geri dönmesi", correct: false },
+      { letter: "C", text: "Toplumdaki bütün bireylerin yalnızca tek bir zanaat dalında toplanması ve tarım arazilerinin tamamen terk edilmesi", correct: false },
+      { letter: "D", text: "Çömlekçilik, dokumacılık, maden işlemeciliği ve ticaret gibi yeni iş kollarının ortaya çıkarak mesleki uzmanlaşmanın başlaması", correct: true }
     ],
-    explanation: "Tapınaklarda ve depolarda toplanan artı ürünlerin kime ait olduğunu, vergi oranlarını ve dağıtımını kayıt altına alma zorunluluğu Sümerlerde yazının icadını tetiklemiştir."
+    explanation: "Artı ürün sayesinde herkesin tarlada çalışmasına gerek kalmamıştır. Bir grup insan besin üretirken; diğerleri çömlekçilik, dokumacılık, maden işlemeciliği, yöneticilik veya ticaret gibi alanlara ayrılarak uzmanlaşmıştır."
   },
   {
     id: 8,
-    question: "İzlediklerinizden ve edindiğiniz bilgilerden yola çıkarak ilk üretici köylerden günümüzün modern şehirlerine uzanan süreci düşündüğünüzde; bu köklü dönüşümün ortaya koyduğu ana fikir nedir?",
+    question: "Tarımsal üretim fazlası (artı ürün) elde eden topluluklar, ellerindeki fazla ürünleri kendilerinde bulunmayan ihtiyaç maddeleriyle değiştirmeye başlamışlardır. Bu sürecin ortaya çıkardığı en önemli ekonomik gelişme aşağıdakilerden hangisidir?",
     options: [
-      { letter: "A", text: "Günümüz modern şehir ve teknoloji medeniyetinin temellerinin, Tarım Devrimi ile başlayan yerleşme ve üretim sürecine dayanması", correct: true },
-      { letter: "B", text: "Modern insanın artık tarım ürünlerine ve besin üretimine hiçbir ihtiyaç duymadığı", correct: false },
-      { letter: "C", text: "Avcı-toplayıcı göçebe yaşam tarzının modern şehirlerde hiçbir değişikliğe uğramadan sürdüğü", correct: false },
-      { letter: "D", text: "Tarım Devrimi'nin insanlık tarihini gerilettiği ve toplumsal gelişmeyi durdurduğu", correct: false }
+      { letter: "A", text: "Takas yoluyla ticari faaliyetlerin başlaması, pazar yerlerinin kurulması ve ekonomik hayatın çeşitlenmesi", correct: true },
+      { letter: "B", text: "Toplulukların dış dünyayla olan tüm ilişkilerini keserek yalnızca kendi köylerinde kapalı ekonomik düzen kurması", correct: false },
+      { letter: "C", text: "Madeni paranın henüz kullanılmaması sebebiyle yerleşimler arasındaki tüm ürün alışverişinin tamamen durması", correct: false },
+      { letter: "D", text: "İhtiyaç fazlası tarım ürünlerinin diğer topluluklara verilmesini önlemek amacıyla doğrudan toprağa gömülmesi", correct: false }
     ],
-    explanation: "Modern çağın şehirleri, bilimi, hukuku ve teknolojisi; köklerini Neolitik Dönem'de toprağın işlenmesi, yerleşik hayat ve toplumsal iş bölümünün başlamasından alır."
+    explanation: "Üretilen artı ürünler takas yoluyla başka toplulukların ürünleriyle değiştirilmeye başlanmış; bu durum pazar yerlerinin kurulmasını, ticaret yollarının doğmasını ve zengin bir ekonomik yapıyı ortaya çıkarmıştır."
+  },
+  {
+    id: 9,
+    question: "Avcı-toplayıcı topluluklarda doğadaki kaynaklar ortaklaşa kullanılırken, tarım ve artı ürünle birlikte tarlalar ve hasat edilen ürünler belirli kişi veya ailelerin sahipliğine geçmiştir. Bu gelişmenin toplum yapısında yol açtığı en belirgin sonuç aşağıdakilerden hangisidir?",
+    options: [
+      { letter: "A", text: "Bütün toplum üyelerinin eşit ekonomik hak ve mülkiyete sahip olduğu sınıfsız bir yaşam düzeninin kalıcı hale gelmesi", correct: false },
+      { letter: "B", text: "Özel mülkiyet anlayışının doğmasıyla birlikte zenginlik farklarının, köleliğin ve sosyal sınıfların ortaya çıkması", correct: true },
+      { letter: "C", text: "Mülkiyet kavgaları nedeniyle yerleşik köylerin hızla dağılarak insanların yeniden mağara yaşamına kesin dönüş yapması", correct: false },
+      { letter: "D", text: "Üretilen ürünlerin doğrudan tüketilmesi sebebiyle bireyler arasındaki kazanç ve birikim arzusunun tamamen bitmesi", correct: false }
+    ],
+    explanation: "Tarlaların ve artı ürünün kime ait olacağı sorusu özel mülkiyeti doğurmuş; zamanla üretim araçlarına sahip olanlar ile çalıştırılanlar (köleler ve borçlular) arasında sınıfsal tabakalaşma başlamıştır."
+  },
+  {
+    id: 10,
+    question: "Artı ürünün ambarlarda toplanıp dağıtılması, geniş sulama kanallarının organize biçimde açılması, özel mülkiyet anlaşmazlıklarının çözülmesi ve farklı sosyal sınıflar arasındaki düzenin korunması gerekmiştir. Bu zorunluluklar insanlık tarihinde hangi kurumsal yapının ortaya çıkmasını sağlamıştır?",
+    options: [
+      { letter: "A", text: "Şehirler arasındaki tüm ticareti ve pazar yerlerini tamamen yasaklayan kapalı kale topluluklarının", correct: false },
+      { letter: "B", text: "Her ailenin kendi savunmasını ve adaletini yalnızca kaba kuvvet kullanarak sağladığı kuralsız bir yapının", correct: false },
+      { letter: "C", text: "Ortak üretimi, savunmayı, mülkiyet hukukunu ve toplumsal düzeni sağlayan merkezi otorite ve devlet teşkilatının", correct: true },
+      { letter: "D", text: "Yazının kullanımını engelleyerek toplumu yalnızca sözlü kabile gelenekleriyle yöneten ilkel meclislerin", correct: false }
+    ],
+    explanation: "Sulama kanalları gibi devasa bayındırlık işleri bireysel güçle yapılamazdı. Artı ürünün idaresi, sınıflar arası adaletin sağlanması ve dış savunma ihtiyacı, örgütlü bir kamu otoritesini yani devlet teşkilatını ve yazılı hukuku zorunlu kılmıştır."
   }
 ];
 
+let activeQuizQuestions = [];
 let currentQuizIndex = 0;
 let quizAnswered = false;
+
+// Soru ve Seçenekleri Dinamik Olarak Karıştırma Fonksiyonu
+function prepareQuizQuestions() {
+  const shuffledQuestions = shuffleArray(videoQuizQuestions);
+
+  activeQuizQuestions = shuffledQuestions.map(q => {
+    const shuffledOptions = shuffleArray(q.options);
+    const letters = ['A', 'B', 'C', 'D'];
+    const optionsWithLetters = shuffledOptions.map((opt, idx) => ({
+      ...opt,
+      letter: letters[idx]
+    }));
+
+    return {
+      ...q,
+      options: optionsWithLetters
+    };
+  });
+
+  currentQuizIndex = 0;
+  quizAnswered = false;
+}
 
 // Soru Sahnesi ve Video Görünüm Geçişleri
 function showQuizView() {
@@ -877,6 +925,11 @@ function showQuizView() {
   if (quizWrapper) {
     quizWrapper.classList.remove('hidden');
     quizWrapper.classList.add('flex');
+  }
+
+  // Sorular henüz hazırlanmadıysa karıştır
+  if (!activeQuizQuestions.length) {
+    prepareQuizQuestions();
   }
 
   renderQuizQuestion();
@@ -904,10 +957,14 @@ function renderQuizQuestion() {
   const container = document.getElementById('quiz-question-container');
   if (!container) return;
 
+  if (!activeQuizQuestions.length) {
+    prepareQuizQuestions();
+  }
+
   quizAnswered = false;
 
   // Tüm sorular tamamlandı mı?
-  if (currentQuizIndex >= videoQuizQuestions.length) {
+  if (currentQuizIndex >= activeQuizQuestions.length) {
     container.innerHTML = `
       <div class="text-center py-5 px-3 space-y-4 animate-in fade-in zoom-in duration-300">
         <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-2xl font-bold border-2 border-[#d49d3d] shadow-md">
@@ -917,42 +974,92 @@ function renderQuizQuestion() {
           Değerlendirmeyi Tamamladınız!
         </h3>
         <p class="text-xs sm:text-sm text-[#38332b] max-w-xl mx-auto leading-relaxed">
-          Doğru değerlendirmeler ile Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla tamamladınız.
+          Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla tamamladınız.
         </p>
         <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
-          <button id="btn-restart-quiz" class="px-5 py-2.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[8px] border border-[#d49d3d]/50 transition-all shadow-md cursor-pointer select-none">
-            Soruları Baştan Çöz
+          <button id="btn-restart-entire-activity" class="px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-md cursor-pointer select-none">
+            Etkinliği Yeniden Başlat
           </button>
-          <button id="btn-replay-video" class="px-5 py-2.5 bg-transparent hover:bg-[#ebdcc6] text-[#2c261e] border border-[#beab8f] text-xs sm:text-sm font-semibold rounded-[8px] transition-all cursor-pointer select-none">
-            Videoyu Yeniden İzle
+          <button id="btn-finish-activity" class="px-6 py-3 bg-[#9e4e34] hover:bg-[#833d25] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[10px] border border-[#beab8f] transition-all shadow-md cursor-pointer select-none">
+            Etkinliği Bitir
           </button>
         </div>
       </div>
     `;
 
-    const restartBtn = document.getElementById('btn-restart-quiz');
-    if (restartBtn) {
-      restartBtn.addEventListener('click', () => {
-        currentQuizIndex = 0;
-        renderQuizQuestion();
+    // SCORM Tamamlandı Bildirimi Yardımcısı
+    function notifyScormCompleted() {
+      try {
+        if (typeof scorm !== 'undefined' && scorm.set) {
+          scorm.set("cmi.core.lesson_status", "completed");
+          scorm.set("cmi.completion_status", "completed");
+          if (scorm.save) scorm.save();
+        } else if (window.pipwerks && window.pipwerks.SCORM) {
+          window.pipwerks.SCORM.set("cmi.core.lesson_status", "completed");
+          window.pipwerks.SCORM.set("cmi.completion_status", "completed");
+          window.pipwerks.SCORM.save();
+        }
+      } catch (e) {}
+    }
+
+    // Etkinliği Yeniden Başlat Butonu Dinleyicisi (En Başa Döner)
+    const restartActivityBtn = document.getElementById('btn-restart-entire-activity');
+    if (restartActivityBtn) {
+      restartActivityBtn.addEventListener('click', () => {
+        notifyScormCompleted();
+        resetActivity();
+        const videoEl = document.getElementById('stage2-video');
+        if (videoEl) {
+          videoEl.pause();
+          videoEl.currentTime = 0;
+        }
+        const quizWrapper = document.getElementById('stage2-quiz-wrapper');
+        if (quizWrapper) {
+          quizWrapper.classList.add('hidden');
+          quizWrapper.classList.remove('flex');
+        }
+        const quizPrompt = document.getElementById('stage2-quiz-prompt');
+        if (quizPrompt) quizPrompt.classList.add('hidden');
+        switchStage(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
 
-    const replayBtn = document.getElementById('btn-replay-video');
-    if (replayBtn) {
-      replayBtn.addEventListener('click', () => {
-        showVideoView();
+    // Etkinliği Bitir Butonu Dinleyicisi (Tamamen Kapanır)
+    const finishActivityBtn = document.getElementById('btn-finish-activity');
+    if (finishActivityBtn) {
+      finishActivityBtn.addEventListener('click', () => {
+        notifyScormCompleted();
         const videoEl = document.getElementById('stage2-video');
-        if (videoEl) {
-          videoEl.currentTime = 0;
-          videoEl.play();
-        }
+        if (videoEl) videoEl.pause();
+
+        // Pencereyi kapatmayı dene
+        try {
+          window.close();
+        } catch (e) {}
+
+        // Tarayıcı güvenlik kısıtlaması nedeniyle doğrudan kapatamazsa tam ekran kapanış durumunu göster
+        document.body.innerHTML = `
+          <div class="fixed inset-0 z-50 bg-[#fbf7ee] flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-300 select-none">
+            <div class="max-w-md w-full p-8 rounded-[18px] bg-[#fffdfa] border-2 border-[#beab8f] shadow-2xl space-y-4">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-3xl font-bold border-2 border-[#d49d3d] shadow-md">
+                ✓
+              </div>
+              <h2 class="font-monumental text-xl sm:text-2xl font-bold text-[#1e3b2e]">
+                Etkinlik Tamamlandı
+              </h2>
+              <p class="text-sm text-[#38332b] leading-relaxed">
+                Etkinliği başarıyla bitirdiniz. Bu pencereyi kapatabilirsiniz.
+              </p>
+            </div>
+          </div>
+        `;
       });
     }
     return;
   }
 
-  const q = videoQuizQuestions[currentQuizIndex];
+  const q = activeQuizQuestions[currentQuizIndex];
 
   container.innerHTML = `
     <!-- Soru Metni -->
@@ -974,7 +1081,7 @@ function renderQuizQuestion() {
     <div id="quiz-bottom-bar" class="hidden flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1 animate-in fade-in duration-200">
       <div id="quiz-feedback-card" class="flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border transition-all shadow-2xs"></div>
       <button id="btn-next-quiz-question" class="shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap">
-        ${currentQuizIndex === videoQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
+        ${currentQuizIndex === activeQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
       </button>
     </div>
   `;
@@ -1001,7 +1108,7 @@ function renderQuizQuestion() {
 // Şık Seçimi Değerlendirme
 function handleQuizAnswerSelection(selectedIndex) {
   quizAnswered = true;
-  const q = videoQuizQuestions[currentQuizIndex];
+  const q = activeQuizQuestions[currentQuizIndex];
   const selectedOpt = q.options[selectedIndex];
   const optionsList = document.getElementById('quiz-options-list');
   const feedbackCard = document.getElementById('quiz-feedback-card');
@@ -1140,12 +1247,7 @@ function init() {
     });
   }
 
-  const btnBackToVideoFromQuiz = document.getElementById('btn-back-to-video-from-quiz');
-  if (btnBackToVideoFromQuiz) {
-    btnBackToVideoFromQuiz.addEventListener('click', () => {
-      showVideoView();
-    });
-  }
+
 
   // Yüzen Aşama Değiştirme Butonları Dinleyicileri (Sağ ve Sol Ok)
   const floatingPrevBtn = document.getElementById('floating-prev-stage-btn');
