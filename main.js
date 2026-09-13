@@ -848,7 +848,7 @@ const videoQuizQuestions = [
       { text: "Toplumdaki bütün insanların üretimden çekilerek yalnızca avcılık yapması", correct: false },
       { text: "Yöneticilik, din ve savunma gibi farklı toplumsal görevlerin belirmesi", correct: true }
     ],
-    explanation: "Besin fazlası sayesinde toplumun bir kesimi zanaat, ticaret, yönetim ve savunma işlerine ayrılmış; böylece mesleki uzmanlaşma ve toplumsal iş bölümü doğmuştur."
+    explanation: "Artı ürün sayesinde toplumun bir kesimi zanaat, ticaret, yönetim ve savunma işlerine ayrılmış; böylece mesleki uzmanlaşma ve toplumsal iş bölümü doğmuştur."
   },
   {
     id: 7,
