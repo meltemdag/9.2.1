@@ -1018,6 +1018,11 @@ function renderQuizQuestion() {
     // SCORM Tamamlandı Bildirimi Yardımcısı
     function notifyScormCompleted() {
       try {
+        if (window.SCORM) {
+          if (window.SCORM.complete) window.SCORM.complete(true);
+          if (window.SCORM.setStatus) window.SCORM.setStatus("completed");
+          if (window.SCORM.sendScore) window.SCORM.sendScore(100, 100, true);
+        }
         if (typeof scorm !== 'undefined' && scorm.set) {
           scorm.set("cmi.core.lesson_status", "completed");
           scorm.set("cmi.completion_status", "completed");
@@ -1340,8 +1345,27 @@ function init() {
     });
   }
 
+  // SCORM Başlatma ve Varsayılan Tamamlama Durumu
+  try {
+    if (window.SCORM && window.SCORM.initialize) {
+      window.SCORM.initialize();
+      if (window.SCORM.setStatus) {
+        window.SCORM.setStatus("completed");
+      }
+    }
+  } catch (e) { }
+
   switchStage(0);
 }
+
+// Sayfa Kapanırken SCORM Oturumunu Sonlandır
+window.addEventListener('beforeunload', () => {
+  try {
+    if (window.SCORM && window.SCORM.terminate) {
+      window.SCORM.terminate();
+    }
+  } catch (e) { }
+});
 
 // Uygulamayı Başlat
 document.addEventListener('DOMContentLoaded', init);
