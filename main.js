@@ -587,6 +587,8 @@ function resetActivity() {
   if (matchingLockTimeout) clearTimeout(matchingLockTimeout);
   const stage1Container = document.getElementById('stage-1-container');
   if (stage1Container) stage1Container.classList.remove('matching-locked');
+  const instructionsBar = document.getElementById('stage2-instructions-bar');
+  if (instructionsBar) instructionsBar.classList.remove('hidden');
 
   // İlk olarak bölge isimleri (kendi içinde rastgele sırada) gelir, ardından kalan tüm bilgi kartları karışık olarak sunulur
   const regionCards = shuffleArray(cardsData.filter(c => c.category === 'bolge'));
@@ -920,11 +922,14 @@ function showQuizView() {
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
+  const instructionsBar = document.getElementById('stage2-instructions-bar');
 
   if (videoEl && !videoEl.paused) {
     videoEl.pause();
   }
 
+  // Soru ve tamamlama ekranına geçildiğinde yönerge çubuğunu gizle
+  if (instructionsBar) instructionsBar.classList.add('hidden');
   if (quizPrompt) quizPrompt.classList.add('hidden');
 
   if (quizWrapper) {
@@ -944,14 +949,18 @@ function hideQuizView() {
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
+  const instructionsBar = document.getElementById('stage2-instructions-bar');
 
   if (quizWrapper) {
     quizWrapper.classList.add('hidden');
     quizWrapper.classList.remove('flex');
   }
 
-  if (videoEl && videoEl.ended && quizPrompt) {
-    quizPrompt.classList.remove('hidden');
+  if (videoEl && videoEl.ended) {
+    if (quizPrompt) quizPrompt.classList.remove('hidden');
+    if (instructionsBar) instructionsBar.classList.add('hidden');
+  } else {
+    if (instructionsBar) instructionsBar.classList.remove('hidden');
   }
 }
 
@@ -1028,6 +1037,8 @@ function renderQuizQuestion() {
         }
         const quizPrompt = document.getElementById('stage2-quiz-prompt');
         if (quizPrompt) quizPrompt.classList.add('hidden');
+        const instructionsBar = document.getElementById('stage2-instructions-bar');
+        if (instructionsBar) instructionsBar.classList.remove('hidden');
         switchStage(0);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -1267,7 +1278,10 @@ function init() {
   const stage2QuizPrompt = document.getElementById('stage2-quiz-prompt');
   if (stage2Video) {
     stage2Video.addEventListener('ended', () => {
-      // Video bitince altta ortada "Sorulara Geç ➔" butonunu göster
+      // Video bitince üstteki yönerge çubuğunu gizle ve "Sorulara Geç ➔" butonunu göster
+      const instructionsBar = document.getElementById('stage2-instructions-bar');
+      if (instructionsBar) instructionsBar.classList.add('hidden');
+
       if (stage2QuizPrompt) {
         stage2QuizPrompt.classList.remove('hidden');
         stage2QuizPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1275,9 +1289,11 @@ function init() {
     });
 
     stage2Video.addEventListener('play', () => {
-      // Video başa sarılıp tekrar oynatılırsa butonu gizle (bitene kadar)
-      if (stage2Video.currentTime < 1 && stage2QuizPrompt) {
-        stage2QuizPrompt.classList.add('hidden');
+      // Video başa sarılıp tekrar oynatılırsa yönergeyi tekrar aç, butonu gizle
+      if (stage2Video.currentTime < 1) {
+        const instructionsBar = document.getElementById('stage2-instructions-bar');
+        if (instructionsBar) instructionsBar.classList.remove('hidden');
+        if (stage2QuizPrompt) stage2QuizPrompt.classList.add('hidden');
       }
     });
   }
