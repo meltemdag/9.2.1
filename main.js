@@ -203,10 +203,10 @@ function shuffleArray(array) {
 
 // Geri Bildirim Gösterme Fonksiyonu (Doğrudan Soru / Kart Alanında Gösterilir)
 function showCardFeedback(message, isSuccess = true) {
-  const bgClass = isSuccess 
-    ? 'bg-[#166534]/90 text-white border-[#22c55e]/60 shadow-[0_8px_24px_rgba(22,101,52,0.40)]' 
+  const bgClass = isSuccess
+    ? 'bg-[#166534]/90 text-white border-[#22c55e]/60 shadow-[0_8px_24px_rgba(22,101,52,0.40)]'
     : 'bg-[#b91c1c]/90 text-white border-[#ef4444]/60 shadow-[0_8px_24px_rgba(185,28,28,0.40)]';
-  
+
   const iconSymbol = isSuccess ? '✓' : '✗';
 
   // 1. Masaüstü Harita İçi Aktif Kart Alanı
@@ -396,7 +396,7 @@ function setupTouchDrag(el, cardId) {
     const touch = e.changedTouches[0];
     const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
     const target = elemBelow?.closest('.map-focus-target, .region-summary-card');
-    
+
     if (target) {
       const region = target.getAttribute('data-region');
       if (region) {
@@ -855,7 +855,7 @@ const videoQuizQuestions = [
     question: "Tarımsal üretim ve artı ürünün gelişimi sonucunda ekonomik alanda hangi yenilikler ortaya çıkmıştır?",
     options: [
       { text: "İhtiyaç fazlası ürünlerin farklı topluluklarla takas edilmesi", correct: true },
-      { text: "Ürünlerin alınıp satıldığı ilk yerel pazar yerlerinin kurulması", correct: true },
+      { text: "Ürünlerin alınıp satıldığı ilk pazar yerlerinin kurulması", correct: true },
       { text: "Madeni paranın icadıyla birlikte takas usulünün tamamen unutulması", correct: false },
       { text: "Tüm takas ve mülkiyet haklarının yasaklanarak özel mülkiyetin tamamen kaldırılması", correct: false }
     ],
@@ -1016,7 +1016,7 @@ function renderQuizQuestion() {
           window.pipwerks.SCORM.set("cmi.completion_status", "completed");
           window.pipwerks.SCORM.save();
         }
-      } catch (e) {}
+      } catch (e) { }
     }
 
     // Etkinliği Yeniden Başlat Butonu Dinleyicisi
@@ -1054,7 +1054,7 @@ function renderQuizQuestion() {
 
         try {
           window.close();
-        } catch (e) {}
+        } catch (e) { }
 
         document.body.innerHTML = `
           <div class="fixed inset-0 z-50 bg-[#fbf7ee] flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-300 select-none">
@@ -1120,7 +1120,7 @@ function renderQuizQuestion() {
     card.addEventListener('click', () => {
       if (quizAnswered) return;
       const optIdx = Number(card.getAttribute('data-index'));
-      
+
       if (selectedOptionIndices.has(optIdx)) {
         selectedOptionIndices.delete(optIdx);
         card.classList.remove('selected');
