@@ -802,9 +802,9 @@ const videoQuizQuestions = [
       { text: "Toplumun kendi tüketim ihtiyacının üzerinde kalan mahsul fazlasıdır.", correct: true },
       { text: "Ürünlerin saklanabilmesi için ambar ve kiler yapımını zorunlu kılmıştır.", correct: true },
       { text: "İnsanların yerleşik yaşamı terk ederek tamamen göçebeliğe dönmesine yol açmıştır.", correct: false },
-      { text: "Takas usulüyle ticaretin başlamasına ve pazar yerlerinin kurulmasına zemin hazırlamıştır.", correct: true }
+      { text: "Tüm insanların tarlada çalışma zorunluluğunu artırarak mesleki farklılaşmayı engellemiştir.", correct: false }
     ],
-    explanation: "Artı ürün; tüketim ihtiyacının üzerindeki mahsul fazlasıdır. Ambarların yapılmasını sağlamış, ticareti ve yerleşik köy hayatını güçlendirmiştir. Göçebeliğe yol açmamıştır."
+    explanation: "Artı ürün; tüketim ihtiyacının üzerindeki mahsul fazlasıdır ve ambar yapımını zorunlu kılmıştır. Göçebeliğe yol açmamış; aksine mesleki farklılaşmayı ve yerleşik hayatı güçlendirmiştir."
   },
   {
     id: 3,
@@ -822,11 +822,11 @@ const videoQuizQuestions = [
     question: "Tarım Devrimi ile birlikte yerleşimlerin etrafına surlar örülmesinde ve savunma yapılarının inşa edilmesinde hangi gerekçeler etkilidir?",
     options: [
       { text: "Ambarlarda toplanan artı ürünü ve tohumlukları yağmalara karşı koruma zorunluluğu", correct: true },
-      { text: "Yerleşik halkın tarlalarını, evlerini ve yaşam alanlarını güvenceye alma isteği", correct: true },
       { text: "Yerleşik köyler arasındaki tüm ticari ilişkileri ve takası tamamen durdurma arzusu", correct: false },
+      { text: "Tarımsal üretimi bırakıp dağlık sığınaklara çekilerek mağara hayatına dönme düşüncesi", correct: false },
       { text: "Dışarıdan gelebilecek saldırı ve baskınlara karşı ortak savunma ihtiyacı", correct: true }
     ],
-    explanation: "Surlar ve savunma yapıları; biriktirilen artı ürünün, tohum ambarlarının ve yerleşim yerlerinin dış tehditlere karşı korunması amacıyla yapılmıştır. Amaç ticareti durdurmak değil, güvenliği sağlamaktır."
+    explanation: "Surlar ve savunma yapıları; biriktirilen artı ürünün, tohum ambarlarının ve yerleşim yerlerinin dış tehditlere karşı korunması amacıyla yapılmıştır. Amaç ticareti durdurmak veya tarımı terk etmek değildir."
   },
   {
     id: 5,
@@ -857,9 +857,9 @@ const videoQuizQuestions = [
       { text: "İhtiyaç fazlası ürünlerin farklı topluluklarla takas edilmesi", correct: true },
       { text: "Ürünlerin alınıp satıldığı ilk yerel pazar yerlerinin kurulması", correct: true },
       { text: "Madeni paranın icadıyla birlikte takas usulünün tamamen unutulması", correct: false },
-      { text: "Ham maddelerin ve işlenmiş eşyaların taşındığı ilk ticaret yollarının oluşması", correct: true }
+      { text: "Tüm takas ve mülkiyet haklarının yasaklanarak özel mülkiyetin tamamen kaldırılması", correct: false }
     ],
-    explanation: "Artı ürün; takas usulüne dayalı ticareti, pazar yerlerini ve ticaret yollarını ortaya çıkarmıştır. Madeni para ise bu dönemde değil, çok sonraları Lidyalılar tarafından icat edilmiştir."
+    explanation: "Artı ürün; takas usulüne dayalı ticareti ve ilk pazar yerlerini ortaya çıkarmıştır. Madeni para ise bu dönemde değil, çok sonraları Lidyalılar tarafından icat edilmiş; mülkiyet hakları ise gelişmiştir."
   },
   {
     id: 8,
@@ -879,9 +879,9 @@ const videoQuizQuestions = [
       { text: "Toplumsal düzeni ve adaleti sağlayan kamu otoritesi ve devlet teşkilatının", correct: true },
       { text: "Ambar kayıtlarını tutma ihtiyacından doğan ilk yazı ve hesaplama sistemlerinin", correct: true },
       { text: "Toplumun tüm üyelerinin kanunsuz ve kuralsız biçimde kendi güvenliğini sağladığı düzensizliğin", correct: false },
-      { text: "Mülkiyet ve miras anlaşmazlıklarını çözen hukuk kurallarının", correct: true }
+      { text: "Merkezi örgütlenmelerin tamamen dağılarak insanların yalnız ve yalıtılmış yaşamaya başlamasının", correct: false }
     ],
-    explanation: "Büyük bayındırlık işleri, ambarların yönetimi ve sınır anlaşmazlıkları; merkezi otoriteyi, devlet yönetimini, hukuku ve kaydetme zorunluluğu nedeniyle yazıyı ortaya çıkarmıştır."
+    explanation: "Sulama kanalları ve ambar yönetimi gibi geniş çaplı işler; merkezi otoriteyi, devlet yönetimini ve kayıt tutma zorunluluğundan doğan ilk yazı sistemlerini ortaya çıkarmıştır."
   },
   {
     id: 10,
@@ -890,9 +890,9 @@ const videoQuizQuestions = [
       { text: "Su kaynaklarına (akarsu, göl veya düzenli yağışlara) yakın konumda bulunmaları", correct: true },
       { text: "Tarıma ve tohum ekimine elverişli verimli alüvyal topraklara sahip olmaları", correct: true },
       { text: "Yıl boyunca dondurucu kutup soğuklarının ve buzul ikliminin hâkim olması", correct: false },
-      { text: "Ilıman ve bitki yetiştiriciliğine uygun iklim koşullarının hüküm sürmesi", correct: true }
+      { text: "Tarımı imkânsız kılan kurak ve bitki örtüsünden yoksun çöl şartlarına sahip olmaları", correct: false }
     ],
-    explanation: "İlk tarım merkezleri; akarsu boylarında, alüvyal toprakların zengin olduğu, suyun bol bulunduğu ve ılıman iklim şartlarının yaşandığı coğrafyalarda kurulmuştur."
+    explanation: "İlk tarım merkezleri; akarsu boylarında, alüvyal toprakların zengin olduğu, suyun bol bulunduğu ve ılıman iklim şartlarının yaşandığı verimli havzalarda kurulmuştur."
   }
 ];
 
