@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarım Devrimi: Zaman, Mekân ve İnsan</title>
-  <script type="module" crossorigin src="./assets/index-DpEaPXs4.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CsWBGB0I.css">
+  <script type="module" crossorigin src="./assets/index-COtcordW.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-D1aU8ZOV.css">
 </head>
 <body class="bg-[#f5efe4] text-[#2c261e] min-h-screen flex flex-col font-sans antialiased overflow-x-hidden selection:bg-[#ebdcc6] selection:text-[#1e3b2e]">
 
@@ -17,15 +17,15 @@
     <!-- Yüzen Aşama Değiştirme Butonları (Sağ ve Sol Ok) -->
     <button id="floating-prev-stage-btn"
             class="fixed left-2.5 sm:left-4 bottom-4 sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 z-40 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#fffdfa]/95 backdrop-blur-md border-2 border-[#beab8f] text-[#1e3b2e] hover:bg-[#1e3b2e] hover:text-[#fffdfa] hover:border-[#1e3b2e] shadow-[0_6px_22px_rgba(45,34,18,0.22)] transition-all flex items-center justify-center font-bold text-base sm:text-lg cursor-pointer select-none disabled:opacity-0 disabled:pointer-events-none"
-            title="Önceki Aşamaya Geç"
-            aria-label="Önceki Aşamaya Geç">
+            title="Önceki Aşamaya Geçiniz"
+            aria-label="Önceki Aşamaya Geçiniz">
       ←
     </button>
 
     <button id="floating-next-stage-btn"
             class="fixed right-2.5 sm:right-4 bottom-4 sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 z-40 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#fffdfa]/95 backdrop-blur-md border-2 border-[#beab8f] text-[#1e3b2e] hover:bg-[#1e3b2e] hover:text-[#fffdfa] hover:border-[#1e3b2e] shadow-[0_6px_22px_rgba(45,34,18,0.22)] transition-all flex items-center justify-center font-bold text-base sm:text-lg cursor-pointer select-none disabled:opacity-0 disabled:pointer-events-none"
-            title="Sonraki Aşamaya Geç"
-            aria-label="Sonraki Aşamaya Geç">
+            title="Sonraki Aşamaya Geçiniz"
+            aria-label="Sonraki Aşamaya Geçiniz">
       →
     </button>
 
@@ -58,7 +58,7 @@
         <div class="pt-2 pb-1 text-center">
           <button id="btn-start-activity" 
                   class="px-12 sm:px-16 py-4 sm:py-4.5 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-base sm:text-lg rounded-[12px] border border-[#d49d3d]/50 shadow-[0_8px_28px_rgba(30,59,46,0.35)] hover:shadow-[0_12px_36px_rgba(30,59,46,0.48)] transition-all transform hover:-translate-y-0.5 cursor-pointer select-none font-body tracking-wide">
-            Etkinliğe Başla ➔
+            Etkinliğe Başlayınız ➔
           </button>
         </div>
 
@@ -131,8 +131,13 @@
           <div id="active-card-container"
                class="absolute z-20 transition-all duration-300 pointer-events-auto">
             <div id="active-card"
-                 class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13px] md:text-sm font-semibold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug">
-              <!-- Sadece eşleştirilecek metin JavaScript ile yerleştirilecektir -->
+                 class="active-card-item card-draggable active-card-pulse bg-gradient-to-br from-[#fffdfa] via-[#fcf6ea] to-[#f5ebd6] rounded-[12px] border-[2.5px] border-[#9e4e34] px-4 py-2 sm:px-5 sm:py-2.5 shadow-[0_8px_25px_rgba(45,34,18,0.22)] hover:border-[#833d25] transition-all text-center cursor-grab active:cursor-grabbing select-none break-words">
+              <div class="active-card-hint text-[10.5px] sm:text-[11.5px] font-bold text-[#9e4e34] tracking-wider uppercase mb-1 select-none pointer-events-none">
+                Sürükleyiniz veya Dokunarak Seçiniz
+              </div>
+              <div class="active-card-text text-xs sm:text-[13.5px] md:text-[15px] font-bold text-[#1e3b2e] leading-snug pointer-events-none">
+                <!-- Sadece eşleştirilecek metin JavaScript ile yerleştirilecektir -->
+              </div>
             </div>
           </div>
 
@@ -197,7 +202,7 @@
         <!-- Açıklama ve Bilgilendirme Çubuğu -->
         <div id="stage2-instructions-bar" class="pb-2 border-b border-[#beab8f]/60 flex items-center justify-between gap-2.5 w-full">
           <p id="stage2-instructions" class="text-[12px] sm:text-[13.5px] font-semibold text-[#2c261e] font-body leading-snug flex-1">
-            Videoyu izleyerek Tarım Devrimi'nin toplumsal ve ekonomik etkilerini inceleyiniz; ardından edindiğiniz bilgiler doğrultusunda değerlendirme sorularını yanıtlayınız.
+            Videoyu izleyerek Tarım Devrimi'nin toplumsal ve ekonomik etkilerini inceleyiniz; ardından edindiğiniz bilgiler doğrultusunda soruları yanıtlayınız.
           </p>
         </div>
 
@@ -219,11 +224,11 @@
           </div>
         </div>
 
-        <!-- Video Bitince Ekranın Altında Ortaya Çıkan "Sorulara Geç" Buton Alanı -->
+        <!-- Video Bitince Ekranın Altında Ortaya Çıkan "Sorulara Geçiniz" Buton Alanı -->
         <div id="stage2-quiz-prompt" class="hidden pt-2.5 pb-1 text-center w-full animate-in fade-in zoom-in duration-300">
           <button id="btn-toggle-quiz"
                   class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:px-10 sm:py-4 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[12px] border border-[#d49d3d]/50 shadow-[0_8px_26px_rgba(30,59,46,0.35)] hover:shadow-[0_12px_36px_rgba(30,59,46,0.5)] transition-all transform hover:-translate-y-0.5 cursor-pointer select-none font-body tracking-wide">
-            Sorulara Geç ➔
+            Sorulara Geçiniz ➔
           </button>
         </div>
 
