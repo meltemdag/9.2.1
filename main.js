@@ -1085,7 +1085,7 @@ function renderQuizQuestion() {
         ${q.question}
       </p>
       <p class="text-xs sm:text-[13px] font-medium text-[#9e4e34] italic select-none">
-        (Doğru olduğunu düşündüğünüz tüm seçenekleri işaretleyiniz)
+        (Doğru olduğunu düşündüğünüz seçenekleri işaretleyiniz)
       </p>
     </div>
 
