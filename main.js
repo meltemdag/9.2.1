@@ -1349,8 +1349,8 @@ function init() {
   try {
     if (window.SCORM && window.SCORM.initialize) {
       window.SCORM.initialize();
-      if (window.SCORM.setStatus) {
-        window.SCORM.setStatus("completed");
+      if (window.SCORM.complete) {
+        window.SCORM.complete(true);
       }
     }
   } catch (e) { }
