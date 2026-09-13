@@ -266,7 +266,7 @@ function renderActiveCard() {
     const completeHTML = `
       <div class="flex items-center justify-center py-1">
         <button id="btn-goto-stage2-from-map" class="bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] rounded-[12px] px-6 py-3.5 text-xs sm:text-sm font-bold border border-[#d49d3d]/50 shadow-[0_8px_24px_rgba(30,59,46,0.3)] hover:shadow-[0_12px_32px_rgba(30,59,46,0.45)] transition-all flex items-center gap-2 cursor-pointer select-none font-body">
-          2. Aşamaya Geç ➔
+          2. Aşamaya Geçiniz ➔
         </button>
       </div>
     `;
@@ -881,7 +881,7 @@ const videoQuizQuestions = [
       { text: "Toplumun tüm üyelerinin kanunsuz ve kuralsız biçimde kendi güvenliğini sağladığı düzensizliğin", correct: false },
       { text: "Merkezi örgütlenmelerin tamamen dağılarak insanların yalnız ve yalıtılmış yaşamaya başlamasının", correct: false }
     ],
-    explanation: "Sulama kanalları ve ambar yönetimi gibi geniş çaplı işler; merkezi otoriteyi, devlet yönetimini ve kayıt tutma zorunluluğundan doğan ilk yazı sistemlerini ortaya çıkarmıştır."
+    explanation: "Sulama kanalları ve ambar yönetimi gibi geniş çaplı işler; merkezi otorite ile devlet yönetiminin kurulmasına ve kayıt tutma zorunluluğuyla yazının ortaya çıkmasına zemin hazırlamıştır."
   },
   {
     id: 10,
@@ -995,10 +995,10 @@ function renderQuizQuestion() {
         </p>
         <div class="pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <button id="btn-restart-entire-activity" class="px-7 py-3.5 sm:px-9 sm:py-4 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-sm sm:text-base font-bold rounded-[12px] border border-[#d49d3d]/50 transition-all shadow-md hover:shadow-lg cursor-pointer select-none">
-            Etkinliği Yeniden Başlat
+            Etkinliği Yeniden Başlatınız
           </button>
           <button id="btn-finish-activity" class="px-7 py-3.5 sm:px-9 sm:py-4 bg-[#9e4e34] hover:bg-[#833d25] text-[#fffdfa] text-sm sm:text-base font-bold rounded-[12px] border border-[#beab8f] transition-all shadow-md hover:shadow-lg cursor-pointer select-none">
-            Etkinliği Bitir
+            Etkinliği Bitiriniz
           </button>
         </div>
       </div>
@@ -1105,12 +1105,12 @@ function renderQuizQuestion() {
       
       <!-- Kontrol Et Butonu -->
       <button id="btn-check-quiz-answer" class="shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap disabled:opacity-40 disabled:pointer-events-none" disabled>
-        Cevabı Kontrol Et
+        Cevabı Kontrol Ediniz
       </button>
 
       <!-- Sonraki Soru Butonu -->
       <button id="btn-next-quiz-question" class="hidden shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap">
-        ${currentQuizIndex === activeQuizQuestions.length - 1 ? 'Sonucu Gör ➔' : 'Sonraki Soru ➔'}
+        ${currentQuizIndex === activeQuizQuestions.length - 1 ? 'Soruları Bitiriniz ➔' : 'Sonraki Soruya Geçiniz ➔'}
       </button>
     </div>
   `;
