@@ -983,21 +983,21 @@ function renderQuizQuestion() {
   // Tüm sorular tamamlandı mı?
   if (currentQuizIndex >= activeQuizQuestions.length) {
     container.innerHTML = `
-      <div class="text-center py-5 px-3 space-y-4 animate-in fade-in zoom-in duration-300">
-        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-2xl font-bold border-2 border-[#d49d3d] shadow-md">
+      <div class="text-center py-6 sm:py-8 px-4 sm:px-6 space-y-5 sm:space-y-6 animate-in fade-in zoom-in duration-300">
+        <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#1e3b2e] text-[#fffdfa] text-3xl sm:text-4xl font-bold border-2 border-[#d49d3d] shadow-lg">
           ✓
         </div>
-        <h3 class="font-monumental text-lg sm:text-xl font-bold text-[#1e3b2e]">
+        <h3 class="font-monumental text-2xl sm:text-3xl md:text-[32px] font-bold text-[#1e3b2e] tracking-tight">
           Etkinliği Tamamladınız!
         </h3>
-        <p class="text-xs sm:text-sm text-[#38332b] max-w-xl mx-auto leading-relaxed">
-          Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini başarıyla tamamladınız.
+        <p class="text-base sm:text-lg md:text-[19px] font-semibold text-[#2c261e] max-w-2xl mx-auto leading-relaxed">
+          Tarım Devrimi'nin yerleşmeye, ekonomik hayata, mesleki iş bölümüne ve günümüz medeniyetine etkilerini incelediniz.
         </p>
-        <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
-          <button id="btn-restart-entire-activity" class="px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-md cursor-pointer select-none">
+        <div class="pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <button id="btn-restart-entire-activity" class="px-7 py-3.5 sm:px-9 sm:py-4 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] text-sm sm:text-base font-bold rounded-[12px] border border-[#d49d3d]/50 transition-all shadow-md hover:shadow-lg cursor-pointer select-none">
             Etkinliği Yeniden Başlat
           </button>
-          <button id="btn-finish-activity" class="px-6 py-3 bg-[#9e4e34] hover:bg-[#833d25] text-[#fffdfa] text-xs sm:text-sm font-semibold rounded-[10px] border border-[#beab8f] transition-all shadow-md cursor-pointer select-none">
+          <button id="btn-finish-activity" class="px-7 py-3.5 sm:px-9 sm:py-4 bg-[#9e4e34] hover:bg-[#833d25] text-[#fffdfa] text-sm sm:text-base font-bold rounded-[12px] border border-[#beab8f] transition-all shadow-md hover:shadow-lg cursor-pointer select-none">
             Etkinliği Bitir
           </button>
         </div>
@@ -1197,7 +1197,7 @@ function evaluateQuizAnswer() {
     feedbackCard.classList.remove('hidden');
     if (isFullSuccess) {
       feedbackCard.className = 'flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border bg-[#eaf1e8] border-[#1e3b2e] text-[#1e3b2e] font-medium animate-in fade-in duration-200';
-      feedbackCard.innerHTML = `<strong>Tebrikler!</strong> Doğru seçenekleri eksiksiz belirlediniz. ${q.explanation}`;
+      feedbackCard.innerHTML = `<strong>Tebrikler!</strong> ${q.explanation}`;
     } else {
       feedbackCard.className = 'flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border bg-[#fdf3f0] border-[#9e4e34] text-[#9e4e34] font-medium animate-in fade-in duration-200';
       feedbackCard.innerHTML = `<strong>Açıklama:</strong> ${q.explanation}`;
