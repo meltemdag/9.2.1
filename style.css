@@ -64,12 +64,58 @@
   cursor: grabbing;
 }
 
+/* Aktif Sürükleme Kartı İçin Dikkat Çekici Yanıp Sönme (Nabız / Parıldama) Animasyonu */
+@keyframes activeCardAttentionPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 157, 61, 0.75), 0 0 16px 2px rgba(158, 78, 52, 0.35), 0 8px 24px rgba(45, 34, 18, 0.22);
+    border-color: #9e4e34;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(212, 157, 61, 0.35), 0 0 28px 8px rgba(212, 157, 61, 0.60), 0 14px 32px rgba(45, 34, 18, 0.30);
+    border-color: #d49d3d;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes hintTextPulse {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+    color: #833d25;
+  }
+}
+
+.active-card-pulse {
+  animation: activeCardAttentionPulse 1.9s ease-in-out infinite;
+  will-change: transform, box-shadow, border-color;
+}
+
+.active-card-pulse .active-card-hint {
+  animation: hintTextPulse 1.9s ease-in-out infinite;
+}
+
+.active-card-pulse:hover {
+  animation-play-state: paused;
+  transform: scale(1.025);
+  box-shadow: 0 0 0 5px rgba(212, 157, 61, 0.45), 0 0 24px 6px rgba(212, 157, 61, 0.5), 0 12px 28px rgba(45, 34, 18, 0.28);
+}
+
 .card-selected {
-  outline: 3px solid #d49d3d;
-  outline-offset: 3px;
+  outline: 3.5px solid #d49d3d !important;
+  outline-offset: 3px !important;
   background-color: #ede3d1 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45, 34, 18, 0.22);
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 0 0 6px rgba(212, 157, 61, 0.45), 0 10px 28px rgba(45, 34, 18, 0.30) !important;
+  animation: none !important;
+}
+
+.card-selected .active-card-hint {
+  animation: none !important;
+  color: #1e3b2e !important;
+  opacity: 1 !important;
 }
 
 /* Harita üzerindeki odak hedef alanları (Neolitik Pişmiş Toprak / Kil Paleti) */

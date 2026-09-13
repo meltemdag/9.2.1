@@ -289,9 +289,14 @@ function renderActiveCard() {
   // Masaüstü Harita İçi Kart (draggable kaldırıldı, özel mouse drag kullanılacak)
   activeCardContainer.innerHTML = `
     <div id="active-card"
-         class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#f6eedd] rounded-[10px] border-2 border-[#9e4e34] px-4 py-2 sm:px-5 sm:py-2.5 shadow-[0_6px_20px_rgba(45,34,18,0.20)] hover:shadow-[0_10px_26px_rgba(45,34,18,0.26)] hover:border-[#833d25] transition-all text-xs sm:text-[13.5px] md:text-[15px] font-bold text-[#1e3b2e] text-center cursor-grab active:cursor-grabbing select-none break-words leading-snug"
+         class="active-card-item card-draggable active-card-pulse bg-gradient-to-br from-[#fffdfa] via-[#fcf6ea] to-[#f5ebd6] rounded-[12px] border-[2.5px] border-[#9e4e34] px-4 py-2 sm:px-5 sm:py-2.5 shadow-[0_8px_25px_rgba(45,34,18,0.22)] hover:border-[#833d25] transition-all text-center cursor-grab active:cursor-grabbing select-none break-words"
          data-card-id="${currentCard.id}">
-      ${currentCard.text}
+      <div class="active-card-hint text-[10.5px] sm:text-[11.5px] font-bold text-[#9e4e34] tracking-wider uppercase mb-1 select-none pointer-events-none">
+        Sürükleyiniz veya Dokunarak Seçiniz
+      </div>
+      <div class="text-xs sm:text-[13.5px] md:text-[15px] font-bold text-[#1e3b2e] leading-snug pointer-events-none">
+        ${currentCard.text}
+      </div>
     </div>
   `;
 
@@ -299,9 +304,14 @@ function renderActiveCard() {
   if (mobileSlot) {
     mobileSlot.innerHTML = `
       <div id="active-card-mobile"
-           class="active-card-item card-draggable bg-gradient-to-br from-[#fffdfa] to-[#fcf8f0] rounded-[10px] border-2 border-[#9e4e34] px-4 py-3 text-xs sm:text-sm md:text-base font-bold text-[#1e3b2e] text-center cursor-pointer select-none break-words leading-snug hover:border-[#833d25] transition-all shadow-sm"
+           class="active-card-item card-draggable active-card-pulse bg-gradient-to-br from-[#fffdfa] via-[#fcf6ea] to-[#f5ebd6] rounded-[12px] border-[2.5px] border-[#9e4e34] px-4 py-3 text-center cursor-pointer select-none break-words transition-all shadow-[0_4px_16px_rgba(45,34,18,0.15)] hover:border-[#833d25]"
            data-card-id="${currentCard.id}">
-        ${currentCard.text}
+        <div class="active-card-hint text-[10.5px] sm:text-[11px] font-bold text-[#9e4e34] tracking-wider uppercase mb-1 select-none pointer-events-none">
+          Sürükleyiniz veya Dokunarak Seçiniz
+        </div>
+        <div class="text-xs sm:text-sm md:text-base font-bold text-[#1e3b2e] leading-snug pointer-events-none">
+          ${currentCard.text}
+        </div>
       </div>
     `;
 
@@ -350,6 +360,7 @@ function setupTouchDrag(el, cardId) {
         touchClone.style.width = `${el.offsetWidth}px`;
         touchClone.style.transform = 'translate(-50%, -50%) scale(0.96)';
         touchClone.style.boxShadow = '0 12px 28px rgba(45,34,18,0.35)';
+        touchClone.style.animation = 'none';
         document.body.appendChild(touchClone);
         el.classList.add('opacity-40');
       }
@@ -667,6 +678,7 @@ function setupMouseDrag(el, cardId) {
       mouseClone.style.transform = 'translate(-50%, -50%) scale(0.97)';
       mouseClone.style.boxShadow = '0 12px 28px rgba(45,34,18,0.35)';
       mouseClone.style.transition = 'none';
+      mouseClone.style.animation = 'none';
       document.body.appendChild(mouseClone);
       el.classList.add('opacity-40');
     }
