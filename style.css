@@ -601,52 +601,57 @@ button:focus-visible,
 }
 
 #stage2-video-wrapper.quiz-active {
-  min-height: 560px;
   width: 100% !important;
-  max-width: 860px;
+  max-width: 860px !important;
+  height: auto !important;
+  min-height: auto !important;
+  background: #fbf7ee !important;
+  align-items: stretch !important;
 }
 
-#stage2-quiz-wrapper {
-  overflow-x: hidden !important;
+#stage2-video-wrapper.quiz-active #stage2-video {
+  display: none !important;
 }
 
-#stage2-quiz-wrapper::-webkit-scrollbar {
-  width: 5px;
+#stage2-video-wrapper.quiz-active #stage2-quiz-wrapper {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  padding: 18px 20px !important;
 }
 
-#stage2-quiz-wrapper::-webkit-scrollbar-track {
-  background: #f1e9db;
-}
-
-#stage2-quiz-wrapper::-webkit-scrollbar-thumb {
-  background: #beab8f;
-  border-radius: 4px;
+#stage2-video-wrapper.quiz-active #quiz-question-container {
+  height: auto !important;
+  min-height: auto !important;
+  justify-content: flex-start !important;
 }
 
 @media (max-width: 640px) {
   #stage2-video-wrapper.quiz-active {
-    min-height: 530px !important;
-    max-height: 85vh;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
   }
 
-  #stage2-quiz-wrapper {
-    padding: 10px 10px !important;
+  #stage2-video-wrapper.quiz-active #stage2-quiz-wrapper {
+    padding: 14px 12px !important;
+    overflow: visible !important;
   }
 
   .quiz-option-card {
-    padding: 7px 11px !important;
+    padding: 9px 12px !important;
     gap: 10px !important;
-    border-radius: 8px !important;
+    border-radius: 9px !important;
   }
 
   .quiz-option-checkbox {
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 5px !important;
-  }
-
-  .quiz-option-checkbox::after {
-    font-size: 12px !important;
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 6px !important;
   }
 }
 
