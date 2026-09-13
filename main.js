@@ -813,9 +813,9 @@ const videoQuizQuestions = [
       { text: "İnsanın doğada hazır bulduğunu tüketen durumdan üretici duruma geçmesi", correct: true },
       { text: "Tarlaların ve ürünlerin başında kalma gereğiyle kalıcı köylerin inşa edilmesi", correct: true },
       { text: "İnsanın çevre ve doğa üzerindeki müdahalesinin tamamen son bulması", correct: false },
-      { text: "Gıdanın depolanabilmesi sayesinde kıtlık ve açlık riskinin azalması", correct: true }
+      { text: "İnsanların kalıcı barınakları terk edip yalnızca mağaralarda yaşamaya başlaması", correct: false }
     ],
-    explanation: "Tarımla birlikte insan üretici konuma gelmiş, kalıcı konutlar ve köyler yapmış, besin stoklayarak kıtlığı azaltmıştır. Doğaya müdahalesi son bulmamış, aksine artmıştır."
+    explanation: "Tarımla birlikte insan üretici konuma gelmiş, kalıcı konutlar ve köyler inşa etmiştir. Doğaya müdahale son bulmamış ve mağara yaşamına geri dönülmemiştir."
   },
   {
     id: 4,
