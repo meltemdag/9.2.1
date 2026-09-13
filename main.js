@@ -922,10 +922,16 @@ function showQuizView() {
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
+  const videoWrapper = document.getElementById('stage2-video-wrapper');
   const instructionsBar = document.getElementById('stage2-instructions-bar');
 
   if (videoEl && !videoEl.paused) {
     videoEl.pause();
+  }
+
+  // Soru ekranı açıkken video alanının yüksekliğini ve genişliğini genişlet
+  if (videoWrapper) {
+    videoWrapper.classList.add('quiz-active');
   }
 
   // Soru ve tamamlama ekranına geçildiğinde yönerge çubuğunu gizle
@@ -949,7 +955,12 @@ function hideQuizView() {
   const quizWrapper = document.getElementById('stage2-quiz-wrapper');
   const quizPrompt = document.getElementById('stage2-quiz-prompt');
   const videoEl = document.getElementById('stage2-video');
+  const videoWrapper = document.getElementById('stage2-video-wrapper');
   const instructionsBar = document.getElementById('stage2-instructions-bar');
+
+  if (videoWrapper) {
+    videoWrapper.classList.remove('quiz-active');
+  }
 
   if (quizWrapper) {
     quizWrapper.classList.add('hidden');
@@ -1080,36 +1091,36 @@ function renderQuizQuestion() {
 
   container.innerHTML = `
     <!-- Soru Metni ve Çoklu Seçim Yönlendirmesi -->
-    <div class="space-y-1">
-      <p class="font-body font-bold text-base sm:text-lg md:text-[19px] text-[#1e3b2e] leading-snug">
+    <div class="space-y-0.5 sm:space-y-1">
+      <p class="font-body font-bold text-[13.5px] sm:text-lg md:text-[18.5px] text-[#1e3b2e] leading-snug">
         ${q.question}
       </p>
-      <p class="text-xs sm:text-[13px] font-medium text-[#9e4e34] italic select-none">
+      <p class="text-[11px] sm:text-[13px] font-medium text-[#9e4e34] italic select-none">
         (Doğru olduğunu düşündüğünüz seçenekleri işaretleyiniz)
       </p>
     </div>
 
     <!-- Seçenekler Listesi -->
-    <div class="flex flex-col gap-2 pt-1" id="quiz-options-list">
+    <div class="flex flex-col gap-1.5 sm:gap-2 pt-0.5 sm:pt-1" id="quiz-options-list">
       ${q.options.map((opt, idx) => `
         <div class="quiz-option-card" data-index="${idx}" role="button" tabindex="0">
           <span class="quiz-option-checkbox"></span>
-          <span class="text-sm sm:text-[15px] md:text-[16px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
+          <span class="text-xs sm:text-[15px] md:text-[16px] text-[#2c261e] font-medium leading-snug flex-1">${opt.text}</span>
         </div>
       `).join('')}
     </div>
 
     <!-- Alt Etkileşim Alanı: Butonlar ve Geri Bildirim -->
-    <div id="quiz-bottom-bar" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
-      <div id="quiz-feedback-card" class="hidden flex-1 p-3 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border transition-all shadow-2xs"></div>
+    <div id="quiz-bottom-bar" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 pt-1 sm:pt-2">
+      <div id="quiz-feedback-card" class="hidden flex-1 p-2 sm:p-3.5 rounded-[10px] text-xs sm:text-[13.5px] leading-snug border transition-all shadow-2xs"></div>
       
       <!-- Kontrol Et Butonu -->
-      <button id="btn-check-quiz-answer" class="shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap disabled:opacity-40 disabled:pointer-events-none" disabled>
+      <button id="btn-check-quiz-answer" class="shrink-0 px-4 py-2 sm:px-6 sm:py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-xs sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap disabled:opacity-40 disabled:pointer-events-none" disabled>
         Cevabı Kontrol Ediniz
       </button>
 
       <!-- Sonraki Soru Butonu -->
-      <button id="btn-next-quiz-question" class="hidden shrink-0 px-6 py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-sm sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap">
+      <button id="btn-next-quiz-question" class="hidden shrink-0 px-4 py-2 sm:px-6 sm:py-3 bg-[#1e3b2e] hover:bg-[#152a21] text-[#fffdfa] font-bold text-xs sm:text-base rounded-[10px] border border-[#d49d3d]/50 transition-all shadow-sm select-none cursor-pointer text-center whitespace-nowrap">
         ${currentQuizIndex === activeQuizQuestions.length - 1 ? 'Soruları Bitiriniz ➔' : 'Sonraki Soruya Geçiniz ➔'}
       </button>
     </div>

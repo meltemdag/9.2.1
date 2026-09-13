@@ -596,12 +596,22 @@ button:focus-visible,
 }
 
 /* 2. Aşama Değerlendirme Soruları Stilleri */
+#stage2-video-wrapper {
+  transition: min-height 0.25s ease, width 0.25s ease;
+}
+
+#stage2-video-wrapper.quiz-active {
+  min-height: 560px;
+  width: 100% !important;
+  max-width: 860px;
+}
+
 #stage2-quiz-wrapper {
   overflow-x: hidden !important;
 }
 
 #stage2-quiz-wrapper::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 #stage2-quiz-wrapper::-webkit-scrollbar-track {
@@ -611,6 +621,33 @@ button:focus-visible,
 #stage2-quiz-wrapper::-webkit-scrollbar-thumb {
   background: #beab8f;
   border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  #stage2-video-wrapper.quiz-active {
+    min-height: 530px !important;
+    max-height: 85vh;
+  }
+
+  #stage2-quiz-wrapper {
+    padding: 10px 10px !important;
+  }
+
+  .quiz-option-card {
+    padding: 7px 11px !important;
+    gap: 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .quiz-option-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 5px !important;
+  }
+
+  .quiz-option-checkbox::after {
+    font-size: 12px !important;
+  }
 }
 
 .quiz-option-card {
